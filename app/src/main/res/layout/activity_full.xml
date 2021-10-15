@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/rootLayout"
+    android:layout_height="match_parent"
+    android:background="@color/colorLight4"
+    android:orientation="vertical"
+    tools:context=".activity.FullActivity">
+
+    <RelativeLayout
+        android:id="@+id/topNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/pink">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civAvatar"
+            android:layout_width="50dp"
+            android:layout_height="55dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginLeft="6dp"
+            app:srcCompat="@drawable/ic_logo"
+            app:civ_border_color="@color/pink2"
+            app:civ_border_width="1dp"/>
+
+        <EditText
+            android:drawableRight="@drawable/ic_search"
+            android:layout_marginRight="4dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/civAvatar"
+            android:id="@+id/etSearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignTop="@+id/civAvatar"
+            android:layout_alignBottom="@+id/civAvatar"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="4dp"
+            android:layout_toStartOf="@+id/imvBell"
+            android:layout_toEndOf="@+id/civAvatar"
+            android:background="@drawable/shape_corner_20dp"
+            android:cursorVisible="false"
+            android:drawableEnd="@drawable/ic_search"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:fontFamily="@font/comfortaa"
+            android:hint="@string/etHint1"
+            android:textColorHint="@color/colorLight9"
+            android:lines="1"
+            android:maxLines="1"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:singleLine="true"
+            android:textSize="16sp"
+            android:layout_toLeftOf="@+id/imvBell" />
+
+        <ImageView
+            android:id="@+id/imvBell"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignTop="@+id/civAvatar"
+            android:layout_alignBottom="@+id/civAvatar"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:padding="5dp"
+            app:srcCompat="@drawable/ic_bell" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <FrameLayout
+        android:id="@+id/frameMiniPlayer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"/>
+
+    <com.etebarian.meowbottomnavigation.MeowBottomNavigation
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:mbn_backgroundBottomColor="@color/colorLight2"
+        app:mbn_circleColor="@color/colorLight4"
+        app:mbn_countTextColor="@color/colorLight1"
+        app:mbn_defaultIconColor="@color/colorLight1"
+        app:mbn_selectedIconColor="@color/colorLight3"
+        app:mbn_shadowColor="@color/colorLight5" />
+
+
+</LinearLayout>

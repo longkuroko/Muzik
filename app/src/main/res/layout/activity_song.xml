@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cdlListSong"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".activity.SongActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/ablImage"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/ctlImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_gradient"
+            android:fitsSystemWindows="true"
+            app:expandedTitleGravity="center|left"
+            app:expandedTitleMargin="30dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/tbListSong"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:elevation="20dp"
+                android:gravity="center|start"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/Theme.AppCompat.Light" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorMain1"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/ic_play_2_pink"
+        app:fabSize="normal"
+        app:layout_anchor="@+id/ablImage"
+        app:layout_anchorGravity="bottom|center"
+        app:layout_behavior="@string/bottom_sheet_behavior" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/sflItemSong"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/item_shimmer_song" />
+
+                    <include layout="@layout/item_shimmer_song" />
+
+                    <include layout="@layout/item_shimmer_song" />
+
+                    <include layout="@layout/item_shimmer_song" />
+
+                    <include layout="@layout/item_shimmer_song" />
+
+                    <include layout="@layout/item_shimmer_song" />
+
+                    <include layout="@layout/item_shimmer_song" />
+
+                    <include layout="@layout/item_shimmer_song" />
+
+                    <include layout="@layout/item_shimmer_song" />
+
+                    <include layout="@layout/item_shimmer_song" />
+                </LinearLayout>
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvListSong"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="10dp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+
+<!--        <com.google.android.gms.ads.AdView-->
+<!--            xmlns:ads="http://schemas.android.com/apk/res-auto"-->
+<!--            android:id="@+id/avSongActivity"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            ads:adSize="SMART_BANNER"-->
+<!--            ads:adUnitId="ca-app-pub-8151267593746824/7080194612" />-->
+    </FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

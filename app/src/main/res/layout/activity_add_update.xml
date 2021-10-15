@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLight4"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".activity.AddUpdateActivity">
+
+
+    <ImageView
+        android:id="@+id/ivClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        app:srcCompat="@drawable/ic_close_1"
+        />
+    <TextView
+        android:id="@+id/tvDialogTitlePlaylist"
+        style="@style/tvStyle1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:text="Create playlist"
+        android:textAllCaps="true"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+    <EditText
+        android:id="@+id/etDialogContentPlaylist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/comfortaa"
+        android:hint="Playlist name"
+        android:imeOptions="actionDone"
+        android:lines="1"
+        android:maxLength="100"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textColor="@color/colorLight9"
+        android:textColorHighlight="@color/colorLight9"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        />
+    <Button
+        android:id="@+id/btnDialogActionPlaylist"
+        style="@style/tvStyle1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/shape_corner_gradient1_10dp"
+        android:gravity="center"
+        android:text="Create playlist"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        />
+
+</LinearLayout>

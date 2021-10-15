@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorLight4"
+    tools:context=".activity.FullPlayerActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/pink">
+
+        <ImageView
+            android:id="@+id/imvBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="5dp"
+            android:gravity="center"
+            android:padding="10dp"
+            app:srcCompat="@drawable/ic_angle_left"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:id="@+id/tvSongName"
+            style="@style/tvStyle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/imvBack"
+            android:layout_centerInParent="true"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:maxWidth="200dp"
+            android:scrollHorizontally="true"
+            android:text="@string/tvSongName"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tvArtist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvSongName"
+            android:layout_centerInParent="true"
+            android:ellipsize="marquee"
+            android:fontFamily="@font/comfortaa"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:maxWidth="200dp"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="@string/tvArtist"
+            android:textAlignment="center"
+            android:textColor="@color/colorLight9"
+            android:textSize="14sp"
+            android:textStyle="normal" />
+
+        <ImageView
+            android:id="@+id/ivMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="5dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_menu_dots_vertical"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.rd.PageIndicatorView
+            android:id="@+id/pageIndicatorView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            app:piv_animationType="swap"
+            app:piv_dynamicCount="true"
+            app:piv_interactiveAnimation="true"
+            app:piv_padding="5dp"
+            app:piv_radius="5dp"
+            app:piv_selectedColor="@color/pink2"
+            app:piv_unselectedColor="@color/colorLight13"
+            app:piv_viewPager="@+id/vpFullPlayer" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vpFullPlayer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/pageIndicatorView"
+            android:layout_marginTop="5dp" />
+    </RelativeLayout>
+
+
+
+</LinearLayout>

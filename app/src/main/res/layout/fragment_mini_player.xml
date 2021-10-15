@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/miniPlayer"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:gravity="center"
+    android:background="@drawable/shape_corner_10dp_border"
+    android:padding="5dp"
+    tools:context=".fragments.MiniPlayerFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvListSongImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="0dp"
+        android:layout_alignParentLeft="true">
+
+        <ImageView
+            android:id="@+id/ivListItemSong"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/ic_logo"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/cvListSongImage"
+        android:layout_alignBottom="@+id/cvListSongImage"
+        android:layout_toStartOf="@+id/ivListItemSongLove"
+        android:layout_toEndOf="@+id/cvListSongImage"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_toLeftOf="@+id/ivListItemSongLove"
+        android:layout_toRightOf="@+id/cvListSongImage">
+
+        <TextView
+            android:id="@+id/tvListItemSongName"
+            style="@style/tvStyle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="10dp"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:text="@string/tvChartSongName"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:id="@+id/tvListItemSongSinger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="2dp"
+            android:ellipsize="marquee"
+            android:fontFamily="@font/comfortaa"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="@string/tvChartSongSinger"
+            android:textColor="@color/colorLight9"
+            android:textSize="12sp"
+            android:textStyle="normal"
+            android:layout_marginLeft="10dp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivListItemSongNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="10dp"
+        app:srcCompat="@drawable/ic_next"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp" />
+
+    <ImageView
+        android:id="@+id/ivListItemSongLove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="20dp"
+        android:layout_toStartOf="@+id/ivPlay"
+        android:visibility="gone"
+        app:srcCompat="@drawable/ic_not_favorite"
+        android:layout_toLeftOf="@+id/ivPlay"
+        android:layout_marginRight="20dp" />
+
+    <ImageView
+        android:id="@+id/ivPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="20dp"
+        android:layout_toStartOf="@+id/ivListItemSongNext"
+        app:srcCompat="@drawable/ic_pause"
+        android:layout_marginRight="20dp"
+        android:layout_toLeftOf="@+id/ivListItemSongNext" />
+
+
+
+
+</RelativeLayout>

@@ -54,11 +54,21 @@
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/layout_song_more.xml" value="0.23489583333333333" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/layout_userplaylist_more.xml" value="0.36666666666666664" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2203125" />
-        <entry key="..\:/Muzik/app/src/main/res/layout/activity_personal_page.xml" value="0.14233576642335766" />
+
+        <entry key="..\:/mobile/Muzik/app/src/main/res/drawable/ic_add_1.xml" value="0.26614583333333336" />
+        <entry key="..\:/mobile/Muzik/app/src/main/res/drawable/ic_edit.xml" value="0.26614583333333336" />
+        <entry key="..\:/mobile/Muzik/app/src/main/res/drawable/shape_corner_16dp.xml" value="0.26614583333333336" />
+        <entry key="..\:/mobile/Muzik/app/src/main/res/drawable/shape_corner_16dp_topleft_topright.xml" value="0.26614583333333336" />
+        <entry key="..\:/mobile/Muzik/app/src/main/res/drawable/shape_corner_gradient2_10dp.xml" value="0.26614583333333336" />
+        <entry key="..\:/mobile/Muzik/app/src/main/res/layout/layout_add_song_to_playlist_dialog.xml" value="0.25" />
+        <entry key="..\:/mobile/Muzik/app/src/main/res/layout/layout_textview_dialog.xml" value="0.25" />
+        <entry key="..\:/mobile/Muzik/app/src/main/res/layout/layout_userplaylist_more.xml" value="0.2418478260869565" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

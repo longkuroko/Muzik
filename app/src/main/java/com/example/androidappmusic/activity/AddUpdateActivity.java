@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,12 +32,12 @@ public class AddUpdateActivity extends AppCompatActivity {
 
     private static final String TAG = "AddUpdateActivity";
 
-    private ScaleAnimation scaleAnimation;
-    private LoadingDialog loadingDialog;
-    private ImageView ivClose;
-    private TextView tvDialogTitlePlaylist;
-    private EditText etDialogContentPlaylist;
-    private Button btnDialogActionPlaylist;
+    ScaleAnimation scaleAnimation;
+    LoadingDialog loadingDialog;
+    ImageView ivClose;
+    TextView tvDialogTitlePlaylist;
+    EditText etDialogContentPlaylist;
+    Button btnDialogActionPlaylist;
 
     private ArrayList<UserPlaylist> userPlaylistArrayList;
     private UserPlaylist userPlaylist;
@@ -49,6 +50,7 @@ public class AddUpdateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_update);
+        DataLocalManager.init(this);
 
         linkViews();
         loadData();
@@ -56,12 +58,13 @@ public class AddUpdateActivity extends AppCompatActivity {
     }
 
     private void linkViews() {
-        this.loadingDialog = new LoadingDialog(this);
-        this.ivClose = findViewById(R.id.ivClose);
-        this.tvDialogTitlePlaylist = findViewById(R.id.tvDialogTitlePlaylist);
-        this.etDialogContentPlaylist = findViewById(R.id.etDialogContentPlaylist);
-        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE); //1
-        this.btnDialogActionPlaylist = findViewById(R.id.btnDialogActionPlaylist);
+        loadingDialog = new LoadingDialog(this);
+        ivClose = findViewById(R.id.ivClose);
+        tvDialogTitlePlaylist = findViewById(R.id.tvDialogTitlePlaylist);
+        etDialogContentPlaylist = findViewById(R.id.etDialogContentPlaylist);
+        etDialogContentPlaylist.requestFocus();
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE); //1
+        btnDialogActionPlaylist = findViewById(R.id.btnDialogActionPlaylist);
     }
 
     private void loadData() {
@@ -111,10 +114,13 @@ public class AddUpdateActivity extends AppCompatActivity {
     }
 
     private void addEvents() {
-        this.scaleAnimation = new ScaleAnimation(this, this.ivClose);
-        this.scaleAnimation.Event_ImageView();
-        this.ivClose.setOnClickListener(v ->{
-            finish();
+        scaleAnimation = new ScaleAnimation(this, this.ivClose);
+        scaleAnimation.Event_ImageView();
+        ivClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
         });
     }
 

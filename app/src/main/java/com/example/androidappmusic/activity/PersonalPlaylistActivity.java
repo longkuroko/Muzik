@@ -34,18 +34,18 @@ public class PersonalPlaylistActivity extends AppCompatActivity {
 
     private static final String TAG = "PPActivity";
 
-    private ImageView ivPersonalPlaylistBack;
-    private ImageView ivPersonalPlaylistMore;
-    private TextView tvPersonalPlaylistTitle;
-    private TextView tvEmptySong;
-    private Button btnPersonalPlayAll;
+    ImageView ivPersonalPlaylistBack;
+    ImageView ivPersonalPlaylistMore;
+    TextView tvPersonalPlaylistTitle;
+    TextView tvEmptySong;
+    Button btnPersonalPlayAll;
 
-    private ShimmerFrameLayout sflItemSong;
-    private RecyclerView rvPersonalPlaylist;
+    ShimmerFrameLayout sflItemSong;
+    RecyclerView rvPersonalPlaylist;
 
-    private ScaleAnimation scaleAnimation;
-    private ArrayList<Song> songArrayList;
-    private UserPlaylist userPlaylist;
+    ScaleAnimation scaleAnimation;
+    ArrayList<Song> songArrayList;
+    UserPlaylist userPlaylist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,20 +66,20 @@ public class PersonalPlaylistActivity extends AppCompatActivity {
     }
 
     private void linkViews() {
-        this.ivPersonalPlaylistBack = findViewById(R.id.ivPersonalPlaylistBack);
-        this.tvPersonalPlaylistTitle = findViewById(R.id.tvPersonalPlaylistTitle);
-        this.tvPersonalPlaylistTitle.setSelected(true); //Text will be moved
+        ivPersonalPlaylistBack = findViewById(R.id.ivPersonalPlaylistBack);
+        tvPersonalPlaylistTitle = findViewById(R.id.tvPersonalPlaylistTitle);
+        tvPersonalPlaylistTitle.setSelected(true); //Text will be moved
 
-        this.ivPersonalPlaylistMore = findViewById(R.id.ivPersonalPlaylistMore);
+        ivPersonalPlaylistMore = findViewById(R.id.ivPersonalPlaylistMore);
 
-        this.btnPersonalPlayAll = findViewById(R.id.btnPersonalPlayAll);
-        this.btnPersonalPlayAll.setEnabled(false); //set false để cho nó không hoạt động trước, sau khi load xong hêt tất cả bài hát thì gọi hàm Play_All_Song();
+        btnPersonalPlayAll = findViewById(R.id.btnPersonalPlayAll);
+        btnPersonalPlayAll.setEnabled(false); //set false để cho nó không hoạt động trước, sau khi load xong hêt tất cả bài hát thì gọi hàm Play_All_Song();
 
-        this.tvEmptySong = findViewById(R.id.tvEmptySong);
-        this.tvEmptySong.setSelected(true);
+        tvEmptySong = findViewById(R.id.tvEmptySong);
+        tvEmptySong.setSelected(true);
 
-        this.sflItemSong = findViewById(R.id.sflItemSong);
-        this.rvPersonalPlaylist = findViewById(R.id.rvPersonalPlaylist);
+        sflItemSong = findViewById(R.id.sflItemSong);
+        rvPersonalPlaylist = findViewById(R.id.rvPersonalPlaylist);
     }
 
     private void loadData() {
@@ -112,17 +112,20 @@ public class PersonalPlaylistActivity extends AppCompatActivity {
     }
 
     private void addEvents() {
-        this.scaleAnimation = new ScaleAnimation(this, this.ivPersonalPlaylistBack);
-        this.scaleAnimation.Event_ImageView();
-        this.ivPersonalPlaylistBack.setOnClickListener(v -> {
-            finish();
+        scaleAnimation = new ScaleAnimation(this, this.ivPersonalPlaylistBack);
+        scaleAnimation.Event_ImageView();
+        ivPersonalPlaylistBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
         });
 
-        this.scaleAnimation = new ScaleAnimation(this, this.ivPersonalPlaylistMore);
-        this.scaleAnimation.Event_ImageView();
+        scaleAnimation = new ScaleAnimation(this, this.ivPersonalPlaylistMore);
+        scaleAnimation.Event_ImageView();
 
-        this.scaleAnimation = new ScaleAnimation(this, this.btnPersonalPlayAll);
-        this.scaleAnimation.Event_Button();
+        scaleAnimation = new ScaleAnimation(this, this.btnPersonalPlayAll);
+        scaleAnimation.Event_Button();
     }
 
     private void Handle_Download_Song() {

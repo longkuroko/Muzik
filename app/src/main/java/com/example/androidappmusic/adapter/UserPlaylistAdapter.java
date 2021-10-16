@@ -27,6 +27,7 @@ import com.example.androidappmusic.API.APIService;
 import com.example.androidappmusic.API.DataService;
 import com.example.androidappmusic.R;
 import com.example.androidappmusic.activity.AddUpdateActivity;
+import com.example.androidappmusic.activity.PersonalPlaylistActivity;
 import com.example.androidappmusic.animation.ScaleAnimation;
 import com.example.androidappmusic.models.Status;
 import com.example.androidappmusic.models.UserPlaylist;
@@ -97,6 +98,17 @@ public class UserPlaylistAdapter extends RecyclerView.Adapter<UserPlaylistAdapte
                 alertBuilder.setCancelable(false);
                 alertDialog = alertBuilder.create();
                 alertDialog.show();
+            });
+        }else {
+            holder.itemView.setOnClickListener(v -> {
+                Intent intent = new Intent(context, PersonalPlaylistActivity.class);
+                intent.putExtra("SONGPLAYLIST", this.userPlaylistArrayList.get(holder.getLayoutPosition()));
+                context.startActivity(intent);
+            });
+
+            holder.itemView.setOnLongClickListener(v -> {
+                Open_Info_Playlist_Dialog(Gravity.BOTTOM, holder.getLayoutPosition());
+                return false;
             });
         }
 
@@ -356,21 +368,33 @@ public class UserPlaylistAdapter extends RecyclerView.Adapter<UserPlaylistAdapte
     }
     @Override
     public int getItemCount() {
+        if (this.userPlaylistArrayList != null) {
+            return this.userPlaylistArrayList.size();
+        }
         return 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private CardView cvPlaylistCover;
-        private TextView tvPlaylistName;
-        private TextView tvNumberSongPlaylist;
-        private ImageView ivPlaylistMore;
+        CardView cvPlaylistCover;
+        TextView tvPlaylistName;
+        TextView tvNumberSongPlaylist;
+        ImageView ivPlaylistMore;
 
         private ScaleAnimation scaleAnimation;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            this.cvPlaylistCover = itemView.findViewById(R.id.cvPlaylistCover);
+            cvPlaylistCover = itemView.findViewById(R.id.cvPlaylistCover);
+
+            tvPlaylistName = itemView.findViewById(R.id.tvPlaylistName);
+            tvPlaylistName.setSelected(true);
+
+            tvNumberSongPlaylist = itemView.findViewById(R.id.tvNumberSongPlaylist);
+
+            ivPlaylistMore = itemView.findViewById(R.id.ivPlaylistMore);
+            scaleAnimation = new ScaleAnimation(itemView.getContext(), this.ivPlaylistMore);
+            scaleAnimation.Event_ImageView();
         }
     }
 }

@@ -40,7 +40,7 @@ public class PlaylistHomeAdapter extends RecyclerView.Adapter<PlaylistHomeAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PlaylistHomeAdapter.ViewHolder holder, int position) {
         Picasso.get()
                 .load(playlistArrayList.get(position).getImg())
                 .placeholder(R.drawable.ic_logo)
@@ -66,7 +66,7 @@ public class PlaylistHomeAdapter extends RecyclerView.Adapter<PlaylistHomeAdapte
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            ivPlaylist = itemView.findViewById(R.id.ivPlaylistImage);
+            cvPlaylist = itemView.findViewById(R.id.cvPlaylist);
             ivPlaylist = itemView.findViewById(R.id.ivPlaylistImage);
 
         }

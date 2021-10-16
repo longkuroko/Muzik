@@ -60,6 +60,12 @@ public class ChartFragment extends Fragment {
 
     }
 
+    private void linkViews(View view) {
+
+        rvChart = view.findViewById(R.id.rvChart);
+        sflItemSong = view.findViewById(R.id.sflItemSong);
+    }
+
     private void HandleSongChart() {
         DataService dataService = APIService.getService();
         Call<List<Song>> callback = dataService.getSongChart();
@@ -90,9 +96,4 @@ public class ChartFragment extends Fragment {
 
     }
 
-    private void linkViews(View view) {
-
-        rvChart = view.findViewById(R.id.rvChart);
-        sflItemSong = view.findViewById(R.id.sflItemSong);
-    }
 }

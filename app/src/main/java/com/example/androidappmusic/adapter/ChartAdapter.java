@@ -1,9 +1,11 @@
 package com.example.androidappmusic.adapter;
 
 import android.app.Dialog;
+import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
@@ -26,6 +28,7 @@ import com.example.androidappmusic.activity.FullPlayerActivity;
 import com.example.androidappmusic.animation.ScaleAnimation;
 import com.example.androidappmusic.models.Song;
 import com.example.androidappmusic.models.UserPlaylist;
+import com.example.androidappmusic.sharedPreferences.DataLocalManager;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.squareup.picasso.Picasso;
 
@@ -57,7 +60,7 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
     private Context context;
     private ArrayList<Song> songArrayList;
 
-    private boolean isFromRadio = false;
+//    private boolean isFromRadio = false;
     private List<Integer> listRequest;
     private Dialog dialogRequestFromRadio;
     public static List<Integer> listSongRequested = new ArrayList<>();
@@ -67,12 +70,175 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
         this.songArrayList = songArrayList;
     }
 
-    public ChartAdapter(Context context, ArrayList<Song> songArrayList, boolean o, List<Integer> requests, Dialog dialog) {
-        isFromRadio = true;
-        this.context = context;
-        this.songArrayList = songArrayList;
-        listRequest = requests;
-        dialogRequestFromRadio = dialog;
+//    public ChartAdapter(Context context, ArrayList<Song> songArrayList, boolean o, List<Integer> requests, Dialog dialog) {
+//        isFromRadio = true;
+//        this.context = context;
+//        this.songArrayList = songArrayList;
+//        listRequest = requests;
+//        dialogRequestFromRadio = dialog;
+//    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_top_song, parent, false);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Picasso.get()
+                .load(this.songArrayList.get(position).getImg())
+                .placeholder(R.drawable.ic_logo)
+                .error(R.drawable.ic_logo)
+                .into(holder.ivSongChartImage);
+
+        Handle_Position(holder.tvChartNumber, position);
+        holder.tvChartSongName.setText(this.songArrayList.get(position).getName().trim());
+        holder.tvChartSongSinger.setText(this.songArrayList.get(position).getSinger().trim());
+        holder.tvChartLikeNumber.setText(this.songArrayList.get(position).getLike().trim());
+
+        holder.ivChartSongMore.setOnClickListener(v -> Open_Info_Song_Dialog(Gravity.BOTTOM, holder.getLayoutPosition()));
+        holder.itemView.setOnLongClickListener(v -> {
+            Open_Info_Song_Dialog(Gravity.BOTTOM, holder.getLayoutPosition());
+            return false;
+        });
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), FullPlayerActivity.class);
+            intent.putExtra("SONGCHART", songArrayList.get(holder.getLayoutPosition()));
+            v.getContext().startActivity(intent);
+        });
+        
+    }
+
+    BroadcastReceiver onComplete = new BroadcastReceiver() {
+        public void onReceive(Context ctxt, Intent intent) {
+            Toast.makeText(ctxt, "Hoàn tất tải bài hát: " + songArrayList.get(index).getName() + "!", Toast.LENGTH_LONG).show();
+            context.unregisterReceiver(onComplete);
+        }
+    };
+    private void Open_Info_Song_Dialog(int gravity, int position){
+        dialog_1 = new Dialog(this.context);
+
+        dialog_1.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog_1.setContentView(R.layout.layout_song_more);
+
+        Window window = dialog_1.getWindow();
+        if(window == null){
+            return;
+
+        }
+
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // Set màu mờ mờ cho background dialog, che đi activity chính, nhưng vẫn có thể thấy được một phần activity
+
+        WindowManager.LayoutParams windowAttributes = window.getAttributes();
+        windowAttributes.gravity = gravity;
+        windowAttributes.windowAnimations = R.style.DialogAnimation;
+        window.setAttributes(windowAttributes);
+
+        dialog_1.setCancelable(true); //bam ra cho khac de thoat dialog
+        ImageView ivInfoSongImage = this.dialog_1.findViewById(R.id.ivInfoSongImage);
+        Picasso.get()
+                .load(songArrayList.get(position).getImg())
+                .placeholder(R.drawable.ic_logo)
+                .error(R.drawable.ic_logo)
+                .into(ivInfoSongImage);
+
+        TextView tvInfoSongName = this.dialog_1.findViewById(R.id.tvInfoSongName);
+        tvInfoSongName.setSelected(true);
+        tvInfoSongName.setText(songArrayList.get(position).getName().trim());
+
+        TextView tvInfoSongSinger = this.dialog_1.findViewById(R.id.tvInfoSongSinger);
+        tvInfoSongSinger.setSelected(true);
+        tvInfoSongSinger.setText(this.songArrayList.get(position).getSinger().trim());
+
+        RelativeLayout rlPlaySong = this.dialog_1.findViewById(R.id.rlPlaySong);
+        TextView tvPlaySong = this.dialog_1.findViewById(R.id.tvPlaySong);
+        tvPlaySong.setSelected(true);
+
+        RelativeLayout rlAddSongToPlaylist = this.dialog_1.findViewById(R.id.rlAddSongToPlaylist);
+        TextView tvAddSongToPlaylist = this.dialog_1.findViewById(R.id.tvAddSongToPlaylist);
+        tvAddSongToPlaylist.setSelected(true);
+
+        RelativeLayout rlDeleteSongToPlaylist = this.dialog_1.findViewById(R.id.rlDeleteSongToPlaylist);
+        TextView tvDeleteSongToPlaylist = this.dialog_1.findViewById(R.id.tvDeleteSongToPlaylist);
+        tvDeleteSongToPlaylist.setSelected(true);
+
+        RelativeLayout rlDeleteAllSongToPlaylist = this.dialog_1.findViewById(R.id.rlDeleteAllSongToPlaylist);
+        TextView tvDeleteAllSongToPlaylist = this.dialog_1.findViewById(R.id.tvDeleteAllSongToPlaylist);
+        tvDeleteAllSongToPlaylist.setSelected(true);
+
+        RelativeLayout rlDownLoadSong = this.dialog_1.findViewById(R.id.rlDownLoadSong);
+        TextView tvDownLoadSong = this.dialog_1.findViewById(R.id.tvDownLoadSong);
+        tvDownLoadSong.setSelected(true);
+
+        RelativeLayout rlDeleteDownLoadSong = this.dialog_1.findViewById(R.id.rlDeleteDownLoadSong);
+        TextView tvDeleteDownLoadSong = this.dialog_1.findViewById(R.id.tvDeleteDownLoadSong);
+        tvDeleteDownLoadSong.setSelected(true);
+
+        RelativeLayout rlCloseInfoPlaylist = this.dialog_1.findViewById(R.id.rlCloseInfoPlaylist);
+        TextView tvCloseInfoSong = this.dialog_1.findViewById(R.id.tvCloseInfoSong);
+        tvCloseInfoSong.setSelected(true);
+
+        rlDeleteSongToPlaylist.setVisibility(View.GONE);
+        rlDeleteAllSongToPlaylist.setVisibility(View.GONE);
+        rlDeleteDownLoadSong.setVisibility(View.GONE);
+
+
+        this.scaleAnimation = new ScaleAnimation(context, rlPlaySong);
+        this.scaleAnimation.Event_RelativeLayout();
+        rlPlaySong.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), FullPlayerActivity.class);
+            intent.putExtra("SONG", songArrayList.get(position));
+            v.getContext().startActivity(intent);
+        });
+
+        this.scaleAnimation = new ScaleAnimation(context, rlAddSongToPlaylist);
+        this.scaleAnimation.Event_RelativeLayout();
+        rlAddSongToPlaylist.setOnClickListener(v -> {
+            Open_Insert_Song_Playlist_Dialog(DataLocalManager.getUserID(), songArrayList.get(position).getId());
+        });
+
+
+//        this.scaleAnimation = new ScaleAnimation(context, rlDownLoadSong);
+//        this.scaleAnimation.Event_RelativeLayout();
+//        rlDownLoadSong.setOnClickListener(v -> {
+//            context.registerReceiver(onComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+//            DownloadService downloadService = new DownloadService();
+//            downloadService.DownloadSong(context, songArrayList.get(position));
+//            dialog_1.dismiss();
+//            notifyDataSetChanged();
+//        });
+
+        scaleAnimation = new ScaleAnimation(context, rlPlaySong);
+        scaleAnimation.Event_CircleImageView();
+        rlPlaySong.setOnClickListener(v ->{
+            Intent intent = new Intent(v.getContext(), FullPlayerActivity.class);
+            intent.putExtra("SONG", songArrayList.get(position));
+            v.getContext().startActivity(intent);
+        });
+
+        dialog_1.show();
+
+
+    }
+
+    private void Handle_Position(TextView tvPosition, int position) {
+        tvPosition.setText(String.valueOf(position + 1));
+
+        if(position == 0){
+            tvPosition.setTextColor(context.getResources().getColor(R.color.colorMain4));
+        }
+        else if (position == 1) {
+            tvPosition.setTextColor(context.getResources().getColor(R.color.colorMain7));
+        } else if (position == 2) {
+            tvPosition.setTextColor(context.getResources().getColor(R.color.colorMain8));
+        } else { // Ko biết tại sao, khí nào quay lại tìm hiểu sau
+            tvPosition.setTextColor(context.getResources().getColor(R.color.colorLight7));
+        }
+
     }
     private void Open_Insert_Song_Playlist_Dialog(String userID, int songID) {
         this.dialog_3 = new Dialog(this.context);
@@ -90,8 +256,7 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
         WindowManager.LayoutParams windowAttributes = window.getAttributes();
         windowAttributes.gravity = Gravity.BOTTOM;
         windowAttributes.windowAnimations = R.style.DialogAnimation;
-        window.setAttributes(windowAttributes);
-// Bấm ra chỗ khác sẽ thoát dialog
+        window.setAttributes(windowAttributes);// Bấm ra chỗ khác sẽ thoát dialog
         dialog_3.setCancelable(true);
 
         TextView tvSelectPlaylist = dialog_3.findViewById(R.id.tvSelectPlaylist);
@@ -139,162 +304,6 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
 
         dialog_3.show();
     }
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_top_song, parent, false);
-        return new ViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Picasso.get()
-                .load(this.songArrayList.get(position).getImg())
-                .placeholder(R.drawable.ic_logo)
-                .error(R.drawable.ic_logo)
-                .into(holder.ivSongChartImage);
-
-        Handle_Position(holder.tvChartNumber, position);
-        holder.tvChartSongName.setText(this.songArrayList.get(position).getName().trim());
-        holder.tvChartSongSinger.setText(this.songArrayList.get(position).getSinger().trim());
-        holder.tvChartLikeNumber.setText(this.songArrayList.get(position).getLike().trim());
-
-        holder.ivChartSongMore.setOnClickListener(v -> Open_Info_Song_Dialog(Gravity.BOTTOM, holder.getLayoutPosition()));
-        holder.itemView.setOnLongClickListener(v -> {
-            Open_Info_Song_Dialog(Gravity.BOTTOM, holder.getLayoutPosition());
-            return false;
-        });
-
-        holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(v.getContext(), FullPlayerActivity.class);
-            intent.putExtra("SONGCHART", songArrayList.get(holder.getLayoutPosition()));
-            v.getContext().startActivity(intent);
-        });
-        
-    }
-    BroadcastReceiver onComplete = new BroadcastReceiver() {
-        public void onReceive(Context ctxt, Intent intent) {
-            Toast.makeText(ctxt, "Hoàn tất tải bài hát: " + songArrayList.get(index).getName() + "!", Toast.LENGTH_LONG).show();
-            context.unregisterReceiver(onComplete);
-        }
-    };
-    private void Open_Info_Song_Dialog(int gravity, int position){
-        dialog_1 = new Dialog(this.context);
-
-        dialog_1.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog_1.setContentView(R.layout.layout_song_more);
-
-        Window window = dialog_1.getWindow();
-        if(window == null){
-            return;
-
-        }
-
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // Set màu mờ mờ cho background dialog, che đi activity chính, nhưng vẫn có thể thấy được một phần activity
-
-        WindowManager.LayoutParams windowAttributes = window.getAttributes();
-        windowAttributes.gravity = gravity;
-        windowAttributes.windowAnimations = R.style.DialogAnimation;
-        window.setAttributes(windowAttributes);
-
-        dialog_1.setCancelable(true); //bam ra cho khac de thoat dialog
-        ImageView ivInfoSongImage = this.dialog_1.findViewById(R.id.ivInfoSongImage);
-        Picasso.get()
-                .load(songArrayList.get(position).getImg())
-                .placeholder(R.drawable.ic_logo)
-                .error(R.drawable.ic_logo)
-                .into(ivInfoSongImage);
-
-        TextView tvInfoSongName = this.dialog_1.findViewById(R.id.tvInfoSongName);
-        tvInfoSongName.setSelected(true);
-        tvInfoSongName.setText(songArrayList.get(position).getName().trim());
-
-        TextView tvInfoSongSinger = this.dialog_1.findViewById(R.id.tvInfoSongSinger);
-        tvInfoSongSinger.setSelected(true);
-        tvInfoSongSinger.setText(this.songArrayList.get(position).getSinger().trim());
-
-        RelativeLayout rlPlaySong = this.dialog_1.findViewById(R.id.rlPlaySong);
-        TextView tvPlaySong = this.dialog_1.findViewById(R.id.tvPlaySong);
-        tvPlaySong.setSelected(true);
-//
-//        RelativeLayout rlAddSongToPlaylist = this.dialog_1.findViewById(R.id.rlAddSongToPlaylist);
-//        TextView tvAddSongToPlaylist = this.dialog_1.findViewById(R.id.tvAddSongToPlaylist);
-//        tvAddSongToPlaylist.setSelected(true);
-//
-//        RelativeLayout rlDeleteSongToPlaylist = this.dialog_1.findViewById(R.id.rlDeleteSongToPlaylist);
-//        TextView tvDeleteSongToPlaylist = this.dialog_1.findViewById(R.id.tvDeleteSongToPlaylist);
-//        tvDeleteSongToPlaylist.setSelected(true);
-//
-//        RelativeLayout rlDeleteAllSongToPlaylist = this.dialog_1.findViewById(R.id.rlDeleteAllSongToPlaylist);
-//        TextView tvDeleteAllSongToPlaylist = this.dialog_1.findViewById(R.id.tvDeleteAllSongToPlaylist);
-//        tvDeleteAllSongToPlaylist.setSelected(true);
-//
-//        RelativeLayout rlDownLoadSong = this.dialog_1.findViewById(R.id.rlDownLoadSong);
-//        TextView tvDownLoadSong = this.dialog_1.findViewById(R.id.tvDownLoadSong);
-//        tvDownLoadSong.setSelected(true);
-//
-//        RelativeLayout rlDeleteDownLoadSong = this.dialog_1.findViewById(R.id.rlDeleteDownLoadSong);
-//        TextView tvDeleteDownLoadSong = this.dialog_1.findViewById(R.id.tvDeleteDownLoadSong);
-//        tvDeleteDownLoadSong.setSelected(true);
-//
-//        RelativeLayout rlCloseInfoPlaylist = this.dialog_1.findViewById(R.id.rlCloseInfoPlaylist);
-//        TextView tvCloseInfoSong = this.dialog_1.findViewById(R.id.tvCloseInfoSong);
-//        tvCloseInfoSong.setSelected(true);
-
-//        rlDeleteSongToPlaylist.setVisibility(View.GONE);
-//        rlDeleteAllSongToPlaylist.setVisibility(View.GONE);
-//        rlDeleteDownLoadSong.setVisibility(View.GONE);
-
-        scaleAnimation = new ScaleAnimation(context, rlPlaySong);
-        scaleAnimation.Event_CircleImageView();
-        rlPlaySong.setOnClickListener(v ->{
-            Intent intent = new Intent(v.getContext(), FullPlayerActivity.class);
-            intent.putExtra("SONG", songArrayList.get(position));
-            v.getContext().startActivity(intent);
-        });
-
-        dialog_1.show();
-
-
-    }
-
-    private void Handle_Position(TextView tvPosition, int position) {
-        tvPosition.setText(String.valueOf(position + 1));
-
-        if(position == 0){
-            tvPosition.setTextColor(context.getResources().getColor(R.color.colorMain4));
-        }
-        else if (position == 1) {
-            tvPosition.setTextColor(context.getResources().getColor(R.color.colorMain7));
-        } else if (position == 2) {
-            tvPosition.setTextColor(context.getResources().getColor(R.color.colorMain8));
-        } else { // Ko biết tại sao, khí nào quay lại tìm hiểu sau
-            tvPosition.setTextColor(context.getResources().getColor(R.color.colorLight7));
-        }
-
-    }
-//    private void Handle_From_Radio(ViewHolder view, int position) {
-//        view.itemView.setEnabled(false);
-//        view.ivChartSongMore.setImageResource(R.drawable.ic_add_1);
-//        view.ivChartSongMore.setOnClickListener(v -> {
-//            RadioButton.RequestToServer(String.valueOf(songArrayList.get(position).getId()));
-//            int count = Integer.decode(view.tvChartNumber.getText().toString());
-//            count++;
-//            view.tvChartNumber.setText(String.valueOf(count));
-//            view.ivChartSongMore.setEnabled(false);
-//            dialogRequestFromRadio.dismiss();
-//            listSongRequested.add(position);
-//        });
-//        if (listRequest.size() <= 0) {
-//            view.tvChartNumber.setText("0");
-//        } else {
-//            view.tvChartNumber.setText(String.valueOf(listRequest.get(position)));
-//            if (listSongRequested.contains(position)) {
-//                view.ivChartSongMore.setEnabled(false);
-//            }
-//        }
-//    } thiếu Acivity RequestToServer
     @Override
     public int getItemCount() {
         return songArrayList.size();

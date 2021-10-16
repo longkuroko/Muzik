@@ -2,65 +2,68 @@ package com.example.androidappmusic.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.androidappmusic.R;
+import com.example.androidappmusic.activity.FullPlayerActivity;
+import com.example.androidappmusic.adapter.SongAdapter;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link DetailPlayerFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class DetailPlayerFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String TAG = "DetailPlayerFragment";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public DetailPlayerFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment DetailPlayerFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static DetailPlayerFragment newInstance(String param1, String param2) {
-        DetailPlayerFragment fragment = new DetailPlayerFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private RecyclerView rvDataListSong;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_detail_player, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        linkViews(view);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    private void linkViews(View view) {
+        this.rvDataListSong = view.findViewById(R.id.rvDataListSong);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        if (FullPlayerActivity.dataSongs.size() > 0) {
+            this.rvDataListSong.setHasFixedSize(true);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+            layoutManager.setOrientation(RecyclerView.VERTICAL); // Chiều dọc
+            this.rvDataListSong.setLayoutManager(layoutManager);
+
+            this.rvDataListSong.setAdapter(new SongAdapter(getContext(), FullPlayerActivity.dataSongs, "LISTSONG"));
+
+            Log.d(TAG, FullPlayerActivity.dataSongs.get(0).getName());
+        } else {
+            Log.d(TAG, "Lỗi! Không có dữ liệu");
+        }
     }
 }

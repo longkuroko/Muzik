@@ -77,10 +77,6 @@ public class HomeFragment extends Fragment {
     TextView tvTheme;
 
 
-    public HomeFragment() {
-    }
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

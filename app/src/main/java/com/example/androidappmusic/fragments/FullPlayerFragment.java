@@ -32,6 +32,7 @@ import com.example.androidappmusic.R;
 import com.example.androidappmusic.activity.FullPlayerActivity;
 import com.example.androidappmusic.animation.LoadingDialog;
 import com.example.androidappmusic.animation.ScaleAnimation;
+import com.example.androidappmusic.models.Song;
 import com.example.androidappmusic.service.FullPlayerManagerService;
 import com.example.androidappmusic.service.MiniPlayerOnLockScreenService;
 import com.example.androidappmusic.sharedPreferences.DataLocalManager;
@@ -81,10 +82,6 @@ public class FullPlayerFragment extends Fragment {
         void Send_Position(int index);
     }
 
-    public FullPlayerFragment() {
-        // Required empty public constructor
-    }
-
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -95,13 +92,12 @@ public class FullPlayerFragment extends Fragment {
         } else {
             throw new RuntimeException(context.toString() + "You need implement");
         }
-//        iSendPositionListener = (ISendPositionListener) getActivity(); // Khở tạo Interface khi Fragment gắn vào Activity
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate");
 
     }
 
@@ -119,52 +115,53 @@ public class FullPlayerFragment extends Fragment {
         DataLocalManager.init(getContext());
 
         linkViews(view);
-//        loadData();
         addEvents();
         if (!FullPlayerManagerService.isRegister) {
             getActivity().registerReceiver(broadcastReceiver, new IntentFilter("TRACKS_TRACkS"));
             FullPlayerManagerService.isRegister = true;
         }
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume");
+    }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause");
+    }
 
-    private void addEvents() {
-        scaleAnimation = new ScaleAnimation(getActivity(), ivDownload);
-        scaleAnimation.Event_ImageView();
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop");
+    }
 
-        this.scaleAnimation = new ScaleAnimation(getActivity(), this.ivMv);
-        this.scaleAnimation.Event_ImageView();
-        this.scaleAnimation = new ScaleAnimation(getActivity(), this.ivShuffle);
-        this.scaleAnimation.Event_ImageView();
-        this.scaleAnimation = new ScaleAnimation(getActivity(), this.ivPrev);
-        this.scaleAnimation.Event_ImageView();
-        this.scaleAnimation = new ScaleAnimation(getActivity(), this.ivPlayPause);
-        this.scaleAnimation.Event_ImageView();
-        this.scaleAnimation = new ScaleAnimation(getActivity(), this.ivNext);
-        this.scaleAnimation.Event_ImageView();
-        this.scaleAnimation = new ScaleAnimation(getActivity(), this.ivRepeat);
-        this.scaleAnimation.Event_ImageView();
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.d(TAG, "onDestroyView");
 
-        ivPlayPause.setOnClickListener(v->{
-            onPlaySong();
-        });
+        try {
+            getActivity().unregisterReceiver(broadcastReceiver);
+            FullPlayerManagerService.isRegister = true;
+        } catch (Exception e) {
+            Log.e(TAG, "unregisterReceiver");
+        }
+    }
 
-        sbSong.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy");
+    }
 
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                FullPlayerManagerService.mediaPlayer.seekTo(seekBar.getProgress());
-            }
-        });
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Log.d(TAG, "onDetach");
     }
 
     private void linkViews(View view) {
@@ -234,12 +231,111 @@ public class FullPlayerFragment extends Fragment {
         }
 
     }
+    private void addEvents() {
+        scaleAnimation = new ScaleAnimation(getActivity(), ivDownload);
+        scaleAnimation.Event_ImageView();
+
+        this.scaleAnimation = new ScaleAnimation(getActivity(), this.ivMv);
+        this.scaleAnimation.Event_ImageView();
+        this.scaleAnimation = new ScaleAnimation(getActivity(), this.ivShuffle);
+        this.scaleAnimation.Event_ImageView();
+        this.scaleAnimation = new ScaleAnimation(getActivity(), this.ivPrev);
+        this.scaleAnimation.Event_ImageView();
+        this.scaleAnimation = new ScaleAnimation(getActivity(), this.ivPlayPause);
+        this.scaleAnimation.Event_ImageView();
+        this.scaleAnimation = new ScaleAnimation(getActivity(), this.ivNext);
+        this.scaleAnimation.Event_ImageView();
+        this.scaleAnimation = new ScaleAnimation(getActivity(), this.ivRepeat);
+        this.scaleAnimation.Event_ImageView();
+
+        ivPlayPause.setOnClickListener(v->{
+            onPlaySong();
+        });
+
+        ivRepeat.setOnClickListener(v -> {
+            isEvent_Of_FullPlayerFragment = true;
+            if (!repeat) {
+                if (checkRandom) {
+                    checkRandom = false;
+                    FullPlayerManagerService.checkRandom = false;
+                    this.ivRepeat.setImageResource(R.drawable.ic_loop_check);
+                    this.ivShuffle.setImageResource(R.drawable.ic_shuffle);
+                    repeat = true;
+                    FullPlayerManagerService.repeat = true;
+                } else {
+                    this.ivRepeat.setImageResource(R.drawable.ic_loop_check);
+                    repeat = true;
+                    FullPlayerManagerService.repeat = true;
+                }
+            } else {
+                this.ivRepeat.setImageResource(R.drawable.ic_loop);
+                repeat = false;
+                FullPlayerManagerService.repeat = false;
+            }
+        });
+
+
+        ivShuffle.setOnClickListener(v -> {
+            isEvent_Of_FullPlayerFragment = true;
+            if (!checkRandom) {
+                if (repeat) {
+                    repeat = false;
+                    FullPlayerManagerService.repeat = false;
+                    this.ivShuffle.setImageResource(R.drawable.ic_shuffle_check);
+                    this.ivRepeat.setImageResource(R.drawable.ic_loop);
+                    checkRandom = true;
+                    FullPlayerManagerService.checkRandom = true;
+                } else {
+                    this.ivShuffle.setImageResource(R.drawable.ic_shuffle_check);
+                    checkRandom = true;
+                    FullPlayerManagerService.checkRandom = true;
+                }
+            } else {
+                this.ivShuffle.setImageResource(R.drawable.ic_shuffle);
+                checkRandom = false;
+                FullPlayerManagerService.checkRandom = false;
+            }
+        });
+
+
+        sbSong.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                FullPlayerManagerService.mediaPlayer.seekTo(seekBar.getProgress());
+            }
+        });
+
+        this.ivNext.setOnClickListener(v -> {
+            onSongNext();
+        });
+
+
+        this.ivPrev.setOnClickListener(v -> {
+            onSongPrev();
+        });
+
+//        this.ivDownload.setOnClickListener(v -> {
+//            if (FullPlayerActivity.dataSongArrayList.size() > 0) {
+//                DownloadService.DownloadSong(getContext(), FullPlayerActivity.dataSongArrayList.get(position));
+//            }
+//        });
+    }
 
     private void CreateNotification(String action) {
         Intent intent = new Intent(getContext(), MiniPlayerOnLockScreenService.class);
         intent.setAction(action);
         getActivity().startService(intent);
-        //NotificationService.NotificationService(getContext(),FullPlayerActivity.dataSongArrayList.get(position),R.drawable.ic_pause,position,FullPlayerActivity.dataSongArrayList.size());
+
     }
 
     private void onPlaySong(){
@@ -247,12 +343,12 @@ public class FullPlayerFragment extends Fragment {
         if(FullPlayerManagerService.mediaPlayer.isPlaying()){
             FullPlayerManagerService.mediaPlayer.pause();
             ivPlayPause.setImageResource(R.drawable.ic_play_2);
-
+            CreateNotification(MiniPlayerOnLockScreenService.ACTION_PAUSE);
         }
         else{
             FullPlayerManagerService.mediaPlayer.start();
             ivPlayPause.setImageResource(R.drawable.ic_pause);
-
+            CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
         }
     }
     public void onSongNext() {
@@ -297,7 +393,7 @@ public class FullPlayerFragment extends Fragment {
             FullPlayerActivity.tvSongName.setText(FullPlayerActivity.dataSongs.get(this.position).getName());
             FullPlayerActivity.tvArtist.setText(FullPlayerActivity.dataSongs.get(this.position).getSinger());
             iSendPositionListener.Send_Position(this.position); // Chú ý
-            updateTimeSong();
+            UpdateTimeSong();
         }
         this.ivNext.setClickable(false);
         this.ivPrev.setClickable(false);
@@ -350,7 +446,7 @@ public class FullPlayerFragment extends Fragment {
             FullPlayerActivity.tvSongName.setText(FullPlayerActivity.dataSongs.get(this.position).getName());
             FullPlayerActivity.tvArtist.setText(FullPlayerActivity.dataSongs.get(this.position).getSinger());
             iSendPositionListener.Send_Position(this.position); // Chú
-            updateTimeSong();
+            UpdateTimeSong();
         }
         this.ivNext.setClickable(false);
         this.ivPrev.setClickable(false);
@@ -364,7 +460,6 @@ public class FullPlayerFragment extends Fragment {
 
 
     public class PlayMP3 extends AsyncTask<String, Void, String> {
-
         @Override
         protected String doInBackground(String... strings) {
             return strings[0];
@@ -372,45 +467,43 @@ public class FullPlayerFragment extends Fragment {
 
         @Override
         protected void onPostExecute(String song) {
-            super.onPreExecute();
+            super.onPostExecute(song);
             try {
                 if (!isCurrentSong() || isEvent_Of_FullPlayerFragment) {
+
                     if (FullPlayerManagerService.mediaPlayer != null) {
-                        FullPlayerManagerService.mediaPlayer.stop();
+                        try {
+                            FullPlayerManagerService.mediaPlayer.stop();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
+
+                    FullPlayerManagerService.mediaPlayer = new MediaPlayer();
+                    FullPlayerManagerService.mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
+                    FullPlayerManagerService.mediaPlayer.setOnCompletionListener(mp -> {
+                        FullPlayerManagerService.mediaPlayer.stop();
+                        FullPlayerManagerService.mediaPlayer.reset();
+                    });
+                    FullPlayerManagerService.currentSong = FullPlayerActivity.dataSongs.get(position);
+                    FullPlayerManagerService.position = position;
+                    //Log.d("CurrentSong",FullPlayerManagerService.currentSong.getName());
+                    FullPlayerManagerService.mediaPlayer.setDataSource(song); // Cái này quan trọng nè Thắng
+                    FullPlayerManagerService.mediaPlayer.prepare();
+                    FullPlayerManagerService.mediaPlayer.start();
+                    mediaPlayer = FullPlayerManagerService.mediaPlayer;
+                    CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
+                    FullPlayerManagerService.listCurrentSong = new ArrayList<Song>(FullPlayerActivity.dataSongs);
                 }
-
-                FullPlayerManagerService.mediaPlayer = new MediaPlayer();
-                FullPlayerManagerService.mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-
-                FullPlayerManagerService.mediaPlayer.setOnCompletionListener(v -> {
-                    FullPlayerManagerService.mediaPlayer.stop();
-                    FullPlayerManagerService.mediaPlayer.reset();
-                });
-                FullPlayerManagerService.currentSong = FullPlayerActivity.dataSongs.get(position);
-                FullPlayerManagerService.position = position;
-
-                FullPlayerManagerService.mediaPlayer.setDataSource(song);
-                FullPlayerManagerService.mediaPlayer.prepare();
-                FullPlayerManagerService.mediaPlayer.start();
             } catch (IOException e) {
                 Toast.makeText(getActivity(), "Lỗi. Vui lòng thử lại", Toast.LENGTH_SHORT).show();
                 Log.d(TAG, e.getMessage());
                 e.printStackTrace();
             }
-//
             TimeSong();
-
+            UpdateTimeSong();
         }
-
-    }
-
-    private void TimeSong() {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:ss", Locale.getDefault());
-
-        this.tvTimeEnd.setText(simpleDateFormat.format(FullPlayerManagerService.mediaPlayer.getDuration()));
-        this.sbSong.setMax(FullPlayerManagerService.mediaPlayer.getDuration());
-
     }
 
     private boolean isCurrentSong() {
@@ -440,15 +533,23 @@ public class FullPlayerFragment extends Fragment {
         return false;
     }
 
-    private void updateTimeSong(){
-        final  Handler handler = new Handler();
+    private void TimeSong() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:ss", Locale.getDefault());
+
+        this.tvTimeEnd.setText(simpleDateFormat.format(FullPlayerManagerService.mediaPlayer.getDuration()));
+        this.sbSong.setMax(FullPlayerManagerService.mediaPlayer.getDuration());
+
+    }
+    private void UpdateTimeSong() {
+        final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(FullPlayerManagerService.mediaPlayer != null){
+                if (FullPlayerManagerService.mediaPlayer != null) {
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:ss", Locale.getDefault());
                     try {
-
+                        //tvTimeStart.setText(simpleDateFormat.format(mediaPlayer.getCurrentPosition()));
+                        //sbSong.setProgress(mediaPlayer.getCurrentPosition());
                         int time = FullPlayerManagerService.mediaPlayer.getCurrentPosition();
                         Log.d("Test", String.valueOf(time));
                         tvTimeStart.setText(simpleDateFormat.format(FullPlayerManagerService.mediaPlayer.getCurrentPosition()));
@@ -456,7 +557,15 @@ public class FullPlayerFragment extends Fragment {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    handler.postDelayed(this, 1000);
+                    handler.postDelayed(this, 1000); // Gọi lại ham này thực thi 1s mỗi lần
+/*                    mediaPlayer.setOnCompletionListener(mp -> {
+                        next = true;
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    });*/
                     FullPlayerManagerService.mediaPlayer.setOnCompletionListener(mp -> {
                         next = true;
                         try {
@@ -468,18 +577,72 @@ public class FullPlayerFragment extends Fragment {
                 }
             }
         }, 1000);
-    }
 
+        Handler handler_1 = new Handler(); // Lằng nghe khi chuyển bài hát
+        handler_1.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (next) {
+                    if (position < FullPlayerActivity.dataSongs.size()) {
+                        ivPlayPause.setImageResource(R.drawable.ic_pause);
+                        position++;
+
+                        if (repeat) {
+                            if (position == 0) {
+                                position = FullPlayerActivity.dataSongs.size();
+                            }
+                            position -= 1;
+                        }
+
+                        if (checkRandom) {
+                            Random random = new Random();
+                            int index = random.nextInt(FullPlayerActivity.dataSongs.size());
+                            if (index == position) {
+                                position = index - 1;
+                            }
+                            position = index;
+                        }
+                        if (position > FullPlayerActivity.dataSongs.size() - 1) {
+                            position = 0;
+                        }
+                    }
+                    new PlayMP3().execute(FullPlayerActivity.dataSongs.get(position).getLink());
+
+                    Picasso.get()
+                            .load(FullPlayerActivity.dataSongs.get(position).getImg())
+                            .placeholder(R.drawable.ic_logo)
+                            .error(R.drawable.ic_logo)
+                            .into(ivCover);
+
+                    FullPlayerActivity.tvSongName.setText(FullPlayerActivity.dataSongs.get(position).getName());
+                    FullPlayerActivity.tvArtist.setText(FullPlayerActivity.dataSongs.get(position).getSinger());
+                    iSendPositionListener.Send_Position(position); // Chú ý
+                    ivNext.setClickable(false);
+                    ivPrev.setClickable(false);
+
+                    new Handler().postDelayed(() -> { // Sau khi người dùng nhấn Next hoặc Prev thì cho dừng khoảng 2s sau mới cho tác động lại nút
+                        ivNext.setClickable(true);
+                        ivPrev.setClickable(true);
+                    }, 2000);
+
+                    next = false;
+                    handler_1.removeCallbacks(this); // Lưu ý khúc này
+                } else {
+                    handler_1.postDelayed(this, 1000);
+                }
+            }
+        }, 1000);
+    }
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getExtras().getString("actionname");
             switch (action) {
                 case MiniPlayerOnLockScreenService.ACTION_PLAY:
-                    onSongPlay();
+                    onPlaySong();
                     break;
                 case MiniPlayerOnLockScreenService.ACTION_PAUSE:
-                    onSongPlay();
+                    onPlaySong();
                     break;
                 case MiniPlayerOnLockScreenService.ACTION_PRE:
                     try {
@@ -502,6 +665,4 @@ public class FullPlayerFragment extends Fragment {
         }
     };
 
-    private void onSongPlay() {
-    }
 }

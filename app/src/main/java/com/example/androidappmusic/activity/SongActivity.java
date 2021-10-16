@@ -224,7 +224,12 @@ public class SongActivity extends AppCompatActivity {
     }
 
     private void Play_All_Song(){
-
+        this.floatingActionButton.setEnabled(true);
+        this.floatingActionButton.setOnClickListener(v -> {
+            Intent intent = new Intent(SongActivity.this, FullPlayerActivity.class);
+            intent.putExtra("ALLSONGS", songs);
+            startActivity(intent);
+        });
     }
 
 }

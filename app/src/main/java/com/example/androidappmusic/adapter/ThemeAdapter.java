@@ -38,7 +38,7 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ThemeAdapter.ViewHolder holder, int position) {
         Picasso.get()
                 .load(themes.get(position).getImg())
                 .placeholder(R.drawable.ic_logo)

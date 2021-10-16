@@ -23,6 +23,7 @@ import com.example.androidappmusic.models.Album;
 import com.example.androidappmusic.models.Genre;
 import com.example.androidappmusic.models.Playlist;
 import com.example.androidappmusic.models.Song;
+import com.example.androidappmusic.sharedPreferences.DataLocalManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,12 +44,11 @@ public class SearchActivity extends AppCompatActivity {
 
     ArrayList<Song> songs = new ArrayList<>();
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        DataLocalManager.init(this);
         linkViews();
         addEvents();
     }
@@ -66,9 +66,9 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void addEvents() {
-        scaleAnimation = new ScaleAnimation(this, this.ivBack);
-        scaleAnimation.Event_ImageView();
-        ivBack.setOnClickListener( v -> finish());
+//        scaleAnimation = new ScaleAnimation(this, this.ivBack);
+//        scaleAnimation.Event_ImageView();
+//        ivBack.setOnClickListener( v -> finish());
 
 
         edtSearchBox.addTextChangedListener(new TextWatcher() {

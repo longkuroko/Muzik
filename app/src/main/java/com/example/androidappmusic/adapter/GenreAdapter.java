@@ -38,7 +38,7 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull GenreAdapter.ViewHolder holder, int position) {
 
         Picasso.get()
                 .load(genreList.get(position).getImg())
@@ -46,7 +46,7 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder>{
                 .error(R.drawable.ic_logo)
                 .into(holder.ivGenreImage);
 
-        holder.tvGenreName.setText(genreList.get(position).getName());
+        holder.tvGenreName.setText(genreList.get(position).getName().trim());
 
         holder.ivGenreImage.setOnClickListener( v -> {
             Intent intent = new Intent(context, SongActivity.class);

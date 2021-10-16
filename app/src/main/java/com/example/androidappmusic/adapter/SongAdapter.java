@@ -67,7 +67,6 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
     private ArrayList<Status> statusArrayList;
     private UserPlaylistAdapter userPlaylistAdapter;
     private ArrayList<UserPlaylist> userPlaylistArrayList;
-//    private UserPlaylistAdapter userPlaylistAdapter;
 
     private Context context;
     private ArrayList<Song> songArrayList;
@@ -141,6 +140,16 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
 
         });
 
+        holder.ivItemSongLove.setOnClickListener(v -> {
+            AlertDialog.Builder alertBuilder_1 = new AlertDialog.Builder(v.getContext());
+            View view_1 = LayoutInflater.from(v.getContext()).inflate(R.layout.layout_loading_dialog, null);
+            alertBuilder_1.setView(view_1);
+            alertBuilder_1.setCancelable(false);
+            this.alertDialog = alertBuilder_1.create();
+            this.alertDialog.show();
+
+            Handle_Add_Delete_Favorite_Song(holder.ivItemSongLove, holder.getLayoutPosition());
+        });
 
     }
 
@@ -278,36 +287,6 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
         rlCloseInfoPlaylist.setOnClickListener(v -> dialog_1.dismiss());
 
         this.dialog_1.show(); // câu lệnh này sẽ hiển thị Dialog lên
-    }
-
-    private void Handle_Favourite_Icon_Color(ImageView imageView, int position){
-        DataService dataService = APIService.getService();
-        Call<List<Song>> callBack = dataService.getFavoriteSongUser(DataLocalManager.getUserID());
-        callBack.enqueue(new Callback<List<Song>>() {
-            @Override
-            public void onResponse(Call<List<Song>> call, Response<List<Song>> response) {
-                favoriteSongArrayList = new ArrayList<>();
-                favoriteSongArrayList = (ArrayList<Song>) response.body();
-
-
-                if(favoriteSongArrayList != null && favoriteSongArrayList.size() > 0){
-                    for(int i = 0; i < favoriteSongArrayList.size();i++ ){
-                        if(songArrayList.get(position).getId() == favoriteSongArrayList.get(i).getId()){
-                            imageView.setImageResource(R.drawable.ic_favorite);
-
-                            Log.d(TAG, "Bài hát yêu thích: " + favoriteSongArrayList.get(i).getName());
-                        }
-                    }
-                }
-                imageView.setEnabled(true);
-            }
-
-            @Override
-            public void onFailure(Call<List<Song>> call, Throwable t) {
-                imageView.setEnabled(true);
-                Log.d(TAG, "Handle_Favourite_Icon_Color(Error): " + t.getMessage());
-            }
-        });
     }
 
     private void Open_Insert_Song_Playlist_Dialog(String userID, int songID){
@@ -507,76 +486,76 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
             }
         });
     }
-//    private void Handle_Favourite_Icon_Color(ImageView imageView, int position) {
-//        DataService dataService = APIService.getService(); // Khởi tạo Phương thức để đẩy lên
-//        Call<List<Song>> callBack = dataService.getFavoriteSongUser(DataLocalManager.getUserID());
-//        callBack.enqueue(new Callback<List<Song>>() {
-//            @Override
-//            public void onResponse(Call<List<Song>> call, Response<List<Song>> response) {
-//                favoriteSongArrayList = new ArrayList<>();
-//                favoriteSongArrayList = (ArrayList<Song>) response.body();
-//
-//                if (favoriteSongArrayList != null && favoriteSongArrayList.size() > 0) {
-//                    for (int i = 0; i < favoriteSongArrayList.size(); i++) {
-//                        if (songArrayList.get(position).getId() == favoriteSongArrayList.get(i).getId()) {
-//                            imageView.setImageResource(R.drawable.ic_favorite);
-//
-//                            Log.d(TAG, "Bài hát yêu thích: " + favoriteSongArrayList.get(i).getName());
-//                        }
-//                    }
-//                }
-//                imageView.setEnabled(true);
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Song>> call, Throwable t) {
-//                imageView.setEnabled(true);
-//                Log.d(TAG, "Handle_Favourite_Icon_Color(Error): " + t.getMessage());
-//            }
-//        });
-//    }
-//
-//    private void Handle_Add_Delete_Favorite_Song(ImageView imageView, int position) {
-//        DataService dataService = APIService.getService(); // Khởi tạo Phương thức để đẩy lên
-//        Call<List<Status>> callBack = dataService.addDeleteFavoriteSong(DataLocalManager.getUserID(), songArrayList.get(position).getId());
-//        callBack.enqueue(new Callback<List<Status>>() {
-//            @Override
-//            public void onResponse(Call<List<Status>> call, Response<List<Status>> response) {
-//                statusArrayList = new ArrayList<>();
-//                statusArrayList = (ArrayList<Status>) response.body();
-//
-//                if (statusArrayList != null) {
-//                    if (statusArrayList.get(0).getStatus() == 1) {
-//                        alertDialog.dismiss();
-//                        imageView.setImageResource(R.drawable.ic_favorite);
-//                        Toast.makeText(context, "Added \"" + songArrayList.get(position).getName() + "\" in favorite songs", Toast.LENGTH_SHORT).show();
-//                    } else if (statusArrayList.get(0).getStatus() == 2) {
-//                        alertDialog.dismiss();
-//                        Toast.makeText(context, "Added \"" + songArrayList.get(position).getName() + "\" fail", Toast.LENGTH_SHORT).show();
-//                    } else if (statusArrayList.get(0).getStatus() == 3) {
-//                        alertDialog.dismiss();
-//                        Toast.makeText(context, "Removed \"" + songArrayList.get(position).getName() + "\" from favorite songs", Toast.LENGTH_SHORT).show();
-//                        if (layout.equals(FAVORITE_SONG)) {
-//                            songArrayList.remove(position);
-//                            notifyItemRemoved(position);
-////                            notifyDataSetChanged();
-//                        } else {
-//                            imageView.setImageResource(R.drawable.ic_not_favorite);
-//                        }
-//                    } else if (statusArrayList.get(0).getStatus() == 4) {
-//                        alertDialog.dismiss();
-//                        Toast.makeText(context, "Removed \"" + songArrayList.get(position).getName() + "\" fail", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Status>> call, Throwable t) {
-//                alertDialog.dismiss();
-//                Log.d(TAG, "Handle_Add_Delete_Favorite_Song(Error)" + t.getMessage());
-//            }
-//        });
-//    }
+    private void Handle_Favourite_Icon_Color(ImageView imageView, int position) {
+        DataService dataService = APIService.getService(); // Khởi tạo Phương thức để đẩy lên
+        Call<List<Song>> callBack = dataService.getFavoriteSongUser(DataLocalManager.getUserID());
+        callBack.enqueue(new Callback<List<Song>>() {
+            @Override
+            public void onResponse(Call<List<Song>> call, Response<List<Song>> response) {
+                favoriteSongArrayList = new ArrayList<>();
+                favoriteSongArrayList = (ArrayList<Song>) response.body();
+
+                if (favoriteSongArrayList != null && favoriteSongArrayList.size() > 0) {
+                    for (int i = 0; i < favoriteSongArrayList.size(); i++) {
+                        if (songArrayList.get(position).getId() == favoriteSongArrayList.get(i).getId()) {
+                            imageView.setImageResource(R.drawable.ic_favorite);
+
+                            Log.d(TAG, "Bài hát yêu thích: " + favoriteSongArrayList.get(i).getName());
+                        }
+                    }
+                }
+                imageView.setEnabled(true);
+            }
+
+            @Override
+            public void onFailure(Call<List<Song>> call, Throwable t) {
+                imageView.setEnabled(true);
+                Log.d(TAG, "Handle_Favourite_Icon_Color(Error): " + t.getMessage());
+            }
+        });
+    }
+
+    private void Handle_Add_Delete_Favorite_Song(ImageView imageView, int position) {
+        DataService dataService = APIService.getService(); // Khởi tạo Phương thức để đẩy lên
+        Call<List<Status>> callBack = dataService.addDeleteFavoriteSong(DataLocalManager.getUserID(), songArrayList.get(position).getId());
+        callBack.enqueue(new Callback<List<Status>>() {
+            @Override
+            public void onResponse(Call<List<Status>> call, Response<List<Status>> response) {
+                statusArrayList = new ArrayList<>();
+                statusArrayList = (ArrayList<Status>) response.body();
+
+                if (statusArrayList != null) {
+                    if (statusArrayList.get(0).getStatus() == 1) {
+                        alertDialog.dismiss();
+                        imageView.setImageResource(R.drawable.ic_favorite);
+                        Toast.makeText(context, "Added \"" + songArrayList.get(position).getName() + "\" in favorite songs", Toast.LENGTH_SHORT).show();
+                    } else if (statusArrayList.get(0).getStatus() == 2) {
+                        alertDialog.dismiss();
+                        Toast.makeText(context, "Added \"" + songArrayList.get(position).getName() + "\" fail", Toast.LENGTH_SHORT).show();
+                    } else if (statusArrayList.get(0).getStatus() == 3) {
+                        alertDialog.dismiss();
+                        Toast.makeText(context, "Removed \"" + songArrayList.get(position).getName() + "\" from favorite songs", Toast.LENGTH_SHORT).show();
+                        if (layout.equals(FAVORITE_SONG)) {
+                            songArrayList.remove(position);
+                            notifyItemRemoved(position);
+//                            notifyDataSetChanged();
+                        } else {
+                            imageView.setImageResource(R.drawable.ic_not_favorite);
+                        }
+                    } else if (statusArrayList.get(0).getStatus() == 4) {
+                        alertDialog.dismiss();
+                        Toast.makeText(context, "Removed \"" + songArrayList.get(position).getName() + "\" fail", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Status>> call, Throwable t) {
+                alertDialog.dismiss();
+                Log.d(TAG, "Handle_Add_Delete_Favorite_Song(Error)" + t.getMessage());
+            }
+        });
+    }
 
     @Override
     public int getItemCount() {
@@ -596,18 +575,17 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
 
 
         public ViewHolder(@NonNull View itemView) {
-
-
             super(itemView);
-            ivItemSong = itemView.findViewById(R.id.ivItemSong);
-            ivItemSongLove = itemView.findViewById(R.id.ivItemSongLove);
+
+            this.ivItemSong = itemView.findViewById(R.id.ivItemSong);
+
+            this.ivItemSongLove = itemView.findViewById(R.id.ivItemSongLove);
             if (layout.equals(FAVORITE_SONG)) {
                 this.ivItemSongLove.setImageResource(R.drawable.ic_favorite);
             }
             if (layout.equals(DOWNLOAD_SONG)) {
                 this.ivItemSongLove.setVisibility(View.GONE);
             }
-
             this.scaleAnimation = new ScaleAnimation(itemView.getContext(), this.ivItemSongLove);
             this.scaleAnimation.Event_ImageView();
 

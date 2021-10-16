@@ -26,12 +26,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".activity.AddUpdateActivity" >
         </activity>
         <activity
             android:name=".activity.FullActivity"
             android:exported="true" >
+
         </activity>
         <activity android:name=".activity.FullPlayerActivity" >
         </activity>

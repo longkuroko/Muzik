@@ -70,7 +70,7 @@ public class FullPlayerManagerService {
         Intent intent = new Intent(activity, MiniPlayerOnLockScreenService.class);
         intent.setAction(action);
         activity.startService(intent);
-        //NotificationService.NotificationService(getContext(),FullPlayerActivity.dataSongArrayList.get(position),R.drawable.ic_pause,position,FullPlayerActivity.dataSongArrayList.size());
+
     }
 
 

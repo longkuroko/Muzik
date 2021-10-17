@@ -48,13 +48,13 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        DataLocalManager.init(this);
+//        DataLocalManager.init(this);
         linkViews();
         addEvents();
     }
 
     private void linkViews() {
-        edtSearchBox = findViewById(R.id.etSearch);
+        edtSearchBox = findViewById(R.id.etSearchBox);
         edtSearchBox.requestFocus();
 
         ivBack = findViewById(R.id.ivBack);

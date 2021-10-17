@@ -207,8 +207,8 @@ public class FullActivity extends AppCompatActivity {
 
         //event search
         edtSearch.setOnClickListener(v ->{
-            Intent intent = new Intent(FullActivity.this, SearchActivity.class);
-            startActivity(intent);
+            Intent intent_1 = new Intent(FullActivity.this, SearchActivity.class);
+            startActivity(intent_1);
         });
 
 

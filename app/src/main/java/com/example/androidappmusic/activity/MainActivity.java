@@ -231,6 +231,8 @@ MainActivity extends AppCompatActivity {
         this.btnLoginGoogle.setOnClickListener(v -> {
             activityResultLauncher.launch(new Intent(googleSignInClient.getSignInIntent()));
         });
+        // Configure Google Sign In
+
     }
 
     ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {

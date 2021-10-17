@@ -83,7 +83,7 @@ public class UserPlaylistAdapter extends RecyclerView.Adapter<UserPlaylistAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull UserPlaylistAdapter.ViewHolder holder, int position) {
         DataLocalManager.init(context);
 
         holder.tvPlaylistName.setText(this.userPlaylistArrayList.get(position).getName().trim());

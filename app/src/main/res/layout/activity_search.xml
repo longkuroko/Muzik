@@ -29,6 +29,7 @@
             />
 
         <EditText
+            android:id="@+id/etSearchBox"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_centerInParent="true"
@@ -47,8 +48,7 @@
             android:singleLine="true"
             android:textColor="@color/colorLight9"
             android:textColorHint="@color/colorLight9"
-            android:textSize="15sp"
-            />
+            android:textSize="15sp" />
 
     </RelativeLayout>
 

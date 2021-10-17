@@ -63,7 +63,7 @@ public class FullPlayerActivity extends AppCompatActivity implements FullPlayerF
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_player);
 
-        DataLocalManager.init(this);
+//        DataLocalManager.init(this);
 
         linkViews();
         loadData();
@@ -157,6 +157,7 @@ public class FullPlayerActivity extends AppCompatActivity implements FullPlayerF
 
             @Override
             public void onPageSelected(int position) {
+
                 pageIndicatorView.setSelected(position);
             }
 

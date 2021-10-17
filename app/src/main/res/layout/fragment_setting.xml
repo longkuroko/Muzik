@@ -101,15 +101,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <com.google.android.gms.ads.AdView
-                android:id="@+id/avSettingFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/btnRating"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                app:adSize="MEDIUM_RECTANGLE"
-                app:adUnitId="ca-app-pub-8151267593746824/7080194612" />
+
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 

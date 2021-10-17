@@ -33,6 +33,7 @@ import com.example.androidappmusic.activity.FullPlayerActivity;
 import com.example.androidappmusic.animation.LoadingDialog;
 import com.example.androidappmusic.animation.ScaleAnimation;
 import com.example.androidappmusic.models.Song;
+import com.example.androidappmusic.models.Status;
 import com.example.androidappmusic.service.FullPlayerManagerService;
 import com.example.androidappmusic.service.MiniPlayerOnLockScreenService;
 import com.example.androidappmusic.sharedPreferences.DataLocalManager;
@@ -73,6 +74,8 @@ public class FullPlayerFragment extends Fragment {
     private boolean repeat = false;
     private boolean checkRandom = false;
     private boolean next = false;
+
+    private ArrayList<Status> statusArrayList;
 
     private boolean isEvent_Of_FullPlayerFragment = false;
     private boolean isRegister = false;
@@ -196,23 +199,40 @@ public class FullPlayerFragment extends Fragment {
         }
 
         if(FullPlayerActivity.dataSongs.size() > 0){
+//            try {
+//                //FullPlayerManagerService.mediaPlayer.stop();
+//                if (DownloadService.isSongDownloaded(FullPlayerActivity.dataSongArrayList.get(position).getId())) {
+//                    Song songDownload = DownloadService.GetDownloadSongById(FullPlayerActivity.dataSongArrayList.get(position).getId());
+//                    new PlayMP3().execute(songDownload.getLink());
+//                    FullPlayerManagerService.currentSong = FullPlayerActivity.dataSongArrayList.get(position);
+//                } else {
+//                    new PlayMP3().execute(FullPlayerActivity.dataSongArrayList.get(position).getLink());
+//                }
+//            } catch (Exception e) {
+//                new PlayMP3().execute(FullPlayerActivity.dataSongArrayList.get(position).getLink());
+//            }
+
+
+
+
             FullPlayerActivity.tvSongName.setText(FullPlayerActivity.dataSongs.get(position).getName().trim());
             FullPlayerActivity.tvArtist.setText(FullPlayerActivity.dataSongs.get(position).getSinger().trim());
 
 
-            if(FullPlayerManagerService.mediaPlayer !=  null && isCurrentSong()){
-                if(FullPlayerManagerService.mediaPlayer.isPlaying()){
+            if (FullPlayerManagerService.mediaPlayer != null && isCurrentSong()) {
+                if (FullPlayerManagerService.mediaPlayer.isPlaying()) {
                     this.ivPlayPause.setImageResource(R.drawable.ic_pause);
-                }
-                else{
+                    CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
+                } else {
                     this.ivPlayPause.setImageResource(R.drawable.ic_play_2);
+                    CreateNotification(MiniPlayerOnLockScreenService.ACTION_PAUSE);
                 }
-            }
-            else{
+            } else {
                 this.ivPlayPause.setImageResource(R.drawable.ic_pause);
+                CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
             }
 
-            Handler handler = new Handler();
+            final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -548,8 +568,6 @@ public class FullPlayerFragment extends Fragment {
                 if (FullPlayerManagerService.mediaPlayer != null) {
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:ss", Locale.getDefault());
                     try {
-                        //tvTimeStart.setText(simpleDateFormat.format(mediaPlayer.getCurrentPosition()));
-                        //sbSong.setProgress(mediaPlayer.getCurrentPosition());
                         int time = FullPlayerManagerService.mediaPlayer.getCurrentPosition();
                         Log.d("Test", String.valueOf(time));
                         tvTimeStart.setText(simpleDateFormat.format(FullPlayerManagerService.mediaPlayer.getCurrentPosition()));
@@ -558,14 +576,7 @@ public class FullPlayerFragment extends Fragment {
                         e.printStackTrace();
                     }
                     handler.postDelayed(this, 1000); // Gọi lại ham này thực thi 1s mỗi lần
-/*                    mediaPlayer.setOnCompletionListener(mp -> {
-                        next = true;
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    });*/
+
                     FullPlayerManagerService.mediaPlayer.setOnCompletionListener(mp -> {
                         next = true;
                         try {

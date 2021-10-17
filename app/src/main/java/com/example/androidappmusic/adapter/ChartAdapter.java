@@ -212,8 +212,8 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
 //            notifyDataSetChanged();
 //        });
 
-        scaleAnimation = new ScaleAnimation(context, rlPlaySong);
-        scaleAnimation.Event_CircleImageView();
+//        scaleAnimation = new ScaleAnimation(context, rlPlaySong);
+//        scaleAnimation.Event_CircleImageView();
         rlPlaySong.setOnClickListener(v ->{
             Intent intent = new Intent(v.getContext(), FullPlayerActivity.class);
             intent.putExtra("SONG", songArrayList.get(position));

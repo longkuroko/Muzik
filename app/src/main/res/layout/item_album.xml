@@ -30,16 +30,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/cvAlbum"
         android:layout_alignStart="@+id/cvAlbum"
+        android:layout_alignLeft="@+id/cvAlbum"
         android:layout_alignEnd="@+id/cvAlbum"
+        android:layout_alignRight="@+id/cvAlbum"
         android:layout_marginTop="3dp"
         android:ellipsize="marquee"
         android:marqueeRepeatLimit="marquee_forever"
         android:scrollHorizontally="true"
         android:text="@string/tvAlbumName"
         android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_alignLeft="@+id/cvAlbum"
-        android:layout_alignRight="@+id/cvAlbum" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvAlbumSinger"
@@ -47,7 +47,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvAlbumName"
         android:layout_alignStart="@+id/cvAlbum"
+        android:layout_alignLeft="@+id/cvAlbum"
         android:layout_alignEnd="@+id/cvAlbum"
+        android:layout_alignRight="@+id/cvAlbum"
         android:ellipsize="marquee"
         android:fontFamily="@font/comfortaa"
         android:marqueeRepeatLimit="marquee_forever"
@@ -56,8 +58,6 @@
         android:text="@string/tvAlbumSinger"
         android:textColor="@color/colorLight9"
         android:textSize="14sp"
-        android:textStyle="normal"
-        android:layout_alignLeft="@+id/cvAlbum"
-        android:layout_alignRight="@+id/cvAlbum" />
+        android:textStyle="normal" />
 
 </RelativeLayout>

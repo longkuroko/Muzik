@@ -19,16 +19,17 @@ public class FullPlayerAdapter extends FragmentStatePagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        return fragmentList.get(position);
+        return this.fragmentList.get(position);
     }
 
     @Override
     public int getCount() {
+
         return fragmentList.size();
     }
 
     public void AddFragment(Fragment fragment){
 
-        fragmentList.add(fragment);
+        this.fragmentList.add(fragment);
     }
 }

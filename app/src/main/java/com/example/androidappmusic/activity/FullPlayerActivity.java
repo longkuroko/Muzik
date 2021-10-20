@@ -40,9 +40,9 @@ public class FullPlayerActivity extends AppCompatActivity implements FullPlayerF
     private ViewPager vpFullPlayer;
     public static FullPlayerAdapter fullPlayerAdapter;
     private PageIndicatorView pageIndicatorView;
-
-    private ScaleAnimation scaleAnimation;
-
+//
+//    private ScaleAnimation scaleAnimation;
+//
 
 
     private FullPlayerFragment fullPlayerFragment;
@@ -91,7 +91,7 @@ public class FullPlayerActivity extends AppCompatActivity implements FullPlayerF
 
         vpFullPlayer.setAdapter(fullPlayerAdapter);
         vpFullPlayer.setCurrentItem(1); // Set default Fragment
-        vpFullPlayer.setOffscreenPageLimit(2); // Load trước 2 trang (theo cơ chế hoạt động của ViewPager)
+//        vpFullPlayer.setOffscreenPageLimit(2); // Load trước 2 trang (theo cơ chế hoạt động của ViewPager)
     }
 
     private void loadData() {

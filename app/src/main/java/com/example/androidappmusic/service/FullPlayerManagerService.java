@@ -27,11 +27,14 @@ public class FullPlayerManagerService {
     public static int position = 0;
 
 
+
+
     public static class PlayMP3 extends AsyncTask<String, Void, String>{
 
 
         @Override
         protected String doInBackground(String... strings) {
+
             return strings[0];
         }
 
@@ -40,23 +43,27 @@ public class FullPlayerManagerService {
             super.onPostExecute(song);
 
             try{
-                if(mediaPlayer != null){
-                    mediaPlayer.stop();
+
+                if (mediaPlayer != null) {
+                    try {
+                        mediaPlayer.stop();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+
+                    }
                 }
 
                 mediaPlayer = new MediaPlayer();
-                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC); // set stream music online
+                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
                 mediaPlayer.setOnCompletionListener(mp -> {
                     mediaPlayer.stop();
                     mediaPlayer.reset();
                 });
-
                 currentSong = FullPlayerActivity.dataSongs.get(position);
-                mediaPlayer.setDataSource(song);
+                mediaPlayer.setDataSource(song); // Cái này quan trọng nè Thắng
                 mediaPlayer.prepare();
                 mediaPlayer.start();
-
                 listCurrentSong = new ArrayList<Song>(FullPlayerActivity.dataSongs);
             }
             catch (IOException e){

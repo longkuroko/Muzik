@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/colorLight6">
+        android:background="@color/colorMain3">
 
         <ImageView
             android:id="@+id/ivBack"
@@ -36,14 +36,15 @@
             android:layout_alignBottom="@+id/ivBack"
             android:layout_centerInParent="true"
             android:layout_toEndOf="@+id/ivBack"
+            android:layout_toRightOf="@+id/ivBack"
             android:ellipsize="marquee"
             android:gravity="center"
             android:marqueeRepeatLimit="marquee_forever"
             android:scrollHorizontally="true"
             android:text="@string/tvTitle"
+            android:textColor="@color/colorLight4"
             android:textAlignment="center"
-            android:textSize="18sp"
-            android:layout_toRightOf="@+id/ivBack" />
+            android:textSize="18sp" />
     </RelativeLayout>
 
     <FrameLayout

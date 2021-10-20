@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/colorLight6">
+        android:background="@color/colorMain3">
 
         <ImageView
             android:id="@+id/ivBack"
@@ -39,6 +39,7 @@
             android:marqueeRepeatLimit="marquee_forever"
             android:scrollHorizontally="true"
             android:text="@string/tvPersonalTitle"
+            android:textColor="@color/colorLight4"
             android:textAlignment="center"
             android:textSize="18sp" />
     </RelativeLayout>
@@ -71,9 +72,9 @@
                         android:layout_height="150dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
-                        app:srcCompat="@drawable/ic_logo"
                         app:civ_border_color="@color/colorMain3"
-                        app:civ_border_width="2dp" />
+                        app:civ_border_width="2dp"
+                        app:srcCompat="@drawable/ic_logo" />
 
                     <TextView
                         android:id="@+id/tvPersonalName"
@@ -189,7 +190,7 @@
                         android:id="@+id/btnLogout"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:background="@color/colorMain4"
+                        android:background="@color/colorMain3"
                         android:fontFamily="@font/comfortaa"
                         android:text="@string/btnLogout"
                         android:textAlignment="center"

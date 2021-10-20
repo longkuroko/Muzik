@@ -12,13 +12,15 @@
     <color name="btn_loginzl">#333333</color>
 
     <color name="colorMain1">#FFFFFF</color>
-    <color name="colorMain3">#c44569</color>
+    <color name="colorMain2">#c7ecee</color>
+    <color name="colorMain3">#74b9ff</color>
 
-    <color name="colorMain4">#FF0000</color>
+    <color name="colorMain4">#0984e3</color>
     <color name="colorMain5">#CAE7FF</color>
     <color name="colorMain6">#5C6163</color>
     <color name="colorMain7">#FFE500</color>
     <color name="colorMain8">#66BB6A</color>
+    <color name="colorMain9">#7ed6df</color>
 
     <color name="btn_loginfb">#1877F2</color>
     <color name="pink2">#f8a5c2</color>
@@ -43,8 +45,8 @@
 
 
 
-    <color name="colorGradient1">#F5576C</color>
-    <color name="colorGradient2">#F093FB</color>
+    <color name="colorGradient1">#227093</color>
+    <color name="colorGradient2">#34ace0</color>
 
     <color name="colorGradient3">#CFD9DF</color>
     <color name="colorGradient4">#E2EBF0</color>

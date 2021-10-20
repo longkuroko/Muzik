@@ -103,10 +103,10 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginEnd="20dp"
-        android:layout_toStartOf="@+id/ivListItemSongNext"
-        app:srcCompat="@drawable/ic_pause"
         android:layout_marginRight="20dp"
-        android:layout_toLeftOf="@+id/ivListItemSongNext" />
+        android:layout_toStartOf="@+id/ivListItemSongNext"
+        android:layout_toLeftOf="@+id/ivListItemSongNext"
+        app:srcCompat="@drawable/ic_pause" />
 
 
 

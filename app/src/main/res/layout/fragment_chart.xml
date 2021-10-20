@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.ChartFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/shape_gradient">
 
 
     <TextView
@@ -18,6 +19,7 @@
         android:marqueeRepeatLimit="marquee_forever"
         android:scrollHorizontally="true"
         android:text="@string/tvChart"
+        android:textColor="@color/colorLight4"
         android:textAlignment="center"
         android:textSize="30sp"
         android:textStyle="bold" />

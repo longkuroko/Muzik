@@ -29,7 +29,7 @@
                     android:layout_height="200dp"
                     app:sliderAnimationDuration="500"
                     app:sliderIndicatorRadius="2dp"
-                    app:sliderIndicatorSelectedColor="@color/pink2"
+                    app:sliderIndicatorSelectedColor="@color/colorMain4"
                     app:sliderIndicatorUnselectedColor="@color/colorMain1"
                     app:sliderScrollTimeInSec="5"
                     app:sliderStartAutoCycle="true">

@@ -42,6 +42,7 @@
             android:scrollHorizontally="true"
             android:text="@string/tvPersonalPlaylistTitle"
             android:textAlignment="center"
+            android:textColor="@color/colorLight4"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -50,8 +51,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvPersonalPlaylistTitle"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="161dp"
             android:background="@drawable/shape_corner_10dp"
             android:drawableStart="@drawable/ic_play_2_pink"
             android:fontFamily="@font/comfortaa"
@@ -60,7 +63,7 @@
             android:text="@string/btnPersonalPlayAll"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textColor="@color/colorMain3"
+            android:textColor="@color/colorMain4"
             android:textSize="16sp"
             android:textStyle="bold" />
 

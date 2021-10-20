@@ -38,6 +38,7 @@
         android:layout_marginTop="5dp"
         android:fontFamily="@font/comfortaa"
         android:hint="Playlist name"
+
         android:imeOptions="actionDone"
         android:lines="1"
         android:maxLength="100"
@@ -56,11 +57,12 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/shape_corner_gradient1_10dp"
         android:gravity="center"
-        android:text="Create playlist"
+        android:text="@string/create_playlist"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textSize="14sp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         />
 
 </LinearLayout>

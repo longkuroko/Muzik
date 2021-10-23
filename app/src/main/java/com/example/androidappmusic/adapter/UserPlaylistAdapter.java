@@ -98,6 +98,8 @@ public class UserPlaylistAdapter extends RecyclerView.Adapter<UserPlaylistAdapte
                 alertBuilder.setCancelable(false);
                 alertDialog = alertBuilder.create();
                 alertDialog.show();
+
+                Handle_Add_Song_Playlist(ACTION_INSERT_SONG_PLAYLIST, DataLocalManager.getUserID(), this.userPlaylistArrayList.get(holder.getLayoutPosition()).getYouID(), songID, holder.getLayoutPosition());
             });
         }else {
             holder.itemView.setOnClickListener(v -> {

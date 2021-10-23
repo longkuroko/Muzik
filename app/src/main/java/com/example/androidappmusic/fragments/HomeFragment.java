@@ -148,8 +148,8 @@ public class HomeFragment extends Fragment {
                 sliders =(ArrayList<Slider>) response.body();
 
                 if(sliders != null){
-                    sliderView.setSliderTransformAnimation(SliderAnimations.ZOOMOUTTRANSFORMATION);
-                    sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
+                    sliderView.setSliderTransformAnimation(SliderAnimations.ZOOMOUTTRANSFORMATION); // giao diện
+                    sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM); // giao diện
                     sliderView.setSliderAdapter(new SliderAdapter(getContext(), sliders));
 
                     Log.d(TAG, sliders.get(0).getImage());

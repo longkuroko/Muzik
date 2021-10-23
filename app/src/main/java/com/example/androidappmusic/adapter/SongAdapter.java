@@ -59,9 +59,8 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
 
 
     int index = 0 ;
-//    private boolean isDownloadSong = false;
 
-    private ScaleAnimation scaleAnimation;
+//    private ScaleAnimation scaleAnimation;
 
     private ArrayList<Song> favoriteSongArrayList;
     private ArrayList<Status> statusArrayList;
@@ -78,7 +77,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
     private static final String SONG = "SONG";
     private static final String FAVORITE_SONG = "FAVORITESONG";
     private static final String PLAYLIST_SONG = "PLAYLISTSONG";
-    private static final String DOWNLOAD_SONG = "DOWNLOADSONG";
+//    private static final String DOWNLOAD_SONG = "DOWNLOADSONG";
     private static final String SONG_SEARCH = "SONGSEARCH";
     private static final String LIST_SONG = "LISTSONG";
 
@@ -208,13 +207,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
         TextView tvDeleteAllSongToPlaylist = this.dialog_1.findViewById(R.id.tvDeleteAllSongToPlaylist);
         tvDeleteAllSongToPlaylist.setSelected(true);
 
-        RelativeLayout rlDownLoadSong = this.dialog_1.findViewById(R.id.rlDownLoadSong);
-        TextView tvDownLoadSong = this.dialog_1.findViewById(R.id.tvDownLoadSong);
-        tvDownLoadSong.setSelected(true);
 
-        RelativeLayout rlDeleteDownLoadSong = this.dialog_1.findViewById(R.id.rlDeleteDownLoadSong);
-        TextView tvDeleteDownLoadSong = this.dialog_1.findViewById(R.id.tvDeleteDownLoadSong);
-        tvDeleteDownLoadSong.setSelected(true);
 
         RelativeLayout rlCloseInfoPlaylist = this.dialog_1.findViewById(R.id.rlCloseInfoPlaylist);
         TextView tvCloseInfoSong = this.dialog_1.findViewById(R.id.tvCloseInfoSong);
@@ -227,28 +220,25 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
             case SONG_SEARCH: {
                 rlDeleteSongToPlaylist.setVisibility(View.GONE);
                 rlDeleteAllSongToPlaylist.setVisibility(View.GONE);
-                rlDeleteDownLoadSong.setVisibility(View.GONE);
                 break;
             }
 
             case PLAYLIST_SONG: {
                 rlAddSongToPlaylist.setVisibility(View.GONE);
-                rlDeleteDownLoadSong.setVisibility(View.GONE);
                 break;
             }
 
-            case DOWNLOAD_SONG: {
-                rlAddSongToPlaylist.setVisibility(View.GONE);
-                rlDeleteSongToPlaylist.setVisibility(View.GONE);
-                rlDeleteAllSongToPlaylist.setVisibility(View.GONE);
-                break;
-            }
+//            case DOWNLOAD_SONG: {
+//                rlAddSongToPlaylist.setVisibility(View.GONE);
+//                rlDeleteSongToPlaylist.setVisibility(View.GONE);
+//                rlDeleteAllSongToPlaylist.setVisibility(View.GONE);
+//                break;
+//            }
 
             case LIST_SONG: {
                 rlPlaySong.setVisibility(View.GONE);
                 rlDeleteSongToPlaylist.setVisibility(View.GONE);
                 rlDeleteAllSongToPlaylist.setVisibility(View.GONE);
-                rlDeleteDownLoadSong.setVisibility(View.GONE);
                 break;
             }
             default: {
@@ -256,34 +246,34 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
             }
         }
 
-        this.scaleAnimation = new ScaleAnimation(context, rlPlaySong);
-        this.scaleAnimation.Event_RelativeLayout();
+//        this.scaleAnimation = new ScaleAnimation(context, rlPlaySong);
+//        this.scaleAnimation.Event_RelativeLayout();
         rlPlaySong.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), FullPlayerActivity.class);
             intent.putExtra("SONG", songArrayList.get(position));
             v.getContext().startActivity(intent);
         });
 
-        this.scaleAnimation = new ScaleAnimation(context, rlAddSongToPlaylist);
-        this.scaleAnimation.Event_RelativeLayout();
+//        this.scaleAnimation = new ScaleAnimation(context, rlAddSongToPlaylist);
+//        this.scaleAnimation.Event_RelativeLayout();
         rlAddSongToPlaylist.setOnClickListener(v -> {
             Open_Insert_Song_Playlist_Dialog(DataLocalManager.getUserID(), songArrayList.get(position).getId());
         });
 
-        this.scaleAnimation = new ScaleAnimation(context, rlDeleteSongToPlaylist);
-        this.scaleAnimation.Event_RelativeLayout();
+//        this.scaleAnimation = new ScaleAnimation(context, rlDeleteSongToPlaylist);
+//        this.scaleAnimation.Event_RelativeLayout();
         rlDeleteSongToPlaylist.setOnClickListener(v -> Open_Delete_SongPlaylist_Dialog(ACTION_DELETE_SONG_PLAYLIST, DataLocalManager.getUserID(), playlistID, songArrayList.get(position).getId(), position));
 
-        this.scaleAnimation = new ScaleAnimation(context, rlDeleteAllSongToPlaylist);
-        this.scaleAnimation.Event_RelativeLayout();
+//        this.scaleAnimation = new ScaleAnimation(context, rlDeleteAllSongToPlaylist);
+//        this.scaleAnimation.Event_RelativeLayout();
         rlDeleteAllSongToPlaylist.setOnClickListener(v -> Open_Delete_SongPlaylist_Dialog(ACTION_DELETEALL_SONG_PLAYLIST, DataLocalManager.getUserID(), playlistID, songArrayList.get(position).getId(), position));
 
 //
 //
 //
 
-        this.scaleAnimation = new ScaleAnimation(context, rlCloseInfoPlaylist);
-        this.scaleAnimation.Event_RelativeLayout();
+//        this.scaleAnimation = new ScaleAnimation(context, rlCloseInfoPlaylist);
+//        this.scaleAnimation.Event_RelativeLayout();
         rlCloseInfoPlaylist.setOnClickListener(v -> dialog_1.dismiss());
 
         this.dialog_1.show(); // câu lệnh này sẽ hiển thị Dialog lên
@@ -393,14 +383,14 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
             btnDialogAction.setText("Xóa thật đó");
         }
 
-        this.scaleAnimation = new ScaleAnimation(context, btnDialogCancel);
-        this.scaleAnimation.Event_Button();
+//        this.scaleAnimation = new ScaleAnimation(context, btnDialogCancel);
+//        this.scaleAnimation.Event_Button();
         btnDialogCancel.setOnClickListener(v -> {
             dialog_2.dismiss();
         });
 
-        this.scaleAnimation = new ScaleAnimation(context, btnDialogAction);
-        this.scaleAnimation.Event_Button();
+//        this.scaleAnimation = new ScaleAnimation(context, btnDialogAction);
+//        this.scaleAnimation.Event_Button();
 
         btnDialogAction.setOnClickListener(v -> {
             AlertDialog.Builder alertBuilder = new AlertDialog.Builder(context);
@@ -583,15 +573,15 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
             if (layout.equals(FAVORITE_SONG)) {
                 this.ivItemSongLove.setImageResource(R.drawable.ic_favorite);
             }
-            if (layout.equals(DOWNLOAD_SONG)) {
-                this.ivItemSongLove.setVisibility(View.GONE);
-            }
-            this.scaleAnimation = new ScaleAnimation(itemView.getContext(), this.ivItemSongLove);
-            this.scaleAnimation.Event_ImageView();
+//            if (layout.equals(DOWNLOAD_SONG)) {
+//                this.ivItemSongLove.setVisibility(View.GONE);
+//            }
+//            this.scaleAnimation = new ScaleAnimation(itemView.getContext(), this.ivItemSongLove);
+//            this.scaleAnimation.Event_ImageView();
 
             this.ivItemSongMore = itemView.findViewById(R.id.ivItemSongMore);
-            this.scaleAnimation = new ScaleAnimation(itemView.getContext(), this.ivItemSongMore);
-            this.scaleAnimation.Event_ImageView();
+//            this.scaleAnimation = new ScaleAnimation(itemView.getContext(), this.ivItemSongMore);
+//            this.scaleAnimation.Event_ImageView();
 
             this.tvItemSongName = itemView.findViewById(R.id.tvItemSongName);
             this.tvItemSongName.setSelected(true); // Text will be moved

@@ -15,7 +15,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.loader.content.AsyncTaskLoader;
 
 import android.os.Handler;
 import android.os.StrictMode;
@@ -23,6 +22,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -39,24 +39,22 @@ import com.example.androidappmusic.service.MiniPlayerOnLockScreenService;
 import com.example.androidappmusic.sharedPreferences.DataLocalManager;
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Comment;
+
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
-
 
 public class FullPlayerFragment extends Fragment {
 
     private static final String TAG = "FullPlayerFragment";
-
     private MediaPlayer mediaPlayer;
 
     private ImageView ivCover;
     private ImageView ivFavorite;
-    private ImageView ivComment;
-    private ImageView ivDownload;
-    private ImageView ivMv;
     private ImageView ivShuffle;
     private ImageView ivPrev;
     private ImageView ivPlayPause;
@@ -65,11 +63,13 @@ public class FullPlayerFragment extends Fragment {
     private TextView tvTimeStart;
     private TextView tvTimeEnd;
     private SeekBar sbSong;
-
-
-    private ScaleAnimation scaleAnimation;
+//
+//
+////    private ScaleAnimation scaleAnimation;
     private LoadingDialog loadingDialog;
     private Dialog dialog;
+
+    private final String ACTION_INSERT_COMMENT = "insert";
     private int position = 0;
     private boolean repeat = false;
     private boolean checkRandom = false;
@@ -79,6 +79,8 @@ public class FullPlayerFragment extends Fragment {
 
     private boolean isEvent_Of_FullPlayerFragment = false;
     private boolean isRegister = false;
+
+
     private ISendPositionListener iSendPositionListener;
 
     public interface ISendPositionListener{
@@ -95,35 +97,38 @@ public class FullPlayerFragment extends Fragment {
         } else {
             throw new RuntimeException(context.toString() + "You need implement");
         }
+//        iSendPositionListener = (ISendPositionListener) getActivity(); // Khở tạo Interface khi Fragment gắn vào Activity
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
-
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.d(TAG, "onCreateView");
         return inflater.inflate(R.layout.fragment_full_player, container, false);
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Log.d(TAG, "onViewCreated");
 
         DataLocalManager.init(getContext());
 
         linkViews(view);
         addEvents();
+
         if (!FullPlayerManagerService.isRegister) {
             getActivity().registerReceiver(broadcastReceiver, new IntentFilter("TRACKS_TRACkS"));
             FullPlayerManagerService.isRegister = true;
         }
+//        CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
     }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -169,12 +174,10 @@ public class FullPlayerFragment extends Fragment {
 
     private void linkViews(View view) {
 
-        loadingDialog = new LoadingDialog(getActivity());
+        this.loadingDialog = new LoadingDialog(getActivity());
+//        this.loadingDialog.Start_Loading();
 
         this.ivCover = view.findViewById(R.id.ivCover);
-//        this.ivDownload = view.findViewById(R.id.ivDownload);
-//        this.ivComment = view.findViewById(R.id.ivComment);
-        this.ivMv = view.findViewById(R.id.ivMv);
         this.ivShuffle = view.findViewById(R.id.ivShuffle);
         this.ivPrev = view.findViewById(R.id.ivPrev);
         this.ivPlayPause = view.findViewById(R.id.ivPlayPause);
@@ -184,41 +187,20 @@ public class FullPlayerFragment extends Fragment {
         this.tvTimeEnd = view.findViewById(R.id.tvTimeEnd);
         this.sbSong = view.findViewById(R.id.sbSong);
 
-
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-
-        if(FullPlayerManagerService.listCurrentSong != null && FullPlayerActivity.dataSongs.size() <=0){
+        if (FullPlayerManagerService.listCurrentSong != null && FullPlayerActivity.dataSongs.size() <= 0) {
             FullPlayerActivity.dataSongs = new ArrayList<>(FullPlayerManagerService.listCurrentSong);
             position = FullPlayerManagerService.position;
-
-        }
-        else{
+        } else {
             FullPlayerManagerService.position = 0;
         }
 
-        if(FullPlayerActivity.dataSongs.size() > 0){
-//            try {
-//                //FullPlayerManagerService.mediaPlayer.stop();
-//                if (DownloadService.isSongDownloaded(FullPlayerActivity.dataSongArrayList.get(position).getId())) {
-//                    Song songDownload = DownloadService.GetDownloadSongById(FullPlayerActivity.dataSongArrayList.get(position).getId());
-//                    new PlayMP3().execute(songDownload.getLink());
-//                    FullPlayerManagerService.currentSong = FullPlayerActivity.dataSongArrayList.get(position);
-//                } else {
-//                    new PlayMP3().execute(FullPlayerActivity.dataSongArrayList.get(position).getLink());
-//                }
-//            } catch (Exception e) {
-//                new PlayMP3().execute(FullPlayerActivity.dataSongArrayList.get(position).getLink());
-//            }
-
-
-
+        if (FullPlayerActivity.dataSongs.size() > 0) {
 
             FullPlayerActivity.tvSongName.setText(FullPlayerActivity.dataSongs.get(position).getName().trim());
             FullPlayerActivity.tvArtist.setText(FullPlayerActivity.dataSongs.get(position).getSinger().trim());
-
-
             if (FullPlayerManagerService.mediaPlayer != null && isCurrentSong()) {
                 if (FullPlayerManagerService.mediaPlayer.isPlaying()) {
                     this.ivPlayPause.setImageResource(R.drawable.ic_pause);
@@ -236,43 +218,29 @@ public class FullPlayerFragment extends Fragment {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    if(FullPlayerActivity.dataSongs.size() > 0){
+                    if (FullPlayerActivity.dataSongs.size() > 0) {
                         Picasso.get()
                                 .load(FullPlayerActivity.dataSongs.get(position).getImg())
                                 .placeholder(R.drawable.ic_logo)
                                 .error(R.drawable.ic_logo)
                                 .into(ivCover);
-                    }
-                    else{
+                        new PlayMP3().execute(FullPlayerActivity.dataSongs.get(position).getLink());
+                    } else {
                         handler.postDelayed(this, 1000);
                     }
                 }
             }, 1000);
+//            this.loadingDialog.Cancel_Loading();
         }
-
     }
     private void addEvents() {
-        scaleAnimation = new ScaleAnimation(getActivity(), ivDownload);
-        scaleAnimation.Event_ImageView();
 
-        this.scaleAnimation = new ScaleAnimation(getActivity(), this.ivMv);
-        this.scaleAnimation.Event_ImageView();
-        this.scaleAnimation = new ScaleAnimation(getActivity(), this.ivShuffle);
-        this.scaleAnimation.Event_ImageView();
-        this.scaleAnimation = new ScaleAnimation(getActivity(), this.ivPrev);
-        this.scaleAnimation.Event_ImageView();
-        this.scaleAnimation = new ScaleAnimation(getActivity(), this.ivPlayPause);
-        this.scaleAnimation.Event_ImageView();
-        this.scaleAnimation = new ScaleAnimation(getActivity(), this.ivNext);
-        this.scaleAnimation.Event_ImageView();
-        this.scaleAnimation = new ScaleAnimation(getActivity(), this.ivRepeat);
-        this.scaleAnimation.Event_ImageView();
-
-        ivPlayPause.setOnClickListener(v->{
-            onPlaySong();
+        this.ivPlayPause.setOnClickListener(v -> {
+            onSongPlay();
         });
 
-        ivRepeat.setOnClickListener(v -> {
+
+        this.ivRepeat.setOnClickListener(v -> {
             isEvent_Of_FullPlayerFragment = true;
             if (!repeat) {
                 if (checkRandom) {
@@ -295,7 +263,7 @@ public class FullPlayerFragment extends Fragment {
         });
 
 
-        ivShuffle.setOnClickListener(v -> {
+        this.ivShuffle.setOnClickListener(v -> {
             isEvent_Of_FullPlayerFragment = true;
             if (!checkRandom) {
                 if (repeat) {
@@ -318,19 +286,18 @@ public class FullPlayerFragment extends Fragment {
         });
 
 
-        sbSong.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        this.sbSong.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+                //mediaPlayer.seekTo(seekBar.getProgress());
                 FullPlayerManagerService.mediaPlayer.seekTo(seekBar.getProgress());
             }
         });
@@ -344,33 +311,28 @@ public class FullPlayerFragment extends Fragment {
             onSongPrev();
         });
 
-//        this.ivDownload.setOnClickListener(v -> {
-//            if (FullPlayerActivity.dataSongArrayList.size() > 0) {
-//                DownloadService.DownloadSong(getContext(), FullPlayerActivity.dataSongArrayList.get(position));
-//            }
-//        });
-    }
 
+    }
     private void CreateNotification(String action) {
         Intent intent = new Intent(getContext(), MiniPlayerOnLockScreenService.class);
         intent.setAction(action);
         getActivity().startService(intent);
-
+        //NotificationService.NotificationService(getContext(),FullPlayerActivity.dataSongArrayList.get(position),R.drawable.ic_pause,position,FullPlayerActivity.dataSongArrayList.size());
     }
 
-    private void onPlaySong(){
+    public void onSongPlay() {
         isEvent_Of_FullPlayerFragment = true;
-        if(FullPlayerManagerService.mediaPlayer.isPlaying()){
+        if (FullPlayerManagerService.mediaPlayer.isPlaying()) {
             FullPlayerManagerService.mediaPlayer.pause();
-            ivPlayPause.setImageResource(R.drawable.ic_play_2);
+            this.ivPlayPause.setImageResource(R.drawable.ic_play_2);
             CreateNotification(MiniPlayerOnLockScreenService.ACTION_PAUSE);
-        }
-        else{
+        } else {
             FullPlayerManagerService.mediaPlayer.start();
-            ivPlayPause.setImageResource(R.drawable.ic_pause);
+            this.ivPlayPause.setImageResource(R.drawable.ic_pause);
             CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
         }
     }
+
     public void onSongNext() {
         isEvent_Of_FullPlayerFragment = true;
         if (FullPlayerActivity.dataSongs.size() > 0) {
@@ -465,7 +427,7 @@ public class FullPlayerFragment extends Fragment {
             Bitmap bitmap = drawable.getBitmap();
             FullPlayerActivity.tvSongName.setText(FullPlayerActivity.dataSongs.get(this.position).getName());
             FullPlayerActivity.tvArtist.setText(FullPlayerActivity.dataSongs.get(this.position).getSinger());
-            iSendPositionListener.Send_Position(this.position); // Chú
+            iSendPositionListener.Send_Position(this.position); // Chú ý
             UpdateTimeSong();
         }
         this.ivNext.setClickable(false);
@@ -477,6 +439,8 @@ public class FullPlayerFragment extends Fragment {
         }, 2000);
         CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
     }
+
+
 
 
     public class PlayMP3 extends AsyncTask<String, Void, String> {
@@ -529,25 +493,22 @@ public class FullPlayerFragment extends Fragment {
     private boolean isCurrentSong() {
         try {
             if (FullPlayerManagerService.listCurrentSong != null) {
-                if (FullPlayerManagerService.listCurrentSong.get(position).getId() == FullPlayerActivity.dataSongs
-                        .get(position).getId()) {
-                    repeat = FullPlayerManagerService.checkRandom;
+                if (FullPlayerManagerService.listCurrentSong.get(position).getId() == FullPlayerActivity.dataSongs.get(position).getId()) {
+                    repeat = FullPlayerManagerService.repeat;
+                    checkRandom = FullPlayerManagerService.checkRandom;
                     if (repeat) {
                         this.ivRepeat.setImageResource(R.drawable.ic_loop_check);
                     }
                     if (checkRandom) {
                         this.ivShuffle.setImageResource(R.drawable.ic_shuffle_check);
                     }
-
                     return true;
-
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
-
         FullPlayerManagerService.repeat = false;
         FullPlayerManagerService.checkRandom = false;
         return false;
@@ -558,8 +519,8 @@ public class FullPlayerFragment extends Fragment {
 
         this.tvTimeEnd.setText(simpleDateFormat.format(FullPlayerManagerService.mediaPlayer.getDuration()));
         this.sbSong.setMax(FullPlayerManagerService.mediaPlayer.getDuration());
-
     }
+
     private void UpdateTimeSong() {
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -568,6 +529,8 @@ public class FullPlayerFragment extends Fragment {
                 if (FullPlayerManagerService.mediaPlayer != null) {
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:ss", Locale.getDefault());
                     try {
+                        //tvTimeStart.setText(simpleDateFormat.format(mediaPlayer.getCurrentPosition()));
+                        //sbSong.setProgress(mediaPlayer.getCurrentPosition());
                         int time = FullPlayerManagerService.mediaPlayer.getCurrentPosition();
                         Log.d("Test", String.valueOf(time));
                         tvTimeStart.setText(simpleDateFormat.format(FullPlayerManagerService.mediaPlayer.getCurrentPosition()));
@@ -576,7 +539,14 @@ public class FullPlayerFragment extends Fragment {
                         e.printStackTrace();
                     }
                     handler.postDelayed(this, 1000); // Gọi lại ham này thực thi 1s mỗi lần
-
+/*                    mediaPlayer.setOnCompletionListener(mp -> {
+                        next = true;
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    });*/
                     FullPlayerManagerService.mediaPlayer.setOnCompletionListener(mp -> {
                         next = true;
                         try {
@@ -588,6 +558,7 @@ public class FullPlayerFragment extends Fragment {
                 }
             }
         }, 1000);
+
 
         Handler handler_1 = new Handler(); // Lằng nghe khi chuyển bài hát
         handler_1.postDelayed(new Runnable() {
@@ -644,16 +615,17 @@ public class FullPlayerFragment extends Fragment {
             }
         }, 1000);
     }
+
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getExtras().getString("actionname");
             switch (action) {
                 case MiniPlayerOnLockScreenService.ACTION_PLAY:
-                    onPlaySong();
+                    onSongPlay();
                     break;
                 case MiniPlayerOnLockScreenService.ACTION_PAUSE:
-                    onPlaySong();
+                    onSongPlay();
                     break;
                 case MiniPlayerOnLockScreenService.ACTION_PRE:
                     try {
@@ -675,5 +647,4 @@ public class FullPlayerFragment extends Fragment {
             }
         }
     };
-
 }

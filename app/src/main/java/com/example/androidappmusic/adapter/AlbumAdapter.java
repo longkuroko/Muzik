@@ -27,7 +27,7 @@ public class AlbumAdapter  extends  RecyclerView.Adapter<AlbumAdapter.ViewHolder
 
     private Context context;
     private List<Album> albumArrayList;
-    private ViewPager2 viewPager2;
+    private ViewPager2 viewPager2; //
 
     public AlbumAdapter(Context context, List<Album> albumArrayList, ViewPager2 viewPager2) {
         this.context = context;
@@ -52,11 +52,20 @@ public class AlbumAdapter  extends  RecyclerView.Adapter<AlbumAdapter.ViewHolder
         holder.tvAlbumName.setText(albumArrayList.get(position).getName().trim());
         holder.tvAlbumSinger.setText(albumArrayList.get(position).getSinger().trim());
 
-        holder.itemView.setOnClickListener(v->{
+//        holder.itemView.setOnClickListener(v->{
+//
+//            Intent intent = new Intent(context, SongActivity.class);
+//            intent.putExtra("ALBUM", albumArrayList.get(holder.getLayoutPosition()));
+//            context.startActivity(intent);
+//        });
 
-            Intent intent = new Intent(context, SongActivity.class);
-            intent.putExtra("ALBUM", albumArrayList.get(holder.getLayoutPosition()));
-            context.startActivity(intent);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, SongActivity.class);
+                intent.putExtra("ALBUM", albumArrayList.get(holder.getLayoutPosition()));
+                context.startActivity(intent);
+            }
         });
 
     }

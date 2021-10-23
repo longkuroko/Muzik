@@ -52,14 +52,14 @@ public class PersonalPlaylistFragment extends Fragment {
 
     private LinearLayout llFrameLoveSong;
 
-    private TextView tvNumberPlaylist;
-    private TextView tvNumberSongLove;
-    private ImageView ivAddPlaylist;
-    private TextView tvTitleLoveSong;
-    private TextView tvEmptyPlaylist;
+    TextView tvNumberPlaylist;
+    TextView tvNumberSongLove;
+    ImageView ivAddPlaylist;
+    TextView tvTitleLoveSong;
+    TextView tvEmptyPlaylist;
 
-    private TextView tvNumberDownloadSong;
-    private TextView tvTitleDownloadSong;
+    TextView tvNumberDownloadSong;
+    TextView tvTitleDownloadSong;
     private LinearLayout llFrameDownloadSong;
 
     private ShimmerFrameLayout sflItemUserPlaylist;
@@ -97,11 +97,8 @@ public class PersonalPlaylistFragment extends Fragment {
 
         Log.d(TAG, "onViewCreated");
 
-        Mapping(view);
-//        Handle_Number_Download_Song();
-//        Handle_Number_Favorite_Song();
-//        Handle_UserPlaylist();
-        Event();
+        linkViews(view);
+        addEvent();
     }
 
     @Override
@@ -109,6 +106,7 @@ public class PersonalPlaylistFragment extends Fragment {
         super.onResume();
 
         Log.d(TAG, "onResume");
+
 
         Handle_Number_Download_Song();
         Handle_Number_Favorite_Song();
@@ -145,28 +143,28 @@ public class PersonalPlaylistFragment extends Fragment {
         Log.d(TAG, "onDetach");
     }
 
-    private void Mapping(View view) {
-        this.loadingDialog = new LoadingDialog(getActivity());
+    private void linkViews(View view) {
+        loadingDialog = new LoadingDialog(getActivity());
 //        this.loadingDialog.Start_Loading();
 
-        this.llFrameLoveSong = view.findViewById(R.id.llFrameLoveSong);
-        this.tvNumberPlaylist = view.findViewById(R.id.tvNumberPlaylist);
-        this.tvNumberSongLove = view.findViewById(R.id.tvNumberSongLove);
-        this.ivAddPlaylist = view.findViewById(R.id.ivAddPlaylist);
-        this.tvTitleLoveSong = view.findViewById(R.id.tvTitleLoveSong);
+        llFrameLoveSong = view.findViewById(R.id.llFrameLoveSong);
+        tvNumberPlaylist = view.findViewById(R.id.tvNumberPlaylist);
+        tvNumberSongLove = view.findViewById(R.id.tvNumberSongLove);
+        ivAddPlaylist = view.findViewById(R.id.ivAddPlaylist);
+        tvTitleLoveSong = view.findViewById(R.id.tvTitleLoveSong);
 
-        this.tvEmptyPlaylist = view.findViewById(R.id.tvEmptyPlaylist);
-        this.tvEmptyPlaylist.setSelected(true); // Text will be moved
+        tvEmptyPlaylist = view.findViewById(R.id.tvEmptyPlaylist);
+        tvEmptyPlaylist.setSelected(true); // Text will be moved
 
-        this.sflItemUserPlaylist = view.findViewById(R.id.sflItemUserPlaylist);
-        this.rvYourPlaylist = view.findViewById(R.id.rvYourPlaylist);
+        sflItemUserPlaylist = view.findViewById(R.id.sflItemUserPlaylist);
+        rvYourPlaylist = view.findViewById(R.id.rvYourPlaylist);
 
-        this.llFrameDownloadSong = view.findViewById(R.id.llFrameDownloadSong);
-        this.tvNumberDownloadSong = view.findViewById(R.id.tvNumberSongDownload);
-        this.tvTitleDownloadSong = view.findViewById(R.id.tvTitleDownloadSong);
+        llFrameDownloadSong = view.findViewById(R.id.llFrameDownloadSong);
+        tvNumberDownloadSong = view.findViewById(R.id.tvNumberSongDownload);
+        tvTitleDownloadSong = view.findViewById(R.id.tvTitleDownloadSong);
     }
 
-    private void Event() {
+    private void addEvent() {
         this.scaleAnimation = new ScaleAnimation(getContext(), this.ivAddPlaylist);
         this.scaleAnimation.Event_ImageView();
         this.ivAddPlaylist.setOnClickListener(v -> {
@@ -188,7 +186,7 @@ public class PersonalPlaylistFragment extends Fragment {
         });
     }
 
-    private void Open_Add_Playlist_Dialog(int gravity) {
+    /*private void Open_Add_Playlist_Dialog(int gravity) {
         final Dialog dialog = new Dialog(getContext());
 
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // ẩn thanh tiêu đề
@@ -227,7 +225,7 @@ public class PersonalPlaylistFragment extends Fragment {
         });
 
         dialog.show(); // câu lệnh này sẽ hiển thị Dialog lên
-    }
+    }*/
 
     private void Handle_Number_Download_Song() {
         List<Song> sonDownloadgArrayList = DataLocalManager.getListSongDownloaded();

@@ -19,8 +19,8 @@
 
     <ImageView
         android:id="@+id/ivCover"
-        android:layout_width="450dp"
-        android:layout_height="450dp"
+        android:layout_width="match_parent"
+        android:layout_height="444dp"
         android:layout_gravity="center"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"

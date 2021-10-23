@@ -9,7 +9,6 @@ import com.example.androidappmusic.R;
 public class app extends Application {
     public static final String CHANNEL_ID = "CHANNEL iMusic MEDIA";
 
-    private static AppOpenManager appOpenManager;
 
     @Override
     public void onCreate() {

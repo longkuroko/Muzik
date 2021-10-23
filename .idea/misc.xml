@@ -26,10 +26,10 @@
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/activity_genre.xml" value="0.2859375" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/activity_main.xml" value="0.23489583333333333" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/activity_personal.xml" value="0.36666666666666664" />
-        <entry key="..\:/Bai Tap Android/app/src/main/res/layout/activity_personal_page.xml" value="0.20572916666666666" />
+        <entry key="..\:/Bai Tap Android/app/src/main/res/layout/activity_personal_page.xml" value="0.33" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/activity_personal_playlist.xml" value="0.36666666666666664" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/activity_search.xml" value="0.36666666666666664" />
-        <entry key="..\:/Bai Tap Android/app/src/main/res/layout/activity_song.xml" value="0.1" />
+        <entry key="..\:/Bai Tap Android/app/src/main/res/layout/activity_song.xml" value="0.33" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/content_full_player.xml" value="0.19696969696969696" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/fragment_chart.xml" value="0.20520833333333333" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/fragment_detail_player.xml" value="0.20520833333333333" />
@@ -51,6 +51,7 @@
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/item_theme_home.xml" value="0.23489583333333333" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/item_top_song.xml" value="0.23489583333333333" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/item_user_playlist.xml" value="0.23489583333333333" />
+        <entry key="..\:/Bai Tap Android/app/src/main/res/layout/layout_add_song_to_playlist_dialog.xml" value="0.30520833333333336" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/layout_edittext_dialog.xml" value="0.287962962962963" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/layout_loading_dialog.xml" value="0.23489583333333333" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/layout_song_more.xml" value="0.23489583333333333" />
@@ -68,7 +69,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

@@ -47,10 +47,19 @@ public class PlaylistHomeAdapter extends RecyclerView.Adapter<PlaylistHomeAdapte
                 .error(R.drawable.ic_logo)
                 .into(holder.ivPlaylist);
 
-        holder.itemView.setOnClickListener( v -> {
-            Intent intent = new Intent(context, SongActivity.class);
-            intent.putExtra("PLAYLIST", playlistArrayList.get(holder.getLayoutPosition()));
-            context.startActivity(intent);
+//        holder.itemView.setOnClickListener( v -> {
+//            Intent intent = new Intent(context, SongActivity.class);
+//            intent.putExtra("PLAYLIST", playlistArrayList.get(holder.getLayoutPosition()));
+//            context.startActivity(intent);
+//        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, SongActivity.class);
+                intent.putExtra("PLAYLIST", playlistArrayList.get(holder.getLayoutPosition()));
+                context.startActivity(intent);
+            }
         });
     }
 

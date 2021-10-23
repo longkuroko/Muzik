@@ -71,8 +71,8 @@ public class AddUpdateActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent != null){
             if (intent.hasExtra("ADDPLAYLIST")){
-                this.scaleAnimation = new ScaleAnimation(this, this.btnDialogActionPlaylist);
-                this.scaleAnimation.Event_Button();
+//                this.scaleAnimation = new ScaleAnimation(this, this.btnDialogActionPlaylist);
+//                this.scaleAnimation.Event_Button();
                 //Add new Playlist
                 this.btnDialogActionPlaylist.setOnClickListener(v -> {
                     String playlistName = this.etDialogContentPlaylist.getText().toString().trim(); //2

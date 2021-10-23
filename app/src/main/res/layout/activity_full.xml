@@ -29,34 +29,34 @@
             app:civ_border_width="1dp"/>
 
         <EditText
-            android:drawableRight="@drawable/ic_search"
-            android:layout_marginRight="4dp"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/civAvatar"
             android:id="@+id/etSearch"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignTop="@+id/civAvatar"
             android:layout_alignBottom="@+id/civAvatar"
             android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp"
             android:layout_toStartOf="@+id/imvBell"
+            android:layout_toLeftOf="@+id/imvBell"
             android:layout_toEndOf="@+id/civAvatar"
+            android:layout_toRightOf="@+id/civAvatar"
             android:background="@drawable/shape_corner_20dp"
             android:cursorVisible="false"
             android:drawableEnd="@drawable/ic_search"
+            android:drawableRight="@drawable/ic_search"
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:fontFamily="@font/comfortaa"
             android:hint="@string/etHint1"
-            android:textColorHint="@color/colorLight9"
             android:lines="1"
             android:maxLines="1"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:singleLine="true"
-            android:textSize="16sp"
-            android:layout_toLeftOf="@+id/imvBell" />
+            android:textColorHint="@color/colorLight9"
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/imvBell"

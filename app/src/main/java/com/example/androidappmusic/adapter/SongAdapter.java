@@ -197,9 +197,10 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
         TextView tvDeleteAllSongToPlaylist = this.dialog_1.findViewById(R.id.tvDeleteAllSongToPlaylist);
         tvDeleteAllSongToPlaylist.setSelected(true);
 
-        RelativeLayout rlDownLoadSong = this.dialog_1.findViewById(R.id.rlDownLoadSong);
-        TextView tvDownLoadSong = this.dialog_1.findViewById(R.id.tvDownLoadSong);
-        tvDownLoadSong.setSelected(true);
+        //Delay dowload
+//        RelativeLayout rlDownLoadSong = this.dialog_1.findViewById(R.id.rlDownLoadSong);
+//        TextView tvDownLoadSong = this.dialog_1.findViewById(R.id.tvDownLoadSong);
+ //       tvDownLoadSong.setSelected(true);
 
         RelativeLayout rlDeleteDownLoadSong = this.dialog_1.findViewById(R.id.rlDeleteDownLoadSong);
         TextView tvDeleteDownLoadSong = this.dialog_1.findViewById(R.id.tvDeleteDownLoadSong);

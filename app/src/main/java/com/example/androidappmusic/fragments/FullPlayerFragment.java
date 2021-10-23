@@ -53,8 +53,8 @@ public class FullPlayerFragment extends Fragment {
     private ImageView ivCover;
     private ImageView ivFavorite;
     private ImageView ivComment;
-    private ImageView ivDownload;
-    private ImageView ivMv;
+    //private ImageView ivDownload;
+    //private ImageView ivMv;
     private ImageView ivShuffle;
     private ImageView ivPrev;
     private ImageView ivPlayPause;
@@ -129,10 +129,9 @@ public class FullPlayerFragment extends Fragment {
 
 
     private void addEvents() {
-        scaleAnimation = new ScaleAnimation(getActivity(), ivDownload);
-        scaleAnimation.Event_ImageView();
 
-        this.scaleAnimation = new ScaleAnimation(getActivity(), this.ivMv);
+
+
         this.scaleAnimation.Event_ImageView();
         this.scaleAnimation = new ScaleAnimation(getActivity(), this.ivShuffle);
         this.scaleAnimation.Event_ImageView();
@@ -172,9 +171,9 @@ public class FullPlayerFragment extends Fragment {
         loadingDialog = new LoadingDialog(getActivity());
 
         this.ivCover = view.findViewById(R.id.ivCover);
-        this.ivDownload = view.findViewById(R.id.ivDownload);
+   //     this.ivDownload = view.findViewById(R.id.ivDownload);
         this.ivComment = view.findViewById(R.id.ivComment);
-        this.ivMv = view.findViewById(R.id.ivMv);
+//        this.ivMv = view.findViewById(R.id.ivMv);
         this.ivShuffle = view.findViewById(R.id.ivShuffle);
         this.ivPrev = view.findViewById(R.id.ivPrev);
         this.ivPlayPause = view.findViewById(R.id.ivPlayPause);

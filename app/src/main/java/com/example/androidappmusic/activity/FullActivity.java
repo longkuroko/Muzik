@@ -62,11 +62,13 @@ public class FullActivity extends AppCompatActivity {
     private CircleImageView circleImageView;
     private EditText edtSearch;
 
-    private static final int ID_PERSONAL = 1;
-    private static final int ID_CHART = 2;
-    private static final int ID_HOME = 3;
-    private static final int ID_RADIO = 4;
-    private static final int ID_SETTING = 5;
+    private static final int ID_CHART = 1;
+    private static final int ID_HOME = 2;
+    private static final int ID_PERSONAL = 3;
+
+//    private static final int ID_RADIO = 4;
+//    private static final int ID_SETTING = 4;
+//    private static final int ID_PERSON = 5;
 
 
 
@@ -148,11 +150,13 @@ public class FullActivity extends AppCompatActivity {
         edtSearch = findViewById(R.id.etSearch);
         frameMiniPlayer = findViewById(R.id.frameMiniPlayer);
 
-        meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_PERSONAL, R.drawable.ic_music_note));
+
         meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_CHART, R.drawable.ic_chart));
         meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_HOME, R.drawable.ic_home));
-        meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_RADIO, R.drawable.ic_radio));
-        meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_SETTING, R.drawable.ic_setting));
+        meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_PERSONAL, R.drawable.ic_music_note));
+//        meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_RADIO, R.drawable.ic_radio));
+//        meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_SETTING, R.drawable.ic_setting));
+//        meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_SETTING, R.drawable.ic_baseline_person_24));
 
         circleImageView = findViewById(R.id.civAvatar);
         Picasso.get()
@@ -183,21 +187,24 @@ public class FullActivity extends AppCompatActivity {
             fragment = null;
             switch (item.getId()){
                 case 1: {
-                    fragment = new PersonalPlaylistFragment();
-                    break;
-                }
-                case 2: {
                     fragment = new ChartFragment();
                     break;
                 }
-                case 3: {
+                case 2: {
                     fragment = new HomeFragment();
                     break;
                 }
-                case 4: {
-                    fragment = new SettingFragment();
+                case 3: {
+                    fragment = new PersonalPlaylistFragment();
                     break;
                 }
+//                case 4: {
+//                    fragment = new SettingFragment();
+//                    break;
+//                }
+//                case 5:{
+//
+//                }
             }
             loadFragment(fragment);
         });

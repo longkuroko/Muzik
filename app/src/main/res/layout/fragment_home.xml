@@ -158,6 +158,7 @@
                     </LinearLayout>
                 </com.facebook.shimmer.ShimmerFrameLayout>
 
+                //recyclerview giong nhu slider
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvPlaylist"
                     android:layout_width="match_parent"
@@ -179,6 +180,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_gravity="center"
                     android:ellipsize="marquee"
                     android:fontFamily="@font/comfortaa"
@@ -187,8 +189,7 @@
                     android:singleLine="true"
                     android:text="@string/tvThemeFragment"
                     android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:layout_alignParentLeft="true" />
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/ivThemeMore"
@@ -201,6 +202,8 @@
                     app:srcCompat="@drawable/ic_angle_right"
                     android:layout_alignParentRight="true" />
 
+
+                //Hiệu ứng shine khi loading
                 <com.facebook.shimmer.ShimmerFrameLayout
                     android:id="@+id/sflItemTheme"
                     android:layout_width="match_parent"

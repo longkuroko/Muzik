@@ -92,7 +92,7 @@
         app:mbn_circleColor="@color/colorLight4"
         app:mbn_countTextColor="@color/colorLight1"
         app:mbn_defaultIconColor="@color/colorLight1"
-        app:mbn_selectedIconColor="@color/colorLight3"
+        app:mbn_selectedIconColor="@color/colorMain4"
         app:mbn_shadowColor="@color/colorLight5" />
 
 

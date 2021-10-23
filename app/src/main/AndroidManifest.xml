@@ -17,15 +17,13 @@
         android:theme="@style/Theme.AndroidAppMusic" >
         <activity
             android:name=".activity.PersonalPageActivity"
-            android:exported="true" />
+            android:exported="true" >
+
+        </activity>
         <activity
             android:name=".activity.MainActivity"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity android:name=".activity.AddUpdateActivity" >
@@ -35,11 +33,19 @@
             android:exported="true" >
 
         </activity>
-        <activity android:name=".activity.FullPlayerActivity" >
+        <activity android:name=".activity.FullPlayerActivity" android:exported="true">
+
+
+
         </activity>
         <activity android:name=".activity.GenreActivity" >
         </activity>
-        <activity android:name=".activity.PersonalPlaylistActivity" >
+        <activity android:name=".activity.PersonalPlaylistActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".activity.SearchActivity" />
         <activity android:name=".activity.SongActivity" >

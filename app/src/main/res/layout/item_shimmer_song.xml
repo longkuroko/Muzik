@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp">
 
+    //Cardview như một container
     <androidx.cardview.widget.CardView
         android:id="@+id/cvSongImage"
         android:layout_width="wrap_content"

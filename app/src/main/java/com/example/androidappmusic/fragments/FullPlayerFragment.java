@@ -172,8 +172,8 @@ public class FullPlayerFragment extends Fragment {
         loadingDialog = new LoadingDialog(getActivity());
 
         this.ivCover = view.findViewById(R.id.ivCover);
-        this.ivDownload = view.findViewById(R.id.ivDownload);
-        this.ivComment = view.findViewById(R.id.ivComment);
+//        this.ivDownload = view.findViewById(R.id.ivDownload);
+//        this.ivComment = view.findViewById(R.id.ivComment);
         this.ivMv = view.findViewById(R.id.ivMv);
         this.ivShuffle = view.findViewById(R.id.ivShuffle);
         this.ivPrev = view.findViewById(R.id.ivPrev);

@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:indeterminate="true"
-        android:indeterminateTint="@color/colorLight3"
+        android:indeterminateTint="@color/colorMain3"
         android:indeterminateTintMode="src_atop" />
 
 

@@ -97,11 +97,8 @@ public class PersonalPlaylistFragment extends Fragment {
 
         Log.d(TAG, "onViewCreated");
 
-        Mapping(view);
-//        Handle_Number_Download_Song();
-//        Handle_Number_Favorite_Song();
-//        Handle_UserPlaylist();
-        Event();
+        linkViews(view);
+        addEvent();
     }
 
     @Override
@@ -109,6 +106,7 @@ public class PersonalPlaylistFragment extends Fragment {
         super.onResume();
 
         Log.d(TAG, "onResume");
+
 
         Handle_Number_Download_Song();
         Handle_Number_Favorite_Song();
@@ -145,7 +143,7 @@ public class PersonalPlaylistFragment extends Fragment {
         Log.d(TAG, "onDetach");
     }
 
-    private void Mapping(View view) {
+    private void linkViews(View view) {
         loadingDialog = new LoadingDialog(getActivity());
 //        this.loadingDialog.Start_Loading();
 
@@ -166,7 +164,7 @@ public class PersonalPlaylistFragment extends Fragment {
         tvTitleDownloadSong = view.findViewById(R.id.tvTitleDownloadSong);
     }
 
-    private void Event() {
+    private void addEvent() {
         this.scaleAnimation = new ScaleAnimation(getContext(), this.ivAddPlaylist);
         this.scaleAnimation.Event_ImageView();
         this.ivAddPlaylist.setOnClickListener(v -> {
@@ -188,7 +186,7 @@ public class PersonalPlaylistFragment extends Fragment {
         });
     }
 
-    private void Open_Add_Playlist_Dialog(int gravity) {
+    /*private void Open_Add_Playlist_Dialog(int gravity) {
         final Dialog dialog = new Dialog(getContext());
 
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // ẩn thanh tiêu đề
@@ -227,7 +225,7 @@ public class PersonalPlaylistFragment extends Fragment {
         });
 
         dialog.show(); // câu lệnh này sẽ hiển thị Dialog lên
-    }
+    }*/
 
     private void Handle_Number_Download_Song() {
         List<Song> sonDownloadgArrayList = DataLocalManager.getListSongDownloaded();

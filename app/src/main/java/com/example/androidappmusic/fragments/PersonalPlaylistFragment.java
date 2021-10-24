@@ -108,7 +108,6 @@ public class PersonalPlaylistFragment extends Fragment {
         Log.d(TAG, "onResume");
 
 
-        Handle_Number_Download_Song();
         Handle_Number_Favorite_Song();
         Handle_UserPlaylist();
     }
@@ -159,9 +158,9 @@ public class PersonalPlaylistFragment extends Fragment {
         sflItemUserPlaylist = view.findViewById(R.id.sflItemUserPlaylist);
         rvYourPlaylist = view.findViewById(R.id.rvYourPlaylist);
 
-        llFrameDownloadSong = view.findViewById(R.id.llFrameDownloadSong);
-        tvNumberDownloadSong = view.findViewById(R.id.tvNumberSongDownload);
-        tvTitleDownloadSong = view.findViewById(R.id.tvTitleDownloadSong);
+//        llFrameDownloadSong = view.findViewById(R.id.llFrameDownloadSong);
+//        tvNumberDownloadSong = view.findViewById(R.id.tvNumberSongDownload);
+//        tvTitleDownloadSong = view.findViewById(R.id.tvTitleDownloadSong);
     }
 
     private void addEvent() {
@@ -173,11 +172,11 @@ public class PersonalPlaylistFragment extends Fragment {
             startActivity(intent);
         });
 
-        this.llFrameDownloadSong.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), PersonalPlaylistActivity.class);
-            intent.putExtra("DOWNLOADSONG", this.tvTitleDownloadSong.getText());
-            startActivity(intent);
-        });
+//        this.llFrameDownloadSong.setOnClickListener(v -> {
+//            Intent intent = new Intent(getContext(), PersonalPlaylistActivity.class);
+//            intent.putExtra("DOWNLOADSONG", this.tvTitleDownloadSong.getText());
+//            startActivity(intent);
+//        });
 
         this.llFrameLoveSong.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), PersonalPlaylistActivity.class);
@@ -227,16 +226,16 @@ public class PersonalPlaylistFragment extends Fragment {
         dialog.show(); // câu lệnh này sẽ hiển thị Dialog lên
     }*/
 
-    private void Handle_Number_Download_Song() {
-        List<Song> sonDownloadgArrayList = DataLocalManager.getListSongDownloaded();
-        if (sonDownloadgArrayList != null) {
-            tvNumberDownloadSong.setText(String.valueOf(sonDownloadgArrayList.size()));
-
-            Log.d(TAG, "Number Download Song: " + sonDownloadgArrayList.size());
-        } else {
-            tvNumberDownloadSong.setText("0");
-        }
-    }
+//    private void Handle_Number_Download_Song() {
+//        List<Song> sonDownloadgArrayList = DataLocalManager.getListSongDownloaded();
+//        if (sonDownloadgArrayList != null) {
+//            tvNumberDownloadSong.setText(String.valueOf(sonDownloadgArrayList.size()));
+//
+//            Log.d(TAG, "Number Download Song: " + sonDownloadgArrayList.size());
+//        } else {
+//            tvNumberDownloadSong.setText("0");
+//        }
+//    }
 
     private void Handle_Number_Favorite_Song() {
         DataService dataService = APIService.getService(); // Khởi tạo Phương thức để đẩy lên

@@ -1,5 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<!--    <color name="purple_200">#FFBB86FC</color>-->
+<!--    <color name="purple_500">#FF6200EE</color>-->
+<!--    <color name="purple_700">#FF3700B3</color>-->
+<!--    <color name="teal_200">#FF03DAC5</color>-->
+<!--    <color name="teal_700">#FF018786</color>-->
+<!--    <color name="black">#FF000000</color>-->
+<!--    <color name="white">#FFFFFFFF</color>-->
+<!--    <color name="pink">#c44569</color>-->
+
+<!--    <color name="btn_loginzl">#333333</color>-->
+
+<!--    <color name="colorMain1">#FFFFFF</color>-->
+<!--    <color name="colorMain3">#c44569</color>-->
+
+<!--    <color name="colorMain4">#FF0000</color>-->
+<!--    <color name="colorMain5">#CAE7FF</color>-->
+<!--    <color name="colorMain6">#5C6163</color>-->
+<!--    <color name="colorMain7">#FFE500</color>-->
+<!--    <color name="colorMain8">#66BB6A</color>-->
+
+<!--    <color name="btn_loginfb">#1877F2</color>-->
+<!--    <color name="pink2">#f8a5c2</color>-->
+<!--    <color name="pink3">#f78fb3</color>-->
+<!--    <color name="red">#FF0000</color>-->
+
+
+<!--    &lt;!&ndash; - - - - - - - - - Light Mode - - - - - - - - - &ndash;&gt;-->
+<!--    <color name="colorLight1">#5C6163</color>-->
+<!--    <color name="colorLight2">#F4F4F8</color>-->
+<!--    <color name="colorLight3">#F475C2</color>-->
+<!--    <color name="colorLight4">#FFFFFF</color> // màu chủ đạo sáng-->
+<!--    <color name="colorLight5">#5C6163</color>-->
+<!--    <color name="colorLight6">#F475C2</color> // Thanh toolbar-->
+<!--    <color name="colorLight7">#000000</color> // Màu chữ sáng-->
+<!--    <color name="colorLight8">#FFFFFF</color>-->
+<!--    <color name="colorLight9">#4D4E4E</color>-->
+<!--    <color name="colorLight10">#F1F1F1</color>-->
+<!--    <color name="colorLight11">#ECECEC</color>-->
+<!--    <color name="colorLight12">#BFBFBF</color>-->
+<!--    <color name="colorLight13">#DDDDDD</color>-->
+
+
+
+<!--    <color name="colorGradient1">#F5576C</color>-->
+<!--    <color name="colorGradient2">#F093FB</color>-->
+
+<!--    <color name="colorGradient3">#CFD9DF</color>-->
+<!--    <color name="colorGradient4">#E2EBF0</color>-->
+
+
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -32,10 +82,10 @@
     <!-- - - - - - - - - - Light Mode - - - - - - - - - -->
     <color name="colorLight1">#5C6163</color>
     <color name="colorLight2">#F4F4F8</color>
-    <color name="colorLight3">#F475C2</color>
+    <color name="colorLight3">#0984e3</color>
     <color name="colorLight4">#FFFFFF</color> // màu chủ đạo sáng
     <color name="colorLight5">#5C6163</color>
-    <color name="colorLight6">#F475C2</color> // Thanh toolbar
+    <color name="colorLight6">#74b9ff</color> // Thanh toolbar
     <color name="colorLight7">#000000</color> // Màu chữ sáng
     <color name="colorLight8">#FFFFFF</color>
     <color name="colorLight9">#4D4E4E</color>
@@ -51,7 +101,4 @@
 
     <color name="colorGradient3">#CFD9DF</color>
     <color name="colorGradient4">#E2EBF0</color>
-
-
-
 </resources>

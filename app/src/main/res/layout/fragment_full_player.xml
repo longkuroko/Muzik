@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.FullPlayerFragment"
-    >
+    tools:context=".fragments.FullPlayerFragment">
 
    <androidx.cardview.widget.CardView
        android:layout_width="wrap_content"
@@ -88,10 +87,10 @@
         android:layout_alignBottom="@+id/ivPlayPause"
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
         android:layout_toStartOf="@+id/ivPlayPause"
-        android:layout_toLeftOf="@+id/ivPlayPause"
-        app:srcCompat="@drawable/ic_prev" />
+        app:srcCompat="@drawable/ic_prev"
+        android:layout_marginRight="20dp"
+        android:layout_toLeftOf="@+id/ivPlayPause" />
 
     <ImageView
         android:id="@+id/ivNext"
@@ -101,10 +100,10 @@
         android:layout_alignBottom="@+id/ivPlayPause"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_toEndOf="@+id/ivPlayPause"
-        android:layout_toRightOf="@+id/ivPlayPause"
-        app:srcCompat="@drawable/ic_next" />
+        app:srcCompat="@drawable/ic_next"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/ivPlayPause" />
 
     <TableLayout
         android:layout_width="match_parent"
@@ -122,19 +121,19 @@
 <!--                android:gravity="center"-->
 <!--                app:srcCompat="@drawable/ic_download" />-->
 
-            <ImageView
-                android:id="@+id/ivMv"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:gravity="center"
-                app:srcCompat="@drawable/ic_play_1" />
-
 <!--            <ImageView-->
-<!--                android:id="@+id/ivComment"-->
+<!--                android:id="@+id/ivMv"-->
 <!--                android:layout_width="25dp"-->
 <!--                android:layout_height="25dp"-->
 <!--                android:gravity="center"-->
-<!--                app:srcCompat="@drawable/ic_comment" />-->
+<!--                app:srcCompat="@drawable/ic_play_1" />-->
+
+            <ImageView
+                android:id="@+id/ivComment"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:gravity="center"
+                app:srcCompat="@drawable/ic_comment" />
         </TableRow>
     </TableLayout>
 
@@ -146,10 +145,10 @@
         android:layout_alignBottom="@+id/ivPlayPause"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
         android:layout_toEndOf="@+id/ivNext"
-        android:layout_toRightOf="@+id/ivNext"
-        app:srcCompat="@drawable/ic_loop" />
+        app:srcCompat="@drawable/ic_loop"
+        android:layout_marginLeft="40dp"
+        android:layout_toRightOf="@+id/ivNext" />
 
     <ImageView
         android:id="@+id/ivShuffle"
@@ -159,10 +158,10 @@
         android:layout_alignBottom="@+id/ivPlayPause"
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
         android:layout_toStartOf="@+id/ivPrev"
-        android:layout_toLeftOf="@+id/ivPrev"
-        app:srcCompat="@drawable/ic_shuffle" />
+        app:srcCompat="@drawable/ic_shuffle"
+        android:layout_marginRight="40dp"
+        android:layout_toLeftOf="@+id/ivPrev" />
 
 
 </RelativeLayout>

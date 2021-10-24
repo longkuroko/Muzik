@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -49,9 +50,9 @@ public class GenreActivity extends AppCompatActivity {
 
         linkViews();
         loadData();
+        addEvents();
 
     }
-
 
     private void linkViews() {
 
@@ -64,8 +65,26 @@ public class GenreActivity extends AppCompatActivity {
 
     }
 
-    private void loadData() {
 
+    private void addEvents() {
+        this.scaleAnimation = new ScaleAnimation(this, this.ivBack);
+        this.scaleAnimation.Event_ImageView();
+        this.ivBack.setOnClickListener(v -> finish());
+    }
+
+    private void loadData() {
+        Intent intent = getIntent();
+        if(intent != null ){
+            if(intent.hasExtra("THEME")){
+                this.theme = intent.getParcelableExtra("THEME");
+                if(this.theme != null ){
+                    Log.d(TAG, this.theme.getName());
+                    this.tvTitle.setText(this.theme.getName());
+
+                    Display_Genre(this.theme.getIdTheme());
+                }
+            }
+        }
 
     }
 

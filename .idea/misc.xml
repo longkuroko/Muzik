@@ -4,10 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Bai Tap Android/app/src/main/res/drawable-v24/btn_loginfb.xml" value="0.14074074074074075" />
+        <entry key="..\:/Bai Tap Android/app/src/main/res/drawable-v24/ic_angle_right.xml" value="0.36153846153846153" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/drawable-v24/ic_chart.xml" value="0.328125" />
+        <entry key="..\:/Bai Tap Android/app/src/main/res/drawable-v24/ic_launcher_background.xml" value="0.2675925925925926" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/drawable-v24/ic_logo.xml" value="0.2515625" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/drawable-v24/ic_logo_small.xml" value="0.328125" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/drawable-v24/ic_logo_transparent.xml" value="0.328125" />
+        <entry key="..\:/Bai Tap Android/app/src/main/res/drawable-v24/ic_play_2.xml" value="0.36153846153846153" />
+        <entry key="..\:/Bai Tap Android/app/src/main/res/drawable-v24/ic_play_2_pink.xml" value="0.36153846153846153" />
+        <entry key="..\:/Bai Tap Android/app/src/main/res/drawable-v24/ic_radio.xml" value="0.24537037037037038" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/drawable/btn_logingg.xml" value="0.2947916666666667" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/drawable/btn_loginzl.xml" value="0.2947916666666667" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/drawable/ic_add.xml" value="0.22135416666666666" />
@@ -26,10 +31,10 @@
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/activity_genre.xml" value="0.2859375" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/activity_main.xml" value="0.23489583333333333" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/activity_personal.xml" value="0.36666666666666664" />
-        <entry key="..\:/Bai Tap Android/app/src/main/res/layout/activity_personal_page.xml" value="0.20572916666666666" />
+        <entry key="..\:/Bai Tap Android/app/src/main/res/layout/activity_personal_page.xml" value="0.33" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/activity_personal_playlist.xml" value="0.36666666666666664" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/activity_search.xml" value="0.36666666666666664" />
-        <entry key="..\:/Bai Tap Android/app/src/main/res/layout/activity_song.xml" value="0.1" />
+        <entry key="..\:/Bai Tap Android/app/src/main/res/layout/activity_song.xml" value="0.33" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/content_full_player.xml" value="0.19696969696969696" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/fragment_chart.xml" value="0.20520833333333333" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/fragment_detail_player.xml" value="0.20520833333333333" />
@@ -51,14 +56,14 @@
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/item_theme_home.xml" value="0.23489583333333333" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/item_top_song.xml" value="0.23489583333333333" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/item_user_playlist.xml" value="0.23489583333333333" />
+        <entry key="..\:/Bai Tap Android/app/src/main/res/layout/layout_add_song_to_playlist_dialog.xml" value="0.30520833333333336" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/layout_edittext_dialog.xml" value="0.287962962962963" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/layout_loading_dialog.xml" value="0.23489583333333333" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/layout_song_more.xml" value="0.23489583333333333" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/layout_textview_dialog.xml" value="0.2708333333333333" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/layout/layout_userplaylist_more.xml" value="0.36666666666666664" />
         <entry key="..\:/Bai Tap Android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2203125" />
-        <entry key="..\:/Muzik/app/src/main/res/layout/activity_full_player.xml" value="0.17300724637681159" />
-        <entry key="..\:/Muzik/app/src/main/res/layout/activity_personal_playlist.xml" value="0.209375" />
+        <entry key="..\:/Bai Tap Android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
         <entry key="..\:/mobile/Muzik/app/src/main/res/drawable/ic_add_1.xml" value="0.26614583333333336" />
         <entry key="..\:/mobile/Muzik/app/src/main/res/drawable/ic_edit.xml" value="0.26614583333333336" />
         <entry key="..\:/mobile/Muzik/app/src/main/res/drawable/shape_corner_16dp.xml" value="0.26614583333333336" />
@@ -70,7 +75,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

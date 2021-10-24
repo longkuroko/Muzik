@@ -41,7 +41,7 @@ public class FullPlayerActivity extends AppCompatActivity implements FullPlayerF
     public static FullPlayerAdapter fullPlayerAdapter;
     private PageIndicatorView pageIndicatorView;
 //
-//    private ScaleAnimation scaleAnimation;
+    private ScaleAnimation scaleAnimation;
 //
 
 
@@ -168,7 +168,7 @@ public class FullPlayerActivity extends AppCompatActivity implements FullPlayerF
         });
 //        scaleAnimation = new ScaleAnimation(this, this.ivBack);
 //        scaleAnimation.Event_ImageView();
-//        ivBack.setOnClickListener(v -> finish());
+//        this.ivBack.setOnClickListener(v -> finish());
     }
 
     @Override

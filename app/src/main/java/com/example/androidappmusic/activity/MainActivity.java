@@ -267,7 +267,7 @@ MainActivity extends AppCompatActivity {
                                         String isDark = "0";
                                         String isEnglish = "0";
 
-                                        loadingDialog.Start_Loading();
+//                                        loadingDialog.Start_Loading();
                                         HandleUser(id, name, email, avatarGoogle, isDark, isEnglish);
                                     }
                                 } else {

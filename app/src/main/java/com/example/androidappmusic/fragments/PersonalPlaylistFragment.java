@@ -158,9 +158,9 @@ public class PersonalPlaylistFragment extends Fragment {
         sflItemUserPlaylist = view.findViewById(R.id.sflItemUserPlaylist);
         rvYourPlaylist = view.findViewById(R.id.rvYourPlaylist);
 
-        llFrameDownloadSong = view.findViewById(R.id.llFrameDownloadSong);
-        tvNumberDownloadSong = view.findViewById(R.id.tvNumberSongDownload);
-        tvTitleDownloadSong = view.findViewById(R.id.tvTitleDownloadSong);
+//        llFrameDownloadSong = view.findViewById(R.id.llFrameDownloadSong);
+//        tvNumberDownloadSong = view.findViewById(R.id.tvNumberSongDownload);
+//        tvTitleDownloadSong = view.findViewById(R.id.tvTitleDownloadSong);
     }
 
     private void addEvent() {
@@ -172,11 +172,11 @@ public class PersonalPlaylistFragment extends Fragment {
             startActivity(intent);
         });
 
-        this.llFrameDownloadSong.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), PersonalPlaylistActivity.class);
-            intent.putExtra("DOWNLOADSONG", this.tvTitleDownloadSong.getText());
-            startActivity(intent);
-        });
+//        this.llFrameDownloadSong.setOnClickListener(v -> {
+//            Intent intent = new Intent(getContext(), PersonalPlaylistActivity.class);
+//            intent.putExtra("DOWNLOADSONG", this.tvTitleDownloadSong.getText());
+//            startActivity(intent);
+//        });
 
         this.llFrameLoveSong.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), PersonalPlaylistActivity.class);

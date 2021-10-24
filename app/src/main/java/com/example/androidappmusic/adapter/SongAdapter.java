@@ -245,7 +245,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
                 break;
             }
         }
-
+//
 //        this.scaleAnimation = new ScaleAnimation(context, rlPlaySong);
 //        this.scaleAnimation.Event_RelativeLayout();
         rlPlaySong.setOnClickListener(v -> {
@@ -253,7 +253,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
             intent.putExtra("SONG", songArrayList.get(position));
             v.getContext().startActivity(intent);
         });
-
+//
 //        this.scaleAnimation = new ScaleAnimation(context, rlAddSongToPlaylist);
 //        this.scaleAnimation.Event_RelativeLayout();
         rlAddSongToPlaylist.setOnClickListener(v -> {

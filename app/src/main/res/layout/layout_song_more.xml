@@ -204,67 +204,67 @@
             android:textStyle="normal" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/rlDownLoadSong"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/rlDownLoadSong"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp">-->
 
-        <ImageView
-            android:id="@+id/ivDownLoadSong"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/tvDownLoadSong"
-            android:layout_alignBottom="@+id/tvDownLoadSong"
-            app:srcCompat="@drawable/ic_download" />
+<!--        <ImageView-->
+<!--            android:id="@+id/ivDownLoadSong"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignTop="@+id/tvDownLoadSong"-->
+<!--            android:layout_alignBottom="@+id/tvDownLoadSong"-->
+<!--            app:srcCompat="@drawable/ic_download" />-->
 
-        <TextView
-            android:id="@+id/tvDownLoadSong"
-            style="@style/tvStyle1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_toEndOf="@+id/ivDownLoadSong"
-            android:ellipsize="marquee"
-            android:gravity="center"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:scrollHorizontally="true"
-            android:text="@string/tvDownLoadSong"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:textStyle="normal" />
-    </RelativeLayout>
+<!--        <TextView-->
+<!--            android:id="@+id/tvDownLoadSong"-->
+<!--            style="@style/tvStyle1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="20dp"-->
+<!--            android:layout_toEndOf="@+id/ivDownLoadSong"-->
+<!--            android:ellipsize="marquee"-->
+<!--            android:gravity="center"-->
+<!--            android:marqueeRepeatLimit="marquee_forever"-->
+<!--            android:scrollHorizontally="true"-->
+<!--            android:text="@string/tvDownLoadSong"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textSize="18sp"-->
+<!--            android:textStyle="normal" />-->
+<!--    </RelativeLayout>-->
 
-    <RelativeLayout
-        android:id="@+id/rlDeleteDownLoadSong"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/rlDeleteDownLoadSong"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp">-->
 
-        <ImageView
-            android:id="@+id/ivDeleteDownLoadSong"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/tvDeleteDownLoadSong"
-            android:layout_alignBottom="@+id/tvDeleteDownLoadSong"
-            app:srcCompat="@drawable/ic_delete" />
+<!--        <ImageView-->
+<!--            android:id="@+id/ivDeleteDownLoadSong"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignTop="@+id/tvDeleteDownLoadSong"-->
+<!--            android:layout_alignBottom="@+id/tvDeleteDownLoadSong"-->
+<!--            app:srcCompat="@drawable/ic_delete" />-->
 
-        <TextView
-            android:id="@+id/tvDeleteDownLoadSong"
-            style="@style/tvStyle1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_toEndOf="@+id/ivDeleteDownLoadSong"
-            android:ellipsize="marquee"
-            android:gravity="center"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:scrollHorizontally="true"
-            android:text="@string/tvDeleteDownLoadSong"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:textStyle="normal" />
-    </RelativeLayout>
+<!--        <TextView-->
+<!--            android:id="@+id/tvDeleteDownLoadSong"-->
+<!--            style="@style/tvStyle1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="20dp"-->
+<!--            android:layout_toEndOf="@+id/ivDeleteDownLoadSong"-->
+<!--            android:ellipsize="marquee"-->
+<!--            android:gravity="center"-->
+<!--            android:marqueeRepeatLimit="marquee_forever"-->
+<!--            android:scrollHorizontally="true"-->
+<!--            android:text="@string/tvDeleteDownLoadSong"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textSize="18sp"-->
+<!--            android:textStyle="normal" />-->
+<!--    </RelativeLayout>-->
 
     <RelativeLayout
         android:id="@+id/rlCloseInfoPlaylist"

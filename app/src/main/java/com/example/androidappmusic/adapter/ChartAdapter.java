@@ -170,13 +170,13 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
         TextView tvDeleteAllSongToPlaylist = this.dialog_1.findViewById(R.id.tvDeleteAllSongToPlaylist);
         tvDeleteAllSongToPlaylist.setSelected(true);
 
-        RelativeLayout rlDownLoadSong = this.dialog_1.findViewById(R.id.rlDownLoadSong);
-        TextView tvDownLoadSong = this.dialog_1.findViewById(R.id.tvDownLoadSong);
-        tvDownLoadSong.setSelected(true);
-
-        RelativeLayout rlDeleteDownLoadSong = this.dialog_1.findViewById(R.id.rlDeleteDownLoadSong);
-        TextView tvDeleteDownLoadSong = this.dialog_1.findViewById(R.id.tvDeleteDownLoadSong);
-        tvDeleteDownLoadSong.setSelected(true);
+//        RelativeLayout rlDownLoadSong = this.dialog_1.findViewById(R.id.rlDownLoadSong);
+//        TextView tvDownLoadSong = this.dialog_1.findViewById(R.id.tvDownLoadSong);
+//        tvDownLoadSong.setSelected(true);
+//
+//        RelativeLayout rlDeleteDownLoadSong = this.dialog_1.findViewById(R.id.rlDeleteDownLoadSong);
+//        TextView tvDeleteDownLoadSong = this.dialog_1.findViewById(R.id.tvDeleteDownLoadSong);
+//        tvDeleteDownLoadSong.setSelected(true);
 
         RelativeLayout rlCloseInfoPlaylist = this.dialog_1.findViewById(R.id.rlCloseInfoPlaylist);
         TextView tvCloseInfoSong = this.dialog_1.findViewById(R.id.tvCloseInfoSong);
@@ -184,7 +184,7 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
 
         rlDeleteSongToPlaylist.setVisibility(View.GONE);
         rlDeleteAllSongToPlaylist.setVisibility(View.GONE);
-        rlDeleteDownLoadSong.setVisibility(View.GONE);
+//        rlDeleteDownLoadSong.setVisibility(View.GONE);
 
 
         this.scaleAnimation = new ScaleAnimation(context, rlPlaySong);

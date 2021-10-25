@@ -28,7 +28,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddUpdateActivity extends AppCompatActivity {
+public class AddUpdateActivity extends AppCompatActivity { //GĐ
 
     private static final String TAG = "AddUpdateActivity";
 

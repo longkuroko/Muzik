@@ -116,11 +116,12 @@ public class UserPlaylistAdapter extends RecyclerView.Adapter<UserPlaylistAdapte
 
     }
 
+    //GĐ
     private void Open_Info_Playlist_Dialog(int gravity, int position) {
         this.dialog_1 = new Dialog(this.context);
 
-        dialog_1.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog_2.setContentView(R.layout.layout_userplaylist_more);
+//        dialog_1.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        dialog_2.setContentView(R.layout.layout_userplaylist_more);
 
         Window window = dialog_1.getWindow();
         if (window == null) {
@@ -187,6 +188,7 @@ public class UserPlaylistAdapter extends RecyclerView.Adapter<UserPlaylistAdapte
         dialog_1.show(); // câu lệnh này sẽ hiển thị Dialog lên
     }
 
+    //GĐ
     private void Open_Delete_Playlist_Dialog(String action, int playlistID, String userID, String playlistName, int position) {
         this.dialog_2 = new Dialog(this.context);
 
@@ -249,6 +251,7 @@ public class UserPlaylistAdapter extends RecyclerView.Adapter<UserPlaylistAdapte
         dialog_2.show(); // câu lệnh này sẽ hiển thị Dialog lên
     }
 
+    //GIA DUC
     private void Handle_Add_Update_Delete_DeleteAll_UserPlaylist(String action, int playlistID, String userID, String playlistName, int position) {
         DataService dataService = APIService.getService();
         Call<List<UserPlaylist>> callBack = dataService.addUpdateDeleteUserPlaylist(action, playlistID, userID, playlistName);
@@ -327,7 +330,7 @@ public class UserPlaylistAdapter extends RecyclerView.Adapter<UserPlaylistAdapte
         });
     }
 
-
+    //LOI
     private void Handle_Add_Song_Playlist (String action, String userID, int playlistID, int songID, int position) {
         DataService dataService = APIService.getService();
         Call<List<Status>> callBack = dataService.addDeleteUserPlayListSong(action, userID, playlistID, songID);

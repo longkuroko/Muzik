@@ -240,6 +240,8 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
         }
 
     }
+
+    //LOI
     private void Open_Insert_Song_Playlist_Dialog(String userID, int songID) {
         this.dialog_3 = new Dialog(this.context);
 

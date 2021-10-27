@@ -530,7 +530,6 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
                         if (layout.equals(FAVORITE_SONG)) {
                             songArrayList.remove(position);
                             notifyItemRemoved(position);
-//                            notifyDataSetChanged();
                         } else {
                             imageView.setImageResource(R.drawable.ic_not_favorite);
                         }

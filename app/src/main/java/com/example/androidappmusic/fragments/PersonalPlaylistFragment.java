@@ -172,11 +172,6 @@ public class PersonalPlaylistFragment extends Fragment {
             startActivity(intent);
         });
 
-//        this.llFrameDownloadSong.setOnClickListener(v -> {
-//            Intent intent = new Intent(getContext(), PersonalPlaylistActivity.class);
-//            intent.putExtra("DOWNLOADSONG", this.tvTitleDownloadSong.getText());
-//            startActivity(intent);
-//        });
 
         this.llFrameLoveSong.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), PersonalPlaylistActivity.class);
@@ -184,58 +179,6 @@ public class PersonalPlaylistFragment extends Fragment {
             startActivity(intent);
         });
     }
-
-    /*private void Open_Add_Playlist_Dialog(int gravity) {
-        final Dialog dialog = new Dialog(getContext());
-
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // ẩn thanh tiêu đề
-        dialog.setContentView(R.layout.layout_edittext_dialog);
-
-        Window window = dialog.getWindow();
-        if (window == null) {
-            return;
-        }
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // Set màu mờ mờ cho background dialog, che đi activity chính, nhưng vẫn có thể thấy được một phần activity
-
-        WindowManager.LayoutParams windowAttributes = window.getAttributes();
-        windowAttributes.gravity = gravity;
-        windowAttributes.windowAnimations = R.style.DialogAnimation;
-        window.setAttributes(windowAttributes);
-
-        dialog.setCancelable(true); // Bấm ra chỗ khác sẽ thoát dialog
-
-        EditText etDialogContentPlaylist = dialog.findViewById(R.id.etDialogContentPlaylist);
-        etDialogContentPlaylist.requestFocus();
-        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
-
-        Button btnDialogCancelPlaylist = dialog.findViewById(R.id.btnDialogCancelPlaylist);
-        Button btnDialogActionPlaylist = dialog.findViewById(R.id.btnDialogActionPlaylist);
-
-        this.scaleAnimation = new ScaleAnimation(getContext(), btnDialogCancelPlaylist);
-        this.scaleAnimation.Event_Button();
-        btnDialogCancelPlaylist.setOnClickListener(v -> {
-            dialog.dismiss();
-        });
-
-        this.scaleAnimation = new ScaleAnimation(getContext(), btnDialogActionPlaylist);
-        this.scaleAnimation.Event_Button();
-        btnDialogActionPlaylist.setOnClickListener(v -> {
-        });
-
-        dialog.show(); // câu lệnh này sẽ hiển thị Dialog lên
-    }*/
-
-//    private void Handle_Number_Download_Song() {
-//        List<Song> sonDownloadgArrayList = DataLocalManager.getListSongDownloaded();
-//        if (sonDownloadgArrayList != null) {
-//            tvNumberDownloadSong.setText(String.valueOf(sonDownloadgArrayList.size()));
-//
-//            Log.d(TAG, "Number Download Song: " + sonDownloadgArrayList.size());
-//        } else {
-//            tvNumberDownloadSong.setText("0");
-//        }
-//    }
 
 
     //BANG
@@ -264,6 +207,8 @@ public class PersonalPlaylistFragment extends Fragment {
         });
     }
 
+
+    //GĐ
     private void Handle_UserPlaylist() {
         DataService dataService = APIService.getService(); // Khởi tạo Phương thức để đẩy lên
         Call<List<UserPlaylist>> callBack = dataService.getUserPlaylist(DataLocalManager.getUserID());

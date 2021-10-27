@@ -65,10 +65,6 @@ public class FullActivity extends AppCompatActivity {
     private static final int ID_HOME = 2;
     private static final int ID_PERSONAL = 3;
 
-//    private static final int ID_RADIO = 4;
-//    private static final int ID_SETTING = 4;
-//    private static final int ID_PERSON = 5;
-
 
 
     @Override
@@ -153,9 +149,6 @@ public class FullActivity extends AppCompatActivity {
         meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_CHART, R.drawable.ic_chart));
         meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_HOME, R.drawable.ic_home));
         meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_PERSONAL, R.drawable.ic_music_note));
-//        meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_RADIO, R.drawable.ic_radio));
-//        meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_SETTING, R.drawable.ic_setting));
-//        meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_SETTING, R.drawable.ic_baseline_person_24));
 
         circleImageView = findViewById(R.id.civAvatar);
         Picasso.get()

@@ -175,7 +175,7 @@ public class PersonalPageActivity extends AppCompatActivity {
 
                     loadingDialog.Cancel_Loading();
 
-                    Log.d(TAG, "User Infomation: " + userArrayList.get(0).getName());
+//                    Log.d(TAG, "User Infomation: " + userArrayList.get(0).getName());
                 }
                 loadingDialog.Cancel_Loading();
             }

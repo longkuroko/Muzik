@@ -33,14 +33,6 @@
     <string name="toast25">This song already exists in the playlist</string>
     <string name="toast26">No connection</string>
     <string name="toast27">Please do not write more than 200 characters or special characters</string>
-    <string name="toast28">Commented</string>
-    <string name="toast29">Comment removed</string>
-    <string name="toast30">Delete comment failed</string>
-    <string name="toast31">You need the Youtube app to use it!</string>
-    <string name="toast32">This song has no MV</string>
-    <string name="toast33">Can not change another language, because the device is out of date!</string>
-    <string name="toast34">Please do not write more than 500 characters or special characters</string>
-    <string name="toast35">Thanks for your feedback!</string>
 
     <string name="btnLoginZL">Login with Zalo</string>
     <string name="toast6">Error code:</string>
@@ -48,15 +40,13 @@
     <string name="etHint1">Songs, artists…</string>
     <string name="tvSongName">Name of the song</string>
     <string name="tvArtist">Singer name</string>
-    <string name="tvTheme">Theme</string>
-    <string name="tvLanguage">Language</string>
-    <string name="tvTitleComment">Comment</string>
-    <string name="etHintComment">Enter a comment</string>
-    <string name="tvContentComment">Comment content</string>
-    <string name="tvEmptyComment">No comments yet. \nBe the first to comment</string>
+<!--    <string name="tvTheme">Theme</string>-->
+<!--    <string name="tvLanguage">Language</string>-->
+<!--    <string name="tvTitleComment">Comment</string>-->
+<!--    <string name="etHintComment">Enter a comment</string>-->
+<!--    <string name="tvContentComment">Comment content</string>-->
+<!--    <string name="tvEmptyComment">No comments yet. \nBe the first to comment</string>-->
     <string name="tvTimeStart">00:00</string>
-    <string name="tvVietNamese">VietNamese</string>
-    <string name="tvEnglish">English</string>
     <string name="tvUserCommentName">User</string>
     <string name="tvTimeComment">00/00/0000</string>
     <string name="tvTimeEnd">00:00</string>
@@ -66,7 +56,7 @@
     <string name="tvAlbum">Album Hot</string>
     <string name="tvAlbumName">Album Name</string>
     <string name="tvAlbumSinger">Singer</string>
-    <string name="tvChart">Charts</string>
+    <string name="tvChart">Bảng xếp hạng</string>
     <string name="tvChartNumber">0</string>
     <string name="tvChartSongName">Name of the song</string>
     <string name="tvChartSongSinger">Singer name</string>
@@ -102,10 +92,10 @@
     <string name="tvDialogContent5">Are you sure you want to delete all songs?</string>
     <string name="btnDialogCancel5">Cancel</string>
     <string name="btnDialogAction5">Delete</string>
-    <string name="tvDialogTitle6">Delete comments</string>
-    <string name="tvDialogContent6">Are you sure you want to delete this comment?</string>
-    <string name="btnDialogCancel6">Cancel</string>
-    <string name="btnDialogAction6">Delete</string>
+<!--    <string name="tvDialogTitle6">Delete comments</string>-->
+<!--    <string name="tvDialogContent6">Are you sure you want to delete this comment?</string>-->
+<!--    <string name="btnDialogCancel6">Cancel</string>-->
+<!--    <string name="btnDialogAction6">Delete</string>-->
     <string name="tvYourPlaylist">Playlist: </string>
     <string name="tvNumberPlaylist">0</string>
     <string name="tvTitleDownloadSong">Songs on the device</string>
@@ -125,7 +115,7 @@
     <string name="tvInfoGender">Gender</string>
     <string name="btnPersonalPlayAll">Play all</string>
     <string name="tvEmptySong">There has been no song yet</string>
-    <string name="tvLoading">Wait a minute, hihi....😁</string>
+    <string name="tvLoading">Wait a minute...</string>
     <string name="tvAddPlaylist">Create a new playlist</string>
     <string name="tvEditPlaylist">Edit current playlist name</string>
     <string name="tvDeletePlaylist">Delete current playlist</string>
@@ -145,25 +135,10 @@
     <string name="minutes">minutes ago</string>
     <string name="days">days ago</string>
     <string name="today">Today</string>
-    <string name="tvRadio">Radio</string>
     <string name="tvLyrics">Và giờ anh biết\\nChuyện tình mình chẳng còn gì\\nKhi nắng xuân sang\\nLời mật ngọt còn thầm thì\\nEm bước sang ngang\\nĐợi chờ một điều diệu kì\\nNhư lúc ban đầu\\nVà giờ em khóc\\nThì cũng chẳng để làm gì\\nĐâu phải cho anh\\nChuyện tình mình mà là vì\\nEm đã trao ai\\nDòng lệ tràn đầy cầu kì\\nNhững năm tháng phai nhòa\\nNếu...\\nTrái tim mình nói không nên lời\\nĐắng cay từng tiếng yêu xa vời\\nThế là...\\nVà hôm nay em đến\\nNhưng nắng đâu còn thiết tha gọi mời\\nGió âm thầm lướt qua muôn đời\\nVì ai vì ai\\nVì giờ anh biết\\nChuyện tình mình chẳng còn gì\\nKhi nắng xuân sang\\nLời mật ngọt còn thầm thì\\nEm bước sang ngang\\nĐợi chờ một điều diệu kì\\nNhư lúc ban đầu\\nVà giờ em khóc\\nThì cũng chẳng để làm gì\\nĐâu phải cho anh\\nChuyện tình mình mà là vì\\nEm đã trao ai\\nDòng lệ tràn đầy cầu kì\\nNhững năm tháng phai nhòa\\nNếu...\\nĐóa hoa hồng trước kia trở về\\nNhánh hương tình thoảng trên câu thề\\nAnh ước rằng...\\nRằng một mai anh đến\\nAnh đón em vào sớm mai trong lành\\nNhưng đó mãi là giấc mơ không thành\\nVì ai vì ai\\nVà giờ anh biết\\nChuyện tình mình chẳng còn gì\\nKhi nắng xuân sang\\nLời mật ngọt còn thầm thì\\nEm bước sang ngang\\nĐợi chờ một điều diệu kì\\nNhư lúc ban đầu\\nVà giờ em khóc\\nThì cũng chẳng để làm gì\\nĐâu phải cho anh\\nChuyện tình mình mà là vì\\nEm đã trao ai\\nDòng lệ tràn đầy cầu kì\\nNhững năm tháng phai nhòa\\nVì giờ anh biết\\nChuyện tình mình chẳng còn gì\\nKhi nắng xuân sang\\nLời mật ngọt còn thầm thì\\nEm bước sang ngang\\nĐợi chờ một điều diệu kì\\nNhư lúc ban đầu\\nVà giờ em khóc\\nThì cũng chẳng để làm gì\\nĐâu phải cho anh\\nChuyện tình mình mà là vì\\nNước mắt em rơi\\nDòng lệ tràn đầy cầu kì\\nVì em vì em\\n</string>
     <string name="tvRoom1">Top 10 songs from the chart</string>
     <string name="tvRoom2">20 songs random</string>
-    <string name="btnRating">Rate this app</string>
-    <string name="tvFeedbackTitle">Rating</string>
-    <string name="tvShowStar">4.0</string>
-    <string name="etFeedbackContent">Enter feedback</string>
-    <string name="btnSendFeedback">Send</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_full_player">FullPlayerActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
 
 </resources>

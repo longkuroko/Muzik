@@ -19,7 +19,7 @@
     <ImageView
         android:id="@+id/ivCover"
         android:layout_width="match_parent"
-        android:layout_height="444dp"
+        android:layout_height="425dp"
         android:layout_gravity="center"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
@@ -114,26 +114,6 @@
 
         <TableRow>
 
-<!--            <ImageView-->
-<!--                android:id="@+id/ivDownload"-->
-<!--                android:layout_width="25dp"-->
-<!--                android:layout_height="25dp"-->
-<!--                android:gravity="center"-->
-<!--                app:srcCompat="@drawable/ic_download" />-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/ivMv"-->
-<!--                android:layout_width="25dp"-->
-<!--                android:layout_height="25dp"-->
-<!--                android:gravity="center"-->
-<!--                app:srcCompat="@drawable/ic_play_1" />-->
-
-            <ImageView
-                android:id="@+id/ivComment"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:gravity="center"
-                app:srcCompat="@drawable/ic_comment" />
         </TableRow>
     </TableLayout>
 

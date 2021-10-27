@@ -47,8 +47,6 @@ public class UserPlaylistAdapter extends RecyclerView.Adapter<UserPlaylistAdapte
     private Dialog dialog_2;
 
     private Context context;
-
-
     private ArrayList<UserPlaylist> userPlaylistArrayList;
     private int songID = -1;
 
@@ -120,16 +118,16 @@ public class UserPlaylistAdapter extends RecyclerView.Adapter<UserPlaylistAdapte
     private void Open_Info_Playlist_Dialog(int gravity, int position) {
         this.dialog_1 = new Dialog(this.context);
 
-//        dialog_1.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        dialog_2.setContentView(R.layout.layout_userplaylist_more);
+        dialog_1.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog_1.setContentView(R.layout.layout_userplaylist_more);
 
         Window window = dialog_1.getWindow();
         if (window == null) {
             return;
         }
-
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // Set màu mờ mờ cho background dialog, che đi activity chính, nhưng vẫn có thể thấy được một phần activity
+
         WindowManager.LayoutParams windowAttributes = window.getAttributes();
         windowAttributes.gravity = gravity;
         windowAttributes.windowAnimations = R.style.DialogAnimation;
@@ -141,6 +139,7 @@ public class UserPlaylistAdapter extends RecyclerView.Adapter<UserPlaylistAdapte
         tvInfoPlaylistName.setSelected(true); // Text will be moved
         tvInfoPlaylistName.setText(String.valueOf(userPlaylistArrayList.get(position).getName()));
 
+//        RelativeLayout rlAddPlaylist = dialog.findViewById(R.id.rlAddPlaylist);
         RelativeLayout rlEditPlaylist = dialog_1.findViewById(R.id.rlEditPlaylist);
         TextView tvEditPlaylist = dialog_1.findViewById(R.id.tvEditPlaylist);
         tvEditPlaylist.setSelected(true);
@@ -157,6 +156,8 @@ public class UserPlaylistAdapter extends RecyclerView.Adapter<UserPlaylistAdapte
         TextView tvCloseInfoPlaylist = dialog_1.findViewById(R.id.tvCloseInfoPlaylist);
         tvCloseInfoPlaylist.setSelected(true);
 
+//        this.scaleAnimation = new ScaleAnimation(context, rlAddPlaylist);
+//        this.scaleAnimation.Event_RelativeLayout();
 
         if (songID > -1) {
             rlEditPlaylist.setVisibility(View.GONE);
@@ -168,23 +169,28 @@ public class UserPlaylistAdapter extends RecyclerView.Adapter<UserPlaylistAdapte
             Intent intent = new Intent(context, AddUpdateActivity.class);
             intent.putExtra("UPDATEPLAYLIST", this.userPlaylistArrayList.get(position));
             context.startActivity(intent);
+
             dialog_1.dismiss();
         });
+
         this.scaleAnimation = new ScaleAnimation(context, rlDeletePlaylist);
         this.scaleAnimation.Event_RelativeLayout();
         rlDeletePlaylist.setOnClickListener(v -> { // Xóa một playlist
             Open_Delete_Playlist_Dialog(ACTION_DELETE_PLAYLIST, userPlaylistArrayList.get(position).getYouID(), DataLocalManager.getUserID(), userPlaylistArrayList.get(position).getName(), position);
         });
+
         this.scaleAnimation = new ScaleAnimation(context, rlDeleteAllPlaylist);
         this.scaleAnimation.Event_RelativeLayout();
         rlDeleteAllPlaylist.setOnClickListener(v -> { // Xóa toàn bộ playlist
             Open_Delete_Playlist_Dialog(ACTION_DELETEALL_PLAYLIST, userPlaylistArrayList.get(position).getYouID(), DataLocalManager.getUserID(), userPlaylistArrayList.get(position).getName(), position);
         });
+
         this.scaleAnimation = new ScaleAnimation(context, rlCloseInfoPlaylist);
         this.scaleAnimation.Event_RelativeLayout();
         rlCloseInfoPlaylist.setOnClickListener(v -> {
             dialog_1.dismiss();
         });
+
         dialog_1.show(); // câu lệnh này sẽ hiển thị Dialog lên
     }
 
@@ -390,16 +396,16 @@ public class UserPlaylistAdapter extends RecyclerView.Adapter<UserPlaylistAdapte
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            cvPlaylistCover = itemView.findViewById(R.id.cvPlaylistCover);
+            this.cvPlaylistCover = itemView.findViewById(R.id.cvPlaylistCover);
 
-            tvPlaylistName = itemView.findViewById(R.id.tvPlaylistName);
-            tvPlaylistName.setSelected(true);
+            this.tvPlaylistName = itemView.findViewById(R.id.tvPlaylistName);
+            this.tvPlaylistName.setSelected(true);
 
-            tvNumberSongPlaylist = itemView.findViewById(R.id.tvNumberSongPlaylist);
+            this.tvNumberSongPlaylist = itemView.findViewById(R.id.tvNumberSongPlaylist);
 
-            ivPlaylistMore = itemView.findViewById(R.id.ivPlaylistMore);
-            scaleAnimation = new ScaleAnimation(itemView.getContext(), this.ivPlaylistMore);
-            scaleAnimation.Event_ImageView();
+            this.ivPlaylistMore = itemView.findViewById(R.id.ivPlaylistMore);
+            this.scaleAnimation = new ScaleAnimation(itemView.getContext(), this.ivPlaylistMore);
+            this.scaleAnimation.Event_ImageView();
         }
     }
 }

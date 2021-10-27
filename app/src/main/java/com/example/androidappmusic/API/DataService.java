@@ -26,7 +26,7 @@ public interface DataService {
     @POST("getsongslider.php")
     Call<List<Song>> getSongFromSlider(@Field("id") int id);
 
-    @GET("playlistforcurrentday.php")
+    @GET("getplaylistcurrentday.php")
     Call<List<Playlist>> getPlaylistCurrentDay();
 
     @GET("themecurrentday.php")
@@ -64,7 +64,7 @@ public interface DataService {
 
     @FormUrlEncoded
     @POST("addnewuser.php")
-    Call<List<User>> addNewUser(@Field("id") String id, @Field("name") String name, @Field("email") String email, @Field("img") String img, @Field("isDark") String isDark, @Field("isEnglish") String isEnglish);
+    Call<List<User>> addNewUser(@Field("id") String id, @Field("name") String name, @Field("email") String email, @Field("img") String img);
 
     @FormUrlEncoded
     @POST("getfavoritesongfromid.php")
@@ -90,15 +90,5 @@ public interface DataService {
     @POST("adddeleteuserplaylistsong.php")
     Call<List<Status>> addDeleteUserPlayListSong(@Field("action") String action, @Field("userID") String userID, @Field("playlistID") int playlistID, @Field("songID") int songID);
 
-//    @FormUrlEncoded
-//    @POST("getcommentsong.php")
-//    Call<List<Comment>> getCommentSong(@Field("id") int id);
 
-    @FormUrlEncoded
-    @POST("addupdatedeletecommentsong.php")
-    Call<List<Status>> addUpdateDeleteCommentSong(@Field("action") String action, @Field("commentID") int commentID, @Field("songID") int songID, @Field("userID") String userID, @Field("content") String content, @Field("date") String date);
-
-    @FormUrlEncoded
-    @POST("addfeedback.php")
-    Call<List<Status>> addFeedback(@Field("userID") String userID, @Field("star") float star, @Field("content") String content, @Field("date") String date);
 }

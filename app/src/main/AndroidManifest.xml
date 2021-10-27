@@ -24,7 +24,11 @@
         <activity
             android:name=".activity.MainActivity"
             android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity android:name=".activity.AddUpdateActivity" >
@@ -42,11 +46,7 @@
         <activity android:name=".activity.GenreActivity" >
         </activity>
         <activity android:name=".activity.PersonalPlaylistActivity" android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activity.SearchActivity" />
         <activity android:name=".activity.SongActivity" >

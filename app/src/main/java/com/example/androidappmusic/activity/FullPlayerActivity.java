@@ -166,9 +166,9 @@ public class FullPlayerActivity extends AppCompatActivity implements FullPlayerF
 
             }
         });
-//        scaleAnimation = new ScaleAnimation(this, this.ivBack);
-//        scaleAnimation.Event_ImageView();
-//        this.ivBack.setOnClickListener(v -> finish());
+        scaleAnimation = new ScaleAnimation(this, this.ivBack);
+        scaleAnimation.Event_ImageView();
+        this.ivBack.setOnClickListener(v -> finish());
     }
 
     @Override

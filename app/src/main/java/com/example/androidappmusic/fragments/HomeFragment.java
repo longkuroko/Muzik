@@ -152,7 +152,7 @@ public class HomeFragment extends Fragment {
                     sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM); // giao diện
                     sliderView.setSliderAdapter(new SliderAdapter(getContext(), sliders));
 
-                    Log.d(TAG, sliders.get(0).getImage());
+//                    Log.d(TAG, sliders.get(0).getImage());
                 }
             }
 
@@ -196,7 +196,7 @@ public class HomeFragment extends Fragment {
                     sflItemAlbum.setVisibility(View.GONE); // Load biến mất
                     vpg2Album.setVisibility(View.VISIBLE); // Hiện thông tin
 
-                    Log.d(TAG_1, albumArrayList.get(0).getImg());
+//                    Log.d(TAG_1, albumArrayList.get(0).getImg());
                 }
             }
 
@@ -229,7 +229,7 @@ public class HomeFragment extends Fragment {
                     sflItemPlaylist.setVisibility(View.GONE); // Load biến mất
                     rvPlaylist.setVisibility(View.VISIBLE); // Hiện thông tin
 
-                    Log.d(TAG_2, playlistArrayList.get(0).getImg());
+//                    Log.d(TAG_2, playlistArrayList.get(0).getImg());
                 }
             }
 
@@ -261,7 +261,7 @@ public class HomeFragment extends Fragment {
                     sflItemTheme.setVisibility(View.GONE);
                     rvTheme.setVisibility(View.VISIBLE);
 
-                    Log.d(TAG_3, themeArrayList.get(0).getImg());
+//                    Log.d(TAG_3, themeArrayList.get(0).getImg());
                 }
             }
 

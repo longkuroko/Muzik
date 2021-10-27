@@ -52,36 +52,6 @@
         android:layout_marginTop="20dp"
         android:background="@color/colorLight7" />
 
-    <!--    <RelativeLayout-->
-    <!--        android:id="@+id/rlAddPlaylist"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="20dp">-->
-
-    <!--        <ImageView-->
-    <!--            android:id="@+id/ivAddPlaylist"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_alignTop="@+id/tvAddPlaylist"-->
-    <!--            android:layout_alignBottom="@+id/tvAddPlaylist"-->
-    <!--            app:srcCompat="@drawable/ic_add_1" />-->
-
-    <!--        <TextView-->
-    <!--            android:id="@+id/tvAddPlaylist"-->
-    <!--            style="@style/tvStyle1"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_marginStart="10dp"-->
-    <!--            android:layout_toEndOf="@+id/ivAddPlaylist"-->
-    <!--            android:ellipsize="marquee"-->
-    <!--            android:gravity="center"-->
-    <!--            android:marqueeRepeatLimit="marquee_forever"-->
-    <!--            android:scrollHorizontally="true"-->
-    <!--            android:text="@string/tvAddPlaylist"-->
-    <!--            android:textAlignment="center"-->
-    <!--            android:textSize="18sp"-->
-    <!--            android:textStyle="normal" />-->
-    <!--    </RelativeLayout>-->
 
     <RelativeLayout
         android:id="@+id/rlEditPlaylist"

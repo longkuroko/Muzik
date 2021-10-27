@@ -70,13 +70,6 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
         this.songArrayList = songArrayList;
     }
 
-//    public ChartAdapter(Context context, ArrayList<Song> songArrayList, boolean o, List<Integer> requests, Dialog dialog) {
-//        isFromRadio = true;
-//        this.context = context;
-//        this.songArrayList = songArrayList;
-//        listRequest = requests;
-//        dialogRequestFromRadio = dialog;
-//    }
 
     @NonNull
     @Override
@@ -169,14 +162,6 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
         RelativeLayout rlDeleteAllSongToPlaylist = this.dialog_1.findViewById(R.id.rlDeleteAllSongToPlaylist);
         TextView tvDeleteAllSongToPlaylist = this.dialog_1.findViewById(R.id.tvDeleteAllSongToPlaylist);
         tvDeleteAllSongToPlaylist.setSelected(true);
-
-//        RelativeLayout rlDownLoadSong = this.dialog_1.findViewById(R.id.rlDownLoadSong);
-//        TextView tvDownLoadSong = this.dialog_1.findViewById(R.id.tvDownLoadSong);
-//        tvDownLoadSong.setSelected(true);
-//
-//        RelativeLayout rlDeleteDownLoadSong = this.dialog_1.findViewById(R.id.rlDeleteDownLoadSong);
-//        TextView tvDeleteDownLoadSong = this.dialog_1.findViewById(R.id.tvDeleteDownLoadSong);
-//        tvDeleteDownLoadSong.setSelected(true);
 
         RelativeLayout rlCloseInfoPlaylist = this.dialog_1.findViewById(R.id.rlCloseInfoPlaylist);
         TextView tvCloseInfoSong = this.dialog_1.findViewById(R.id.tvCloseInfoSong);

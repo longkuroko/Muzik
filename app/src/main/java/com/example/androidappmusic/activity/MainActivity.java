@@ -187,11 +187,11 @@ MainActivity extends AppCompatActivity {
                                             }else{
                                                 avatar = "null";
                                             }
-                                            String isDark = "0";
-                                            String isEnglish = "0";
+//                                            String isDark = "0";
+//                                            String isEnglish = "0";
 
 //                                            loadingDialog.Start_Loading();
-                                            HandleUser(id, name, email, avatar, isDark, isEnglish);
+                                            HandleUser(id, name, email, avatar);
 
                                         }
                                     }else{
@@ -264,11 +264,11 @@ MainActivity extends AppCompatActivity {
                                         String name = user.getDisplayName();
                                         String email = !Objects.requireNonNull(user.getEmail()).isEmpty() ? user.getEmail() : "Null";
                                         String avatarGoogle = !Objects.requireNonNull(user.getPhotoUrl()).toString().isEmpty() ? user.getPhotoUrl().toString().replace("s96-c", "s500-c") : "Null";
-                                        String isDark = "0";
-                                        String isEnglish = "0";
+//                                        String isDark = "0";
+//                                        String isEnglish = "0";
 
 //                                        loadingDialog.Start_Loading();
-                                        HandleUser(id, name, email, avatarGoogle, isDark, isEnglish);
+                                        HandleUser(id, name, email, avatarGoogle);
                                     }
                                 } else {
                                     // If sign in fails, display a message to the user.
@@ -292,9 +292,9 @@ MainActivity extends AppCompatActivity {
         callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
     }
-    private void HandleUser(String id, String name, String email, String avatar, String isDark, String isEnglish) {
+    private void HandleUser(String id, String name, String email, String avatar) {
         DataService dataService = APIService.getService();
-        Call<List<User>> callBack = dataService.addNewUser(id, name, email, avatar, isDark, isEnglish);
+        Call<List<User>> callBack = dataService.addNewUser(id, name, email, avatar);
         callBack.enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {

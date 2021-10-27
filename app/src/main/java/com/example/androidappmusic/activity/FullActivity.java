@@ -22,7 +22,6 @@ import com.example.androidappmusic.fragments.ChartFragment;
 import com.example.androidappmusic.fragments.HomeFragment;
 import com.example.androidappmusic.fragments.MiniPlayerFragment;
 import com.example.androidappmusic.fragments.PersonalPlaylistFragment;
-import com.example.androidappmusic.fragments.SettingFragment;
 import com.example.androidappmusic.service.FullPlayerManagerService;
 import com.example.androidappmusic.service.MyBroadcastReceiver;
 import com.example.androidappmusic.sharedPreferences.DataLocalManager;

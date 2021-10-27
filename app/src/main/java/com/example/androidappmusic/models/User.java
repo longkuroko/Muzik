@@ -21,13 +21,13 @@ public class User {
     @Expose
     private String img;
 
-    @SerializedName("isDark")
-    @Expose
-    private String isDark;
-
-    @SerializedName("isEnglish")
-    @Expose
-    private String isEnglish;
+//    @SerializedName("isDark")
+//    @Expose
+//    private String isDark;
+//
+//    @SerializedName("isEnglish")
+//    @Expose
+//    private String isEnglish;
 
     public User() {
     }
@@ -64,19 +64,19 @@ public class User {
         this.img = img;
     }
 
-    public String getIsDark() {
-        return isDark;
-    }
-
-    public void setIsDark(String isDark) {
-        this.isDark = isDark;
-    }
-
-    public String getIsEnglish() {
-        return isEnglish;
-    }
-
-    public void setIsEnglish(String isEnglish) {
-        this.isEnglish = isEnglish;
-    }
+//    public String getIsDark() {
+//        return isDark;
+//    }
+//
+//    public void setIsDark(String isDark) {
+//        this.isDark = isDark;
+//    }
+//
+//    public String getIsEnglish() {
+//        return isEnglish;
+//    }
+//
+//    public void setIsEnglish(String isEnglish) {
+//        this.isEnglish = isEnglish;
+//    }
 }

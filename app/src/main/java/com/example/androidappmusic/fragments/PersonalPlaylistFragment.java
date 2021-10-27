@@ -237,6 +237,8 @@ public class PersonalPlaylistFragment extends Fragment {
 //        }
 //    }
 
+
+    //BANG
     private void Handle_Number_Favorite_Song() {
         DataService dataService = APIService.getService(); // Khởi tạo Phương thức để đẩy lên
         Call<List<Song>> callBack = dataService.getFavoriteSongUser(DataLocalManager.getUserID());

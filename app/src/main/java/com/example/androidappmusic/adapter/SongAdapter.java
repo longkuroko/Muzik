@@ -77,7 +77,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
     private static final String SONG = "SONG";
     private static final String FAVORITE_SONG = "FAVORITESONG";
     private static final String PLAYLIST_SONG = "PLAYLISTSONG";
-//    private static final String DOWNLOAD_SONG = "DOWNLOADSONG";
+
     private static final String SONG_SEARCH = "SONGSEARCH";
     private static final String LIST_SONG = "LISTSONG";
 
@@ -228,12 +228,6 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
                 break;
             }
 
-//            case DOWNLOAD_SONG: {
-//                rlAddSongToPlaylist.setVisibility(View.GONE);
-//                rlDeleteSongToPlaylist.setVisibility(View.GONE);
-//                rlDeleteAllSongToPlaylist.setVisibility(View.GONE);
-//                break;
-//            }
 
             case LIST_SONG: {
                 rlPlaySong.setVisibility(View.GONE);
@@ -279,6 +273,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
         this.dialog_1.show(); // câu lệnh này sẽ hiển thị Dialog lên
     }
 
+    //LOI
     private void Open_Insert_Song_Playlist_Dialog(String userID, int songID){
         this.dialog_3 = new Dialog(this.context);
 
@@ -343,6 +338,8 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
 
         dialog_3.show();
     }
+
+    //TIN
     private void Open_Delete_SongPlaylist_Dialog(String action, String userID, int playlistID, int songID, int position) {
         this.dialog_2 = new Dialog(this.context);
 
@@ -405,6 +402,8 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
 
         dialog_2.show(); // show cái dialog thông báo
     }
+
+    //TIN
     private void Handle_Add_Delete_DeleteAll_Song_Playlist(String action, String userID, int playlistID, int songID, int position) {
         DataService dataService = APIService.getService();
         Call<List<Status>> callBack = dataService.addDeleteUserPlayListSong(action, userID, playlistID, songID);
@@ -476,6 +475,8 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
             }
         });
     }
+
+    //Bang
     private void Handle_Favourite_Icon_Color(ImageView imageView, int position) {
         DataService dataService = APIService.getService(); // Khởi tạo Phương thức để đẩy lên
         Call<List<Song>> callBack = dataService.getFavoriteSongUser(DataLocalManager.getUserID());
@@ -505,6 +506,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
         });
     }
 
+    //Bang
     private void Handle_Add_Delete_Favorite_Song(ImageView imageView, int position) {
         DataService dataService = APIService.getService(); // Khởi tạo Phương thức để đẩy lên
         Call<List<Status>> callBack = dataService.addDeleteFavoriteSong(DataLocalManager.getUserID(), songArrayList.get(position).getId());

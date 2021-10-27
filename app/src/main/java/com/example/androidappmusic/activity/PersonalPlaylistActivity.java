@@ -128,29 +128,7 @@ public class PersonalPlaylistActivity extends AppCompatActivity {
         scaleAnimation.Event_Button();
     }
 
-//    private void Handle_Download_Song() {
-//        songArrayList = (ArrayList<Song>) DataLocalManager.getListSongDownloaded();
-//        if (songArrayList != null && songArrayList.size() > 0){
-//
-//            rvPersonalPlaylist.setHasFixedSize(true); //1
-//            LinearLayoutManager layoutManager = new LinearLayoutManager(PersonalPlaylistActivity.this);
-//            layoutManager.setOrientation(RecyclerView.VERTICAL); // chieu doc
-//            rvPersonalPlaylist.setLayoutManager(layoutManager);
-//            rvPersonalPlaylist.setAdapter(new SongAdapter(PersonalPlaylistActivity.this, songArrayList, "DOWNLOADSONG"));
-//            //set ItemAnimator for RecycleView
-//            rvPersonalPlaylist.setItemAnimator(new DefaultItemAnimator());
-//
-//            sflItemSong.setVisibility(View.GONE); //Load biến mất
-//            rvPersonalPlaylist.setVisibility(View.VISIBLE); //Hiện thông tin
-//
-//            Play_All_Song();
-//            Log.d(TAG, songArrayList.get(0).getName());
-//        }else {
-//            sflItemSong.setVisibility(View.GONE);
-//            tvEmptySong.setVisibility(View.VISIBLE);
-//        }
-//
-//    }
+
 
     private void Handle_UserPlaylist_Song(int playlistID) {
         DataService dataService = APIService.getService(); //Khởi tạo phương thức để đẩy lên
@@ -187,7 +165,7 @@ public class PersonalPlaylistActivity extends AppCompatActivity {
             }
         });
     }
-
+    //BANG
     private void Handle_Favorite_Song() {
         DataService dataService = APIService.getService(); //Khởi tạo phương thức để đẩy lên
         Call<List<Song>> callBack = dataService.getFavoriteSongUser(DataLocalManager.getUserID());

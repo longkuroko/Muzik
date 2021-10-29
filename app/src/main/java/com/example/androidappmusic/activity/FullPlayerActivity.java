@@ -116,6 +116,7 @@ public class FullPlayerActivity extends AppCompatActivity implements FullPlayerF
 
                     Log.d(TAG, "Bài hát từ Slider: " + this.songs.get(0).getName());
                 }
+//
             } else if (intent.hasExtra("SONGCHART")) { // Khi chọn một bài hát từ bảng xếp hạng bài hát
                 this.song = (Song) intent.getParcelableExtra("SONGCHART");
                 if (this.song != null) {

@@ -85,7 +85,7 @@ public class UserPlaylistAdapter extends RecyclerView.Adapter<UserPlaylistAdapte
         DataLocalManager.init(context);
 
         holder.tvPlaylistName.setText(this.userPlaylistArrayList.get(position).getName().trim());
-        holder.tvNumberSongPlaylist.setText(String.valueOf(this.userPlaylistArrayList.get(position).getTotalSong()));
+//        holder.tvNumberSongPlaylist.setText(String.valueOf(this.userPlaylistArrayList.get(position).getTotalSong()));
         holder.ivPlaylistMore.setOnClickListener(v -> Open_Info_Playlist_Dialog(Gravity.BOTTOM, holder.getLayoutPosition()));
 
         if (this.songID > -1) {

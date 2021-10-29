@@ -152,7 +152,10 @@ public class HomeFragment extends Fragment {
                     sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM); // giao diện
                     sliderView.setSliderAdapter(new SliderAdapter(getContext(), sliders));
 
-//                    Log.d(TAG, sliders.get(0).getImage());
+//                    Log.d(TAG, sliders.get(0).getName());
+//                    for(int i=0;i<sliders.size() ; i++){
+//                        Log.d(TAG, sliders.get(i).getImage() + "\n" + sliders.get(i).getSliderID() + "\n" + sliders.get(i).getSongID());
+//                    }
                 }
             }
 

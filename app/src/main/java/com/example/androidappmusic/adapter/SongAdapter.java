@@ -58,7 +58,6 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
     private Dialog dialog_4;
 
 
-    int index = 0 ;
 
 //    private ScaleAnimation scaleAnimation;
 
@@ -72,7 +71,6 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
     private int playlistID;
     private String layout;
 
-    private final String GIF_URL = "https://i.stack.imgur.com/h6viz.gif";
 
     private static final String SONG = "SONG";
     private static final String FAVORITE_SONG = "FAVORITESONG";

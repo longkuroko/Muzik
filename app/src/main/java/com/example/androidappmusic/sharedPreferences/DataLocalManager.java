@@ -21,9 +21,6 @@ public class DataLocalManager {
 
     private static final String USER_ID = "USER_ID";
     private static final String USER_AVATAR = "USER_AVATAR";
-//    private static final String THEME = "THEME";
-//    private static final String LANGUAGE = "LANGUAGE";
-//    private static final String SONG_DOWNLOADED = "SONG_DOWNLOADED";
 
     public static void init(Context context) {
         instance = new DataLocalManager();

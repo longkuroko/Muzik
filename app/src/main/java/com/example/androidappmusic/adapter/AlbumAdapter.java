@@ -52,12 +52,6 @@ public class AlbumAdapter  extends  RecyclerView.Adapter<AlbumAdapter.ViewHolder
         holder.tvAlbumName.setText(albumArrayList.get(position).getName().trim());
         holder.tvAlbumSinger.setText(albumArrayList.get(position).getSinger().trim());
 
-//        holder.itemView.setOnClickListener(v->{
-//
-//            Intent intent = new Intent(context, SongActivity.class);
-//            intent.putExtra("ALBUM", albumArrayList.get(holder.getLayoutPosition()));
-//            context.startActivity(intent);
-//        });
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

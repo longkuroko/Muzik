@@ -40,12 +40,7 @@
     <string name="etHint1">Songs, artists…</string>
     <string name="tvSongName">Name of the song</string>
     <string name="tvArtist">Singer name</string>
-<!--    <string name="tvTheme">Theme</string>-->
-<!--    <string name="tvLanguage">Language</string>-->
-<!--    <string name="tvTitleComment">Comment</string>-->
-<!--    <string name="etHintComment">Enter a comment</string>-->
-<!--    <string name="tvContentComment">Comment content</string>-->
-<!--    <string name="tvEmptyComment">No comments yet. \nBe the first to comment</string>-->
+
     <string name="tvTimeStart">00:00</string>
     <string name="tvUserCommentName">User</string>
     <string name="tvTimeComment">00/00/0000</string>
@@ -92,13 +87,10 @@
     <string name="tvDialogContent5">Are you sure you want to delete all songs?</string>
     <string name="btnDialogCancel5">Cancel</string>
     <string name="btnDialogAction5">Delete</string>
-<!--    <string name="tvDialogTitle6">Delete comments</string>-->
-<!--    <string name="tvDialogContent6">Are you sure you want to delete this comment?</string>-->
-<!--    <string name="btnDialogCancel6">Cancel</string>-->
-<!--    <string name="btnDialogAction6">Delete</string>-->
+
     <string name="tvYourPlaylist">Playlist: </string>
     <string name="tvNumberPlaylist">0</string>
-    <string name="tvTitleDownloadSong">Songs on the device</string>
+
     <string name="tvTitleLoveSong">Favorite song</string>
     <string name="tvNumberSongLove"> </string>
     <string name="tvEmptyPlaylist">There are no playlists yet</string>

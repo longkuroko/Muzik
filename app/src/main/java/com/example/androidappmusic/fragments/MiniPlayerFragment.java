@@ -26,7 +26,6 @@ import com.example.androidappmusic.R;
 import com.example.androidappmusic.activity.FullPlayerActivity;
 import com.example.androidappmusic.models.Song;
 import com.example.androidappmusic.service.FullPlayerManagerService;
-import com.example.androidappmusic.service.MiniPlayerOnLockScreenService;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -68,16 +67,15 @@ public class MiniPlayerFragment extends Fragment {
             Mapping(view);
             Event();
 
-            getActivity().registerReceiver(broadcastReceiver, new IntentFilter("TRACKS_TRACkS"));
+
 
             if (FullPlayerManagerService.mediaPlayer != null) {
                 if (FullPlayerManagerService.mediaPlayer.isPlaying()) {
-                    CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
                 } else {
-                    CreateNotification(MiniPlayerOnLockScreenService.ACTION_PAUSE);
+
                 }
             } else {
-                CreateNotification(MiniPlayerOnLockScreenService.ACTION_PAUSE);
+
             }
         } catch (Exception e) {
             Log.d("Error", e.toString());
@@ -87,7 +85,6 @@ public class MiniPlayerFragment extends Fragment {
     public void onResume() {
         super.onResume();
         if (!FullPlayerManagerService.isRegister) {
-            getActivity().registerReceiver(broadcastReceiver, new IntentFilter("TRACKS_TRACkS"));
             FullPlayerManagerService.isRegister = true;
         }
     }
@@ -96,7 +93,7 @@ public class MiniPlayerFragment extends Fragment {
     public void onPause() {
         super.onPause();
         try {
-            getActivity().unregisterReceiver(broadcastReceiver);
+
             FullPlayerManagerService.isRegister = false;
         } catch (Exception e) {
             e.printStackTrace();
@@ -162,7 +159,7 @@ public class MiniPlayerFragment extends Fragment {
                     mediaPlayer.stop();
                     mediaPlayer.reset();
                 });
-                mediaPlayer.setDataSource(song); // Cái này quan trọng nè Thắng
+                mediaPlayer.setDataSource(song);
                 mediaPlayer.prepare(); */
 
 
@@ -200,46 +197,16 @@ public class MiniPlayerFragment extends Fragment {
         }
     }
 
-    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getExtras().getString("actionname");
-            switch (action) {
-                case MiniPlayerOnLockScreenService.ACTION_PLAY:
-                case MiniPlayerOnLockScreenService.ACTION_PAUSE:
-                    onSongPlay();
-                    break;
-                case MiniPlayerOnLockScreenService.ACTION_PRE:
-
-                    try {
-                        onSongPrev();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                case MiniPlayerOnLockScreenService.ACTION_NEXT:
-
-                    try {
-                        onSongNext();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    break;
-            }
-        }
-
-
-    };
 
     private void onSongPlay() {
         if (FullPlayerManagerService.mediaPlayer.isPlaying()) {
             FullPlayerManagerService.mediaPlayer.pause();
             this.ivPlay.setImageResource(R.drawable.ic_play_2);
-            CreateNotification(MiniPlayerOnLockScreenService.ACTION_PAUSE);
+
         } else {
             FullPlayerManagerService.mediaPlayer.start();
             this.ivPlay.setImageResource(R.drawable.ic_pause);
-            CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
+
         }
     }
 
@@ -277,7 +244,7 @@ public class MiniPlayerFragment extends Fragment {
             this.tvListItemSongName.setText(FullPlayerManagerService.listCurrentSong.get(FullPlayerManagerService.position).getName().trim());
             this.tvListItemSongSinger.setText(FullPlayerManagerService.listCurrentSong.get(FullPlayerManagerService.position).getSinger().trim());
         }
-        CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
+
     }
 
     public void onSongPrev() {
@@ -314,13 +281,9 @@ public class MiniPlayerFragment extends Fragment {
             this.tvListItemSongName.setText(FullPlayerManagerService.listCurrentSong.get(FullPlayerManagerService.position).getName());
             this.tvListItemSongSinger.setText(FullPlayerManagerService.listCurrentSong.get(FullPlayerManagerService.position).getSinger());
         }
-        CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
     }
 
     public void CreateNotification(String action) {
-        Intent intent = new Intent(getActivity(), MiniPlayerOnLockScreenService.class);
-        intent.setAction(action);
-        getActivity().startService(intent);
-        //NotificationService.NotificationService(getContext(),FullPlayerActivity.dataSongArrayList.get(position),R.drawable.ic_pause,position,FullPlayerActivity.dataSongArrayList.size());
+
     }
 }

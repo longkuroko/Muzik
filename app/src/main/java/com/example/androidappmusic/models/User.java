@@ -21,13 +21,7 @@ public class User {
     @Expose
     private String img;
 
-//    @SerializedName("isDark")
-//    @Expose
-//    private String isDark;
-//
-//    @SerializedName("isEnglish")
-//    @Expose
-//    private String isEnglish;
+
 
     public User() {
     }

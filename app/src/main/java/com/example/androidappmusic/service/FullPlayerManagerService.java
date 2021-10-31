@@ -61,7 +61,7 @@ public class FullPlayerManagerService {
                     mediaPlayer.reset();
                 });
                 currentSong = FullPlayerActivity.dataSongs.get(position);
-                mediaPlayer.setDataSource(song); // Cái này quan trọng nè Thắng
+                mediaPlayer.setDataSource(song);
                 mediaPlayer.prepare();
                 mediaPlayer.start();
                 listCurrentSong = new ArrayList<Song>(FullPlayerActivity.dataSongs);
@@ -72,12 +72,6 @@ public class FullPlayerManagerService {
 
 
         }
-    }
-    public static void CreateNotification(String action, Activity activity) {
-        Intent intent = new Intent(activity, MiniPlayerOnLockScreenService.class);
-        intent.setAction(action);
-        activity.startService(intent);
-
     }
 
 

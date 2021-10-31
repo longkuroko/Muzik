@@ -296,54 +296,9 @@ MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
-//        if(requestCode == RC_SIGN_IN){
-//            Log.d(TAG_2, "onActivityResult: Google signin intent result");
-//            Task<GoogleSignInAccount> accountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
-//            try {
-//                GoogleSignInAccount account = accountTask.getResult(ApiException.class);
-//                setFirebaseAuthWithGoogleAccount(account);
-//
-//
-//            }catch (Exception e){
-//                Log.d(TAG_2, "Google sign in failed", e);
-//            }
-//
-//        }
+
     }
 
-//    private void setFirebaseAuthWithGoogleAccount(GoogleSignInAccount account){
-//        Log.d(TAG_2, "FirebaseAuthWith...");
-//
-//        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
-//        firebaseAuth.signInWithCredential(credential)
-//                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-//                    @Override
-//                    public void onSuccess(AuthResult authResult) {
-//                        //login success
-//                        Log.d(TAG_2, "onSuccess: Logged in");
-//                        FirebaseUser user = firebaseAuth.getCurrentUser();
-//
-//                        //get user info
-//                        if(user != null){
-//                            String id = user.getUid();
-//                            String name = user.getDisplayName();
-//                            String email = !Objects.requireNonNull(user.getEmail()).isEmpty() ? user.getEmail() : "Null";
-//                            String avatarGoogle = !Objects.requireNonNull(user.getPhotoUrl()).toString().isEmpty() ? user.getPhotoUrl().toString().replace("s96-c", "s500-c") : "Null";
-//                            HandleUser(id, name, email, avatarGoogle);
-//                        }
-//
-//
-//
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Log.d(TAG_2, "onFailure: Logged in Failed" + e.getMessage());
-//
-//                    }
-//                });
-//    }
 
 
     private void HandleUser(String id, String name, String email, String avatar) {

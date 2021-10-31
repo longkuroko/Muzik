@@ -60,7 +60,20 @@
         <entry key="..\:/Muzik/app/src/main/res/layout/activity_add_update.xml" value="0.24864130434782608" />
         <entry key="..\:/Muzik/app/src/main/res/layout/activity_full.xml" value="0.24864130434782608" />
         <entry key="..\:/Muzik/app/src/main/res/layout/activity_full_player.xml" value="0.17300724637681159" />
+        <entry key="..\:/Muzik/app/src/main/res/layout/activity_genre.xml" value="0.1290983606557377" />
+        <entry key="..\:/Muzik/app/src/main/res/layout/activity_main.xml" value="0.1290983606557377" />
+        <entry key="..\:/Muzik/app/src/main/res/layout/activity_personal.xml" value="0.1290983606557377" />
+        <entry key="..\:/Muzik/app/src/main/res/layout/activity_personal_page.xml" value="0.176" />
         <entry key="..\:/Muzik/app/src/main/res/layout/activity_personal_playlist.xml" value="0.209375" />
+        <entry key="..\:/Muzik/app/src/main/res/layout/activity_search.xml" value="0.1290983606557377" />
+        <entry key="..\:/Muzik/app/src/main/res/layout/activity_song.xml" value="0.1290983606557377" />
+        <entry key="..\:/Muzik/app/src/main/res/layout/fragment_chart.xml" value="0.12773224043715847" />
+        <entry key="..\:/Muzik/app/src/main/res/layout/fragment_detail_player.xml" value="0.1290983606557377" />
+        <entry key="..\:/Muzik/app/src/main/res/layout/fragment_home.xml" value="0.1290983606557377" />
+        <entry key="..\:/Muzik/app/src/main/res/layout/fragment_lyrics_player.xml" value="0.1290983606557377" />
+        <entry key="..\:/Muzik/app/src/main/res/layout/fragment_mini_player.xml" value="0.1290983606557377" />
+        <entry key="..\:/Muzik/app/src/main/res/layout/fragment_personal_playlist.xml" value="0.1290983606557377" />
+        <entry key="..\:/Muzik/app/src/main/res/layout/item_album.xml" value="0.1290983606557377" />
         <entry key="..\:/mobile/Muzik/app/src/main/res/drawable/ic_add_1.xml" value="0.26614583333333336" />
         <entry key="..\:/mobile/Muzik/app/src/main/res/drawable/ic_edit.xml" value="0.26614583333333336" />
         <entry key="..\:/mobile/Muzik/app/src/main/res/drawable/shape_corner_16dp.xml" value="0.26614583333333336" />

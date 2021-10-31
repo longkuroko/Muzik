@@ -74,7 +74,6 @@ public class SongActivity extends AppCompatActivity {
     private void linkViews() {
         coordinatorLayout = findViewById(R.id.cdlListSong);
         collapsingToolbarLayout = findViewById(R.id.ctlImage);
-//        toolbar = findViewById(R.id.tbListSong);
 
         floatingActionButton = findViewById(R.id.fabPlay);
         floatingActionButton.setEnabled(false);
@@ -83,9 +82,6 @@ public class SongActivity extends AppCompatActivity {
         sflItemSong = findViewById(R.id.sflItemSong);
 
 
-//        setSupportActionBar(this.toolbar);
-//        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-//        toolbar.setNavigationIcon(R.drawable.ic_angle_left);
 
         collapsingToolbarLayout.setExpandedTitleTextColor(ColorStateList.valueOf(getResources()
                 .getColor(R.color.pink2)));
@@ -94,8 +90,6 @@ public class SongActivity extends AppCompatActivity {
 
     }
     private void addEvent() {
-
-//        toolbar.setNavigationOnClickListener(v-> finish());
     }
 
     private void loadData() {

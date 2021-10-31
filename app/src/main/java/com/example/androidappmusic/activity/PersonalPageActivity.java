@@ -153,7 +153,7 @@ public class PersonalPageActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.toast9, Toast.LENGTH_SHORT).show();
         });
 
-        dialog.show(); // câu lệnh này sẽ hiển thị Dialog lên
+        dialog.show();//hiển thị Dialog lên
     }
 
     private void Handler_Display_Info_User(String userID) {

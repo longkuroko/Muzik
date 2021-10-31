@@ -72,9 +72,9 @@ public class FullActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full);
 
-//        DataLocalManager.init(this);
-//        myBroadcastReceiver = new MyBroadcastReceiver();
-//
+        DataLocalManager.init(this);
+        myBroadcastReceiver = new MyBroadcastReceiver();
+
 
 
         linkViews();
@@ -85,9 +85,9 @@ public class FullActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-//        registerReceiver(myBroadcastReceiver, intentFilter); // Đăng kí lắng nghe
+        registerReceiver(myBroadcastReceiver, intentFilter); // Đăng kí lắng nghe
 
-//        Check_Login();
+        Check_Login();
     }
 
     @Override
@@ -102,7 +102,7 @@ public class FullActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-//        Check_Login();
+        Check_Login();
     }
 
     @Override
@@ -114,14 +114,14 @@ public class FullActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
 
-//        unregisterReceiver(myBroadcastReceiver); // Hủy đăng kí lắng nghe sự kiện
+        unregisterReceiver(myBroadcastReceiver); // Hủy đăng kí lắng nghe sự kiện
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
 
-//        unregisterReceiver(myBroadcastReceiver); // Hủy đăng kí lắng nghe sự kiện
+        unregisterReceiver(myBroadcastReceiver); // Hủy đăng kí lắng nghe sự kiện
     }
     private  void Check_Login(){
         FirebaseUser currentUser = this.firebaseAuth.getCurrentUser();
@@ -150,26 +150,26 @@ public class FullActivity extends AppCompatActivity {
         meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_HOME, R.drawable.ic_home));
         meowBottomNavigation.add(new MeowBottomNavigation.Model(ID_PERSONAL, R.drawable.ic_music_note));
 
-//        circleImageView = findViewById(R.id.civAvatar);
-//        Picasso.get()
-//                .load(DataLocalManager.getUserAvatar())
-//                .placeholder(R.drawable.ic_logo)
-//                .error(R.drawable.ic_logo)
-//                .into(this.circleImageView);
+        circleImageView = findViewById(R.id.civAvatar);
+        Picasso.get()
+                .load(DataLocalManager.getUserAvatar())
+                .placeholder(R.drawable.ic_logo)
+                .error(R.drawable.ic_logo)
+                .into(this.circleImageView);
     }
 
     private void addEvents() {
 //
-//        this.scaleAnimation = new ScaleAnimation(FullActivity.this, this.ivBell);
-//        this.scaleAnimation.Event_ImageView();
-//
-//        this.scaleAnimation = new ScaleAnimation(FullActivity.this, this.circleImageView);
-//        this.scaleAnimation.Event_CircleImageView();
-//
-//        circleImageView.setOnClickListener(v -> {
-//            Intent intent = new Intent(FullActivity.this, PersonalPageActivity.class);
-//            startActivity(intent);
-//        });
+        this.scaleAnimation = new ScaleAnimation(FullActivity.this, this.ivBell);
+        this.scaleAnimation.Event_ImageView();
+
+        this.scaleAnimation = new ScaleAnimation(FullActivity.this, this.circleImageView);
+        this.scaleAnimation.Event_CircleImageView();
+
+        circleImageView.setOnClickListener(v -> {
+            Intent intent = new Intent(FullActivity.this, PersonalPageActivity.class);
+            startActivity(intent);
+        });
 
 
         //bottom navigation
@@ -190,13 +190,6 @@ public class FullActivity extends AppCompatActivity {
                     fragment = new PersonalPlaylistFragment();
                     break;
                 }
-//                case 4: {
-//                    fragment = new SettingFragment();
-//                    break;
-//                }
-//                case 5:{
-//
-//                }
             }
             loadFragment(fragment);
         });

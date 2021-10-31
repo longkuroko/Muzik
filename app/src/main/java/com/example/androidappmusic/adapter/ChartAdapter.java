@@ -60,7 +60,6 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
     private Context context;
     private ArrayList<Song> songArrayList;
 
-//    private boolean isFromRadio = false;
     private List<Integer> listRequest;
     private Dialog dialogRequestFromRadio;
     public static List<Integer> listSongRequested = new ArrayList<>();
@@ -169,7 +168,6 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
 
         rlDeleteSongToPlaylist.setVisibility(View.GONE);
         rlDeleteAllSongToPlaylist.setVisibility(View.GONE);
-//        rlDeleteDownLoadSong.setVisibility(View.GONE);
 
 
         this.scaleAnimation = new ScaleAnimation(context, rlPlaySong);
@@ -186,16 +184,6 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
             Open_Insert_Song_Playlist_Dialog(DataLocalManager.getUserID(), songArrayList.get(position).getId());
         });
 
-
-//        this.scaleAnimation = new ScaleAnimation(context, rlDownLoadSong);
-//        this.scaleAnimation.Event_RelativeLayout();
-//        rlDownLoadSong.setOnClickListener(v -> {
-//            context.registerReceiver(onComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
-//            DownloadService downloadService = new DownloadService();
-//            downloadService.DownloadSong(context, songArrayList.get(position));
-//            dialog_1.dismiss();
-//            notifyDataSetChanged();
-//        });
 
 //        scaleAnimation = new ScaleAnimation(context, rlPlaySong);
 //        scaleAnimation.Event_CircleImageView();
@@ -220,13 +208,13 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
             tvPosition.setTextColor(context.getResources().getColor(R.color.colorMain7));
         } else if (position == 2) {
             tvPosition.setTextColor(context.getResources().getColor(R.color.colorMain8));
-        } else { // Ko biết tại sao, khí nào quay lại tìm hiểu sau
+        } else {
             tvPosition.setTextColor(context.getResources().getColor(R.color.colorLight7));
         }
 
     }
 
-    //LOI
+
     private void Open_Insert_Song_Playlist_Dialog(String userID, int songID) {
         this.dialog_3 = new Dialog(this.context);
 

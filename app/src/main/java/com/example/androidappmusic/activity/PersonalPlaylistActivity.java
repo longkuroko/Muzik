@@ -105,7 +105,6 @@ public class PersonalPlaylistActivity extends AppCompatActivity {
                 if (!titlePlaylist.isEmpty()){
                     this.tvPersonalPlaylistTitle.setText(titlePlaylist);
 
-//                    Handle_Download_Song();
                 }
             }
         }
@@ -165,7 +164,7 @@ public class PersonalPlaylistActivity extends AppCompatActivity {
             }
         });
     }
-    //BANG
+
     private void Handle_Favorite_Song() {
         DataService dataService = APIService.getService(); //Khởi tạo phương thức để đẩy lên
         Call<List<Song>> callBack = dataService.getFavoriteSongUser(DataLocalManager.getUserID());

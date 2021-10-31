@@ -82,8 +82,7 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                String keyWord = s.toString().toLowerCase().trim(); // Chuyển kí tự về dạng chữ viết thường để tìm kiếm cho nhanh
-
+                String keyWord = s.toString().toLowerCase().trim();
                 Runnable runnable = new Runnable() {
                     @Override
                     public void run() {

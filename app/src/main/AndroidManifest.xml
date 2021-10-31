@@ -24,7 +24,11 @@
         <activity
             android:name=".activity.MainActivity"
             android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity android:name=".activity.AddUpdateActivity" >
@@ -32,11 +36,7 @@
         <activity
             android:name=".activity.FullActivity"
             android:exported="true" >'
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity android:name=".activity.FullPlayerActivity" android:exported="true">
@@ -52,10 +52,6 @@
         <activity android:name=".activity.SearchActivity" />
         <activity android:name=".activity.SongActivity" >
         </activity> <!-- facebook -->
-
-<!--        <meta-data-->
-<!--            android:name="com.google.android.gms.ads.APPLICATION_ID"-->
-<!--            android:value="ca-app-pub-8151267593746824~1770590820" />-->
 
 <!--        <service android:name=".service.MiniPlayerOnLockScreenService" />-->
         <receiver android:name=".service.NotificationActionService" />

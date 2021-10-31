@@ -159,7 +159,7 @@ public class FullActivity extends AppCompatActivity {
     }
 
     private void addEvents() {
-
+//
         this.scaleAnimation = new ScaleAnimation(FullActivity.this, this.ivBell);
         this.scaleAnimation.Event_ImageView();
 
@@ -190,13 +190,6 @@ public class FullActivity extends AppCompatActivity {
                     fragment = new PersonalPlaylistFragment();
                     break;
                 }
-//                case 4: {
-//                    fragment = new SettingFragment();
-//                    break;
-//                }
-//                case 5:{
-//
-//                }
             }
             loadFragment(fragment);
         });

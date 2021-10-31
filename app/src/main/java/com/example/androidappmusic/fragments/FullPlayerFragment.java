@@ -35,11 +35,8 @@ import com.example.androidappmusic.animation.ScaleAnimation;
 import com.example.androidappmusic.models.Song;
 import com.example.androidappmusic.models.Status;
 import com.example.androidappmusic.service.FullPlayerManagerService;
-import com.example.androidappmusic.service.MiniPlayerOnLockScreenService;
 import com.example.androidappmusic.sharedPreferences.DataLocalManager;
 import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Comment;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -69,7 +66,7 @@ public class FullPlayerFragment extends Fragment {
     private LoadingDialog loadingDialog;
     private Dialog dialog;
 
-    private final String ACTION_INSERT_COMMENT = "insert";
+//    private final String ACTION_INSERT_COMMENT = "insert";
     private int position = 0;
     private boolean repeat = false;
     private boolean checkRandom = false;
@@ -97,7 +94,6 @@ public class FullPlayerFragment extends Fragment {
         } else {
             throw new RuntimeException(context.toString() + "You need implement");
         }
-//        iSendPositionListener = (ISendPositionListener) getActivity(); // Khở tạo Interface khi Fragment gắn vào Activity
     }
 
     @Override
@@ -126,7 +122,6 @@ public class FullPlayerFragment extends Fragment {
             getActivity().registerReceiver(broadcastReceiver, new IntentFilter("TRACKS_TRACkS"));
             FullPlayerManagerService.isRegister = true;
         }
-//        CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
     }
 
     @Override
@@ -204,14 +199,14 @@ public class FullPlayerFragment extends Fragment {
             if (FullPlayerManagerService.mediaPlayer != null && isCurrentSong()) {
                 if (FullPlayerManagerService.mediaPlayer.isPlaying()) {
                     this.ivPlayPause.setImageResource(R.drawable.ic_pause);
-                    CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
+//                    CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
                 } else {
                     this.ivPlayPause.setImageResource(R.drawable.ic_play_2);
-                    CreateNotification(MiniPlayerOnLockScreenService.ACTION_PAUSE);
+//                    CreateNotification(MiniPlayerOnLockScreenService.ACTION_PAUSE);
                 }
             } else {
                 this.ivPlayPause.setImageResource(R.drawable.ic_pause);
-                CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
+//                CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
             }
 
             final Handler handler = new Handler();
@@ -314,10 +309,6 @@ public class FullPlayerFragment extends Fragment {
 
     }
     private void CreateNotification(String action) {
-        Intent intent = new Intent(getContext(), MiniPlayerOnLockScreenService.class);
-        intent.setAction(action);
-        getActivity().startService(intent);
-        //NotificationService.NotificationService(getContext(),FullPlayerActivity.dataSongArrayList.get(position),R.drawable.ic_pause,position,FullPlayerActivity.dataSongArrayList.size());
     }
 
     public void onSongPlay() {
@@ -325,11 +316,10 @@ public class FullPlayerFragment extends Fragment {
         if (FullPlayerManagerService.mediaPlayer.isPlaying()) {
             FullPlayerManagerService.mediaPlayer.pause();
             this.ivPlayPause.setImageResource(R.drawable.ic_play_2);
-            CreateNotification(MiniPlayerOnLockScreenService.ACTION_PAUSE);
         } else {
             FullPlayerManagerService.mediaPlayer.start();
             this.ivPlayPause.setImageResource(R.drawable.ic_pause);
-            CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
+
         }
     }
 
@@ -384,7 +374,7 @@ public class FullPlayerFragment extends Fragment {
             this.ivNext.setClickable(true);
             this.ivPrev.setClickable(true);
         }, 2000);
-        CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
+
     }
 
     public void onSongPrev() {
@@ -437,7 +427,7 @@ public class FullPlayerFragment extends Fragment {
             this.ivNext.setClickable(true);
             this.ivPrev.setClickable(true);
         }, 2000);
-        CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
+
     }
 
 
@@ -473,11 +463,10 @@ public class FullPlayerFragment extends Fragment {
                     FullPlayerManagerService.currentSong = FullPlayerActivity.dataSongs.get(position);
                     FullPlayerManagerService.position = position;
                     //Log.d("CurrentSong",FullPlayerManagerService.currentSong.getName());
-                    FullPlayerManagerService.mediaPlayer.setDataSource(song); // Cái này quan trọng nè Thắng
+                    FullPlayerManagerService.mediaPlayer.setDataSource(song); //
                     FullPlayerManagerService.mediaPlayer.prepare();
                     FullPlayerManagerService.mediaPlayer.start();
                     mediaPlayer = FullPlayerManagerService.mediaPlayer;
-                    CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
                     FullPlayerManagerService.listCurrentSong = new ArrayList<Song>(FullPlayerActivity.dataSongs);
                 }
             } catch (IOException e) {
@@ -620,31 +609,7 @@ public class FullPlayerFragment extends Fragment {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getExtras().getString("actionname");
-            switch (action) {
-                case MiniPlayerOnLockScreenService.ACTION_PLAY:
-                    onSongPlay();
-                    break;
-                case MiniPlayerOnLockScreenService.ACTION_PAUSE:
-                    onSongPlay();
-                    break;
-                case MiniPlayerOnLockScreenService.ACTION_PRE:
-                    try {
-                        onSongPrev();
-                        //CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                case MiniPlayerOnLockScreenService.ACTION_NEXT:
 
-                    try {
-                        onSongNext();
-                        //CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    break;
-            }
         }
     };
 }

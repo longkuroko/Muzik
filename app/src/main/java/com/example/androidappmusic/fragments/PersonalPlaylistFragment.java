@@ -144,7 +144,6 @@ public class PersonalPlaylistFragment extends Fragment {
 
     private void linkViews(View view) {
         loadingDialog = new LoadingDialog(getActivity());
-//        this.loadingDialog.Start_Loading();
 
         llFrameLoveSong = view.findViewById(R.id.llFrameLoveSong);
         tvNumberPlaylist = view.findViewById(R.id.tvNumberPlaylist);
@@ -158,9 +157,6 @@ public class PersonalPlaylistFragment extends Fragment {
         sflItemUserPlaylist = view.findViewById(R.id.sflItemUserPlaylist);
         rvYourPlaylist = view.findViewById(R.id.rvYourPlaylist);
 
-//        llFrameDownloadSong = view.findViewById(R.id.llFrameDownloadSong);
-//        tvNumberDownloadSong = view.findViewById(R.id.tvNumberSongDownload);
-//        tvTitleDownloadSong = view.findViewById(R.id.tvTitleDownloadSong);
     }
 
     private void addEvent() {
@@ -181,7 +177,7 @@ public class PersonalPlaylistFragment extends Fragment {
     }
 
 
-    //BANG
+
     private void Handle_Number_Favorite_Song() {
         DataService dataService = APIService.getService(); // Khởi tạo Phương thức để đẩy lên
         Call<List<Song>> callBack = dataService.getFavoriteSongUser(DataLocalManager.getUserID());
@@ -208,7 +204,7 @@ public class PersonalPlaylistFragment extends Fragment {
     }
 
 
-    //GĐ
+
     private void Handle_UserPlaylist() {
         DataService dataService = APIService.getService(); // Khởi tạo Phương thức để đẩy lên
         Call<List<UserPlaylist>> callBack = dataService.getUserPlaylist(DataLocalManager.getUserID());

@@ -223,7 +223,7 @@ MainActivity extends AppCompatActivity {
     //Login google
     private void loginGoogle(){
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestIdToken(getString(R.string.default_web_client_id)) //chỗ này hiện đỏ nhưng không phải lỗi...
                 .requestEmail()
                 .build();
         this.googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
@@ -231,16 +231,7 @@ MainActivity extends AppCompatActivity {
         this.btnLoginGoogle.setOnClickListener(v -> {
             activityResultLauncher.launch(new Intent(googleSignInClient.getSignInIntent()));
         });
-        // Configure Google Sign In
 
-//        btnLoginGoogle.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.d(TAG, "Google sign in");
-//                Intent intent = googleSignInClient.getSignInIntent();
-//                startActivityForResult(intent, RC_SIGN_IN);
-//            }
-//        });
 
     }
 
@@ -298,7 +289,6 @@ MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
     }
-
 
 
     private void HandleUser(String id, String name, String email, String avatar) {

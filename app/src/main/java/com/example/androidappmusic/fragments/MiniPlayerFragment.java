@@ -69,14 +69,14 @@ public class MiniPlayerFragment extends Fragment {
 
 
 
-            if (FullPlayerManagerService.mediaPlayer != null) {
-                if (FullPlayerManagerService.mediaPlayer.isPlaying()) {
-                } else {
-
-                }
-            } else {
-
-            }
+//            if (FullPlayerManagerService.mediaPlayer != null) {
+//                if (FullPlayerManagerService.mediaPlayer.isPlaying()) {
+//                } else {
+//
+//                }
+//            } else {
+//
+//            }
         } catch (Exception e) {
             Log.d("Error", e.toString());
         }
@@ -283,7 +283,4 @@ public class MiniPlayerFragment extends Fragment {
         }
     }
 
-    public void CreateNotification(String action) {
-
-    }
 }

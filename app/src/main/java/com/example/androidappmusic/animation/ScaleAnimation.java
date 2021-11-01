@@ -85,19 +85,6 @@ public class ScaleAnimation {
         });
     }
 
-    public void Event_CardView(){
-        scaleUpAnimation = AnimationUtils.loadAnimation(context, R.anim.scale_up);
-        scaleDownAnimation = AnimationUtils.loadAnimation(context, R.anim.scale_down);
-
-        cardView.setOnTouchListener((v, event) -> {
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                cardView.startAnimation(scaleDownAnimation);
-            } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                cardView.startAnimation(scaleUpAnimation);
-            }
-            return false;
-        });
-    }
 
     public void Event_CircleImageView() {
         this.scaleUpAnimation = AnimationUtils.loadAnimation(this.context, R.anim.scale_up);

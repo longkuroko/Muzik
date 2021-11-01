@@ -66,7 +66,6 @@ public class FullPlayerFragment extends Fragment {
     private LoadingDialog loadingDialog;
     private Dialog dialog;
 
-//    private final String ACTION_INSERT_COMMENT = "insert";
     private int position = 0;
     private boolean repeat = false;
     private boolean checkRandom = false;
@@ -118,10 +117,6 @@ public class FullPlayerFragment extends Fragment {
         linkViews(view);
         addEvents();
 
-        if (!FullPlayerManagerService.isRegister) {
-            getActivity().registerReceiver(broadcastReceiver, new IntentFilter("TRACKS_TRACkS"));
-            FullPlayerManagerService.isRegister = true;
-        }
     }
 
     @Override
@@ -199,14 +194,11 @@ public class FullPlayerFragment extends Fragment {
             if (FullPlayerManagerService.mediaPlayer != null && isCurrentSong()) {
                 if (FullPlayerManagerService.mediaPlayer.isPlaying()) {
                     this.ivPlayPause.setImageResource(R.drawable.ic_pause);
-//                    CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
                 } else {
                     this.ivPlayPause.setImageResource(R.drawable.ic_play_2);
-//                    CreateNotification(MiniPlayerOnLockScreenService.ACTION_PAUSE);
                 }
             } else {
                 this.ivPlayPause.setImageResource(R.drawable.ic_pause);
-//                CreateNotification(MiniPlayerOnLockScreenService.ACTION_PLAY);
             }
 
             final Handler handler = new Handler();
@@ -308,9 +300,6 @@ public class FullPlayerFragment extends Fragment {
 
 
     }
-    private void CreateNotification(String action) {
-    }
-
     public void onSongPlay() {
         isEvent_Of_FullPlayerFragment = true;
         if (FullPlayerManagerService.mediaPlayer.isPlaying()) {

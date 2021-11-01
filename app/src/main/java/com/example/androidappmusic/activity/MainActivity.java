@@ -73,7 +73,6 @@ MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private static final String TAG_1 ="LOGIN WITH FACEBOOK";
     private static final String TAG_2 ="LOGIN WITH GOOGLE";
-    public static final int RC_SIGN_IN = 100;
 
     CallbackManager callbackManager;
     FirebaseAuth firebaseAuth;

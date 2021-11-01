@@ -58,9 +58,6 @@ public class PersonalPlaylistFragment extends Fragment {
     TextView tvTitleLoveSong;
     TextView tvEmptyPlaylist;
 
-    TextView tvNumberDownloadSong;
-    TextView tvTitleDownloadSong;
-    private LinearLayout llFrameDownloadSong;
 
     private ShimmerFrameLayout sflItemUserPlaylist;
     private RecyclerView rvYourPlaylist;
@@ -96,6 +93,9 @@ public class PersonalPlaylistFragment extends Fragment {
         DataLocalManager.init(getContext());
 
         Log.d(TAG, "onViewCreated");
+//
+//        Handle_Number_Favorite_Song();
+//        Handle_UserPlaylist();
 
         linkViews(view);
         addEvent();

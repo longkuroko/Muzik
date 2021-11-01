@@ -60,10 +60,6 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ViewHolder> 
     private Context context;
     private ArrayList<Song> songArrayList;
 
-    private List<Integer> listRequest;
-    private Dialog dialogRequestFromRadio;
-    public static List<Integer> listSongRequested = new ArrayList<>();
-
     public ChartAdapter(Context context, ArrayList<Song> songArrayList) {
         this.context = context;
         this.songArrayList = songArrayList;

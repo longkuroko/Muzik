@@ -50,12 +50,10 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder>{
     private static final String TAG = "SongAdapter";
 
     private AlertDialog alertDialog;
-    private AlertDialog alertDialog_1;
 
     private Dialog dialog_1;
     private Dialog dialog_2;
     private Dialog dialog_3;
-    private Dialog dialog_4;
 
 
 
